@@ -13,7 +13,7 @@ public class Flop extends AbstrState {
      * The third state of a poker match is the Flop.
      * @param match ongoing match
      */
-    Flop(Match match) {
+    public Flop(Match match) {
         this.match = match;
         availableBet = new ArrayList<>();
         availableBet.add(Bet.CALL);
