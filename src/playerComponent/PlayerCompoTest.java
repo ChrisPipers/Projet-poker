@@ -31,7 +31,7 @@ public class PlayerCompoTest extends Application {
 
         PlayerComponent playerC = new PlayerComponent(player);
 
-        Scene scene1 = new Scene(playerC, 400, 400);
+        Scene scene1 = new Scene(playerC, 280, 150);
         primaryStage.centerOnScreen();
 
         primaryStage.sizeToScene();
