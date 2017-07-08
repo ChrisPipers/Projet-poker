@@ -5,7 +5,6 @@ import java.util.List;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
@@ -23,8 +22,8 @@ public class PlayerComponent extends HBox {
     
 
     public PlayerComponent(Player player) {
-        this.setHeight(100);
-        this.setWidth(100);
+        this.setHeight(90);
+        this.setWidth(250);
         
         borderLayout();
         getHBoxCards(player);
@@ -66,6 +65,9 @@ public class PlayerComponent extends HBox {
         name.setTextAlignment(TextAlignment.CENTER);
 //        name.setStyle(style);
         Line line = new Line(0, 0, 40, 0);
+        final String StyleLine = "-fx-background-position: center, center;"
+                + "-fx-background-size: cover, auto;";
+        line.setStyle(StyleLine);
         Label pot = new Label(Integer.toString(player.getMoney()));
         pot.setTextAlignment(TextAlignment.CENTER);
 

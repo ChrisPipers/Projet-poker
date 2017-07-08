@@ -4,7 +4,10 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Player;
+import model.cards.Card;
+import model.cards.Color;
 import model.cards.Deck;
+import model.cards.Value;
 
 
 /**
@@ -17,12 +20,14 @@ public class PlayerCompoTest extends Application {
     public void start(Stage primaryStage) {
         Deck deck = new Deck();
 
-        String name = "Mitch";
+        String name = "Mitch123456789";
         int pot = 1000;
         char sexe = 'M';
         Player player = new Player(name, pot, sexe);
-        player.getHandCards().add(deck.pick());
-        player.getHandCards().add(deck.pick());
+        Card card1 = new Card(Color.CLUB, Value.ACE);
+        Card card2 = new Card(Color.CLUB, Value.ACE);
+        player.add(card1);
+        player.add(card2);
 
         PlayerComponent playerC = new PlayerComponent(player);
 

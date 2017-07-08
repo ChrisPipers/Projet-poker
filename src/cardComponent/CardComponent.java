@@ -41,8 +41,8 @@ public class CardComponent extends Parent {
         Image image = new Image(stringCard, 150, 150, false, false);
         ImageView iv2 = new ImageView();
         iv2.setImage(image);
-        iv2.setFitWidth(70);
-        iv2.setFitHeight(80);
+        iv2.setFitWidth(60);
+        iv2.setFitHeight(70);
         iv2.preserveRatioProperty();
         eventCard();
         getChildren().add(iv2);
