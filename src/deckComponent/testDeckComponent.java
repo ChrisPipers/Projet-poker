@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package deckComponent;
 
 import javafx.application.Application;
@@ -24,7 +19,7 @@ public class testDeckComponent extends Application {
     public void start(Stage primaryStage) {
         DeckComponent deck = new DeckComponent();
         
-        deck.setTranslateY(+60);
+        deck.setTranslateY(+40);
         Scene scene = new Scene(deck, 300, 250);
         
         primaryStage.setTitle("Hello World!");
