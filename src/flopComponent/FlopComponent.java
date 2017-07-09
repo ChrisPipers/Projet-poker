@@ -1,6 +1,7 @@
 package flopComponent;
 
 import cardComponent.CardComponent;
+import deckComponent.DeckComponent;
 import java.util.List;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
@@ -13,25 +14,25 @@ import model.cards.Card;
  */
 public class FlopComponent extends HBox {
     
-    private HBox flopView;
-
+    private HBox board = new HBox();
+    private DeckComponent deck = new DeckComponent();
     
     
     
     public FlopComponent(Game game){
+        
         List <Card> flop = game.getBoard();
         System.out.println(flop.size());
         for (Card card : flop) {
             CardComponent cardC = new CardComponent(card);
-            this.flopView.getChildren().add(cardC);
+            this.board.getChildren().add(cardC);
         }
+        
+        this.getChildren().add(deck);
         
     }
     
-    public void defineDeck(){
-        
-        
-    }
+    
     
     
 }
