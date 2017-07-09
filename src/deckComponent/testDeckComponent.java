@@ -8,6 +8,7 @@ package deckComponent;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -23,6 +24,7 @@ public class testDeckComponent extends Application {
     public void start(Stage primaryStage) {
         DeckComponent deck = new DeckComponent();
         
+        deck.setTranslateY(+60);
         Scene scene = new Scene(deck, 300, 250);
         
         primaryStage.setTitle("Hello World!");
