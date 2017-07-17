@@ -36,7 +36,7 @@ public class FlopTest extends Application {
 
         FlopComponent flop = new FlopComponent(game);
 
-        Scene scene = new Scene(flop, 300, 250);
+        Scene scene = new Scene(flop, 600, 500);
 
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
