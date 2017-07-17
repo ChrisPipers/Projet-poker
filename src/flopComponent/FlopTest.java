@@ -23,14 +23,11 @@ public class FlopTest extends Application {
         game.addPlayer("Patrick3", 1000, 'M');
         game.addPlayer("Patrick4", 1000, 'M');
         game.start();
-        game.smallBlind(5);
-        game.bigBlind(10);
+        game.smallBlind(1);
+        game.bigBlind(2);
         game.call();
         game.call();
 
-        game.allIn();
-
-        game.allIn();
         FlopComponent flop = new FlopComponent(game);
 
         FlopComponent flopC = new FlopComponent(game);
