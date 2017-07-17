@@ -23,14 +23,14 @@ public class CardComponent extends Parent {
      * @param deck is the deck where seleted the card
      */
     public CardComponent(Card card) {
-        System.out.println(card.toString());
+//        System.out.println(card.toString());
         if (card.isHidden()) {
             stringCard = "Image/cards/" + "dos" + ".png";
         } else {
 
             stringCard = "Image/cards/" + card.toString() + ".png";
         }
-        System.out.println(stringCard);
+//        System.out.println(stringCard);
         final String style = "-fx-repeat: no-repeat;"
                 + "-fx-image-size: cover, auto;"
                 + "-fx-background-position: center, center;"
@@ -58,11 +58,11 @@ public class CardComponent extends Parent {
             @Override
             public void handle(MouseEvent event) {
                 CardComponent card = (CardComponent) event.getSource();
-                System.out.println(card);
+//                System.out.println(card);
 
             }
         });
-        System.out.println(stringCard);
+//        System.out.println(stringCard);
         return this.stringCard;
 
     }

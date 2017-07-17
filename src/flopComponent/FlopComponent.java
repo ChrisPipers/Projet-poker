@@ -21,13 +21,15 @@ public class FlopComponent extends HBox {
     
     public FlopComponent(Game game){
         
-        List <Card> flop = game.getCards();
-        System.out.println(flop.size());
+        List <Card> flop = game.getBoard();
+        System.out.println(flop.size()+ " nb de carte");
         for (Card card : flop) {
+            card.show();
             CardComponent cardC = new CardComponent(card);
+//            card.show();
             this.board.getChildren().add(cardC);
         }
-        
+        this.getChildren().add(board);
         this.getChildren().add(deck);
         
     }

@@ -23,15 +23,20 @@ public class FlopTest extends Application {
         game.addPlayer("Patrick3", 1000, 'M');
         game.addPlayer("Patrick4", 1000, 'M');
         game.start();
+        
         game.smallBlind(1);
         game.bigBlind(2);
+        game.call();
+        game.call();
+        
+        game.call();
+        game.call();
         game.call();
         game.call();
 
         FlopComponent flop = new FlopComponent(game);
 
-        FlopComponent flopC = new FlopComponent(game);
-        Scene scene = new Scene(flopC, 300, 250);
+        Scene scene = new Scene(flop, 300, 250);
 
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
