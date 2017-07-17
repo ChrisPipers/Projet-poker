@@ -5,21 +5,37 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Game;
+import model.GameException;
 
 /**
  *
  * @author Mitch
  */
 public class FlopTest extends Application {
-    
+
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws GameException {
         Game game = new Game();
-        FlopComponent flop = new FlopComponent(game);
+
         Match match = new Match();
+        game.addPlayer("Patrick", 1000, 'M');
+        game.addPlayer("Patrick2", 1000, 'M');
+        game.addPlayer("Patrick3", 1000, 'M');
+        game.addPlayer("Patrick4", 1000, 'M');
+        game.start();
+        game.smallBlind(5);
+        game.bigBlind(10);
+        game.call();
+        game.call();
+
+        game.allIn();
+
+        game.allIn();
+        FlopComponent flop = new FlopComponent(game);
+
         FlopComponent flopC = new FlopComponent(game);
         Scene scene = new Scene(flopC, 300, 250);
-        
+
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -31,5 +47,5 @@ public class FlopTest extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
