@@ -20,7 +20,8 @@ public class FlopComponent extends HBox {
     
     
     public FlopComponent(Game game){
-        
+        this.board.setMinHeight(70);
+        this.board.setMinWidth(62*5);
         List <Card> flop = game.getBoard();
         System.out.println(flop.size()+ " nb de carte");
         for (Card card : flop) {
