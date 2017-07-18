@@ -23,7 +23,9 @@ public class FlopComponent extends HBox {
     
     public FlopComponent(Game game){
         this.setMinHeight(70+30);
-        this.setMinWidth(62*5+90+200);
+        this.setMinWidth(62*5+90+200+100);
+        
+        this.setPrefWidth(62*5+90+200+100);
         
         deck = new DeckComponent();
         makeBoard(game);
@@ -57,9 +59,10 @@ public class FlopComponent extends HBox {
         String style = "-fx-background-color: red;"
 //                + "-fx-size: 1 cm;"
 //                + "-fx-lenght: 2cm;"
-                + "-fx-font-style: monospace;"
+                + "-fx-font-family: monospace;"
                 + "-fx-font-size: 16;"
                 + "-fx-alignment: center;"
+                + "-fx-font-weight: bold"
                 
                 ;
         
@@ -69,8 +72,8 @@ public class FlopComponent extends HBox {
         System.out.println(sSumPot);
         this.text = new TextField(""+sSumPot);
         this.text.setStyle(style);
-        this.text.setPrefHeight(50);
-        this.text.setPrefWidth(120);
+        this.text.setMinHeight(50);
+        this.text.setMinWidth(120);
         
         
     }
