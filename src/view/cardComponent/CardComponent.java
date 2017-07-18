@@ -1,4 +1,4 @@
-package cardComponent;
+package view.cardComponent;
 
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
@@ -25,10 +25,10 @@ public class CardComponent extends Parent {
     public CardComponent(Card card) {
 //        System.out.println(card.toString());
         if (card.isHidden()) {
-            stringCard = "Image/cards/" + "dos" + ".png";
+            stringCard = "view/Image/cards/" + "dos" + ".png";
         } else {
 
-            stringCard = "Image/cards/" + card.toString() + ".png";
+            stringCard = "view/Image/cards/" + card.toString() + ".png";
         }
 //        System.out.println(stringCard);
         final String style = "-fx-repeat: no-repeat;"

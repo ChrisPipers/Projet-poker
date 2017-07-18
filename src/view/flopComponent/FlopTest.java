@@ -1,5 +1,6 @@
 package flopComponent;
 
+import view.flopComponent.FlopComponent;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import javafx.application.Application;
 import javafx.scene.Scene;

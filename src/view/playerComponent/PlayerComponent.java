@@ -1,6 +1,6 @@
-package playerComponent;
+package view.playerComponent;
 
-import handPokerPlayer.handPokerPlayer;
+import view.handPokerPlayer.handPokerPlayer;
 import java.util.List;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;

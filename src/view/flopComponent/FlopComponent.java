@@ -1,7 +1,7 @@
-package flopComponent;
+package view.flopComponent;
 
-import cardComponent.CardComponent;
-import deckComponent.DeckComponent;
+import view.cardComponent.CardComponent;
+import view.deckComponent.DeckComponent;
 import java.util.List;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
@@ -57,7 +57,7 @@ public class FlopComponent extends HBox {
         String style = "-fx-background-color: red;"
 //                + "-fx-size: 1 cm;"
 //                + "-fx-lenght: 2cm;"
-                + "-fx-font: monospace;"
+                + "-fx-font-style: monospace;"
                 + "-fx-font-size: 16;"
                 + "-fx-alignment: center;"
                 

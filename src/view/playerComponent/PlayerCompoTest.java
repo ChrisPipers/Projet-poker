@@ -1,4 +1,4 @@
-package playerComponent;
+package view.playerComponent;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

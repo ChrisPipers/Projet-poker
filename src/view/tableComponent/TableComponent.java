@@ -1,4 +1,4 @@
-package tableComponent;
+package view.tableComponent;
 
 import java.util.List;
 import javafx.event.EventHandler;
@@ -12,7 +12,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import model.Game;
 import model.Player;
-import tableComponent.Position;
+import view.tableComponent.Position;
 
 /**
  *

@@ -1,4 +1,4 @@
-package tableComponent;
+package view.tableComponent;
 
 /**
  *

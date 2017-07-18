@@ -1,4 +1,4 @@
-package tableComponent;
+package view.tableComponent;
 
 /**
  * this class allows to build a position and use it

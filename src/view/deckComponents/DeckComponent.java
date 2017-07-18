@@ -1,4 +1,4 @@
-package deckComponent;
+package view.deckComponent;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,7 +28,7 @@ public class DeckComponent extends HBox {
 
     public ImageView getCardImageView(){
         
-        stringCard = "Image/cards/" + "dos" + ".png";
+        stringCard = "view/Image/cards/" + "dos" + ".png";
         
         
         Image image = new Image(stringCard, 150, 150, false, false);
