@@ -15,7 +15,7 @@ import model.cards.Card;
  */
 public class CardComponent extends Parent {
 
-    String stringCard;
+    private String stringCard;
 
     /**
      * this is the constructor allows a deck entry in parameter
@@ -58,13 +58,23 @@ public class CardComponent extends Parent {
             @Override
             public void handle(MouseEvent event) {
                 CardComponent card = (CardComponent) event.getSource();
-//                System.out.println(card);
+                
+                System.out.println(stringCard);
 
             }
         });
-//        System.out.println(stringCard);
         return this.stringCard;
 
     }
 
+    public void isVissible(Card card){
+        if (card.isHidden()== true){
+            System.out.println("card is hide");
+        }else
+        {
+            System.out.println(card.toString());
+        }
+    }
+    
+    
 }
