@@ -1,5 +1,6 @@
 package view.tableComponent;
 
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import java.util.List;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
@@ -12,6 +13,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import model.Game;
 import model.Player;
+import view.playerComponent.PlayerComponent;
 import view.tableComponent.Position;
 
 /**
@@ -28,9 +30,11 @@ public class TableComponent extends GridPane {
 
     public TableComponent(Game game) {
         this.game = game;
+        
+       
         listPlayer = game.getPlayers();
         initGridPaneTable();
-//        initPlayerTable();
+        initPlayerTable();
 //        initActionPlayerPoker();
 
     }
@@ -44,7 +48,7 @@ public class TableComponent extends GridPane {
         }
         final String style = "-fx-background-color: dimgray;"
                 //                + "-fx-background-image: url(Image/texture-background.png);"
-                + "-fx-background-image: url(Image/tablepoker.png);"
+                + "-fx-background-image: url(view/Image/tablepoker.png);"
                 + "-fx-background-size: 1200 860;"
                 + "-fx-background-position: center bottom; "
                 + "-fx-repeat: no-repeat;"
@@ -53,22 +57,23 @@ public class TableComponent extends GridPane {
                 ;
 
         this.setStyle(style);
+        
 
     }
 
-//    private void initPlayerTable() {
-//        for (int i = 0; i < listPlayer.size(); i++) {
-//            int column = listPosPlayerTable.get(i).getY();
-//            int row = listPosPlayerTable.get(i).getX();
-//            PlayerPoker playerP = new PlayerPoker(listPlayer.get(i));
-////            final String style = "-fx-width: 60%;"
-////     +"-fx-height: 60%;";
-////            playerP.setStyle(style);
-//
+    private void initPlayerTable() {
+        PositionPlayer posPlayer = new PositionPlayer();
+        for (int i = 0; i < listPlayer.size(); i++) {
+            PlayerComponent playerP = new PlayerComponent(listPlayer.get(i));
+//            final String style = "-fx-width: 60%;"
+//     +"-fx-height: 60%;";
+//            playerP.setStyle(style);
+
 //            playerP.setSize();
-//            this.add(playerP,column, row);
-//        }
-//    }
+            this.add(playerP,posPlayer.getPosPlayer(i).getJ(),
+                    posPlayer.getPosPlayer(i).getI());
+        }
+    }
 //    
 //    public void initActionPlayerPoker(){
 //        Position posAction = posTable.getPositionButtonActionBox();

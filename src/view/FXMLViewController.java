@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.HBox;
+import model.Game;
 import view.flopComponent.FlopComponent;
 import view.playerComponent.PlayerComponent;
 import view.tableComponent.TableComponent;
@@ -18,9 +16,12 @@ import view.tableComponent.TableComponent;
  *
  * @author Mitch
  */
-public class GameViewController implements Initializable {
+public class FXMLViewController implements Initializable {
 
-    
+    private Game game;
+
+    @FXML
+    private HBox hBoxMain;
     
     @FXML
     private TableComponent table;
@@ -31,23 +32,21 @@ public class GameViewController implements Initializable {
     @FXML
     private FlopComponent flop;
     
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        game = new Game();
+        game.addPlayer("Patrick", 1000, 'M');
+        game.addPlayer("Patrick2", 1000, 'M');
+        game.addPlayer("Patrick3", 1000, 'M');
+        game.addPlayer("Patrick4", 1000, 'M');
+        
+        table = new TableComponent(game);
+        List listPlayer = game.getPlayers();
+        hBoxMain.getChildren().add(table);
     }    
     
 }

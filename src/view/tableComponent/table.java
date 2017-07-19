@@ -1,5 +1,6 @@
 package view.tableComponent;
 
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.scene.Scene;
@@ -18,6 +19,11 @@ public class table extends Application {
     @Override
     public void start(Stage primaryStage) {
         Game game = new Game();
+        Match match = new Match();
+        game.addPlayer("Patrick", 1000, 'M');
+        game.addPlayer("Patrick2", 1000, 'M');
+        game.addPlayer("Patrick3", 1000, 'M');
+        game.addPlayer("Patrick4", 1000, 'M');
         Card card = new Card(Color.CLUB, Value.ACE);
         
         for (int i = 0; i < game.getPlayers().size(); i++) {

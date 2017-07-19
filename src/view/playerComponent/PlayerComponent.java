@@ -46,7 +46,7 @@ public class PlayerComponent extends HBox {
     }
 
     public void getPicturePlayer(Player player) {
-        String selectImage = ("Image/" + Character.toString(player.getSexe()) + ".png");
+        String selectImage = ("view/Image/" + Character.toString(player.getSexe()) + ".png");
         System.out.println(selectImage);
         Image image = new Image(selectImage, 80, 80, false, false);
         picturePlayer = new ImageView();
