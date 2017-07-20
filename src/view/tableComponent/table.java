@@ -1,6 +1,7 @@
 package view.tableComponent;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
+import java.io.IOException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.scene.Scene;
@@ -17,7 +18,7 @@ import model.cards.Value;
 public class table extends Application {
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
         Game game = new Game();
         Match match = new Match();
         game.addPlayer("Patrick", 1000, 'M');

@@ -1,8 +1,11 @@
 package view.tableComponent;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
+import java.io.IOException;
 import java.util.List;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -13,6 +16,9 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import model.Game;
 import model.Player;
+import view.FXMLViewController;
+import view.choiceBoxPlayer.ChoiceBoxPlayer;
+import view.choiceBoxPlayer.ChoiceBoxPlayerController;
 import view.flopComponent.FlopComponent;
 import view.playerComponent.PlayerComponent;
 import view.tableComponent.Position;
@@ -29,12 +35,12 @@ public class TableComponent extends GridPane {
     private List<Player> listPlayer;
     private VBox actionPlayer;
     private PositionPlayer posPlayer;
-    
+    private ChoiceBoxPlayer choiceB;
     public TableComponent(){
         initGridPaneTable();
     }
     
-    public TableComponent(Game game) {
+    public TableComponent(Game game) throws IOException {
         this.game = game;
         
        
@@ -43,7 +49,7 @@ public class TableComponent extends GridPane {
         initPlayerTable();
 //        initActionPlayerPoker();
         initFlopComponent();
-       
+        addChoiceBoxPlayer(game);
 this.minHeight(400);
 this.minWidth(400);
         System.out.println("table init finish");
@@ -95,6 +101,11 @@ this.minWidth(400);
     public void initFlopComponent(){
         FlopComponent flopC = new FlopComponent();
         this.add(flopC,6,5);
+    }
+    
+    public void addChoiceBoxPlayer(Game game) throws IOException{
+        choiceB = new ChoiceBoxPlayer();
+        this.add(choiceB, 12, 12);
     }
     
     

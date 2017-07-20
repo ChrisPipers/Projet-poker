@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 import model.Game;
 import model.GameException;
 
@@ -18,6 +19,9 @@ import model.GameException;
 public class ChoiceBoxPlayerController {
     
     private Game game;
+    
+    @FXML
+    private GridPane choiceBox;    
     
     @FXML
     private Button check;
@@ -31,7 +35,13 @@ public class ChoiceBoxPlayerController {
     @FXML 
     private TextField sumRaise;
     
-    
+    /**
+     *
+     * @return
+     */
+    public GridPane getChoiceBox(){
+       return this.choiceBox;
+    }
     
     private void handleButtonCheck(ActionEvent event) throws GameException {
         check.addEventHandler(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
