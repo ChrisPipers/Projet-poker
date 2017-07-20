@@ -4,8 +4,11 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import model.Game;
 import view.flopComponent.FlopComponent;
 import view.playerComponent.PlayerComponent;
@@ -19,7 +22,16 @@ import view.tableComponent.TableComponent;
 public class FXMLViewController implements Initializable {
 
     private Game game;
+//    private Stage stage;
+    private FXMLViewController fxmlViewController;
 
+    private HBox tBox;
+    @FXML
+    private AnchorPane AnchorPane;
+    
+    @FXML
+    private Pane pane;
+        
     @FXML
     private HBox hBoxMain;
     
@@ -38,15 +50,50 @@ public class FXMLViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        game = new Game();
-        game.addPlayer("Patrick", 1000, 'M');
-        game.addPlayer("Patrick2", 1000, 'M');
-        game.addPlayer("Patrick3", 1000, 'M');
-        game.addPlayer("Patrick4", 1000, 'M');
+//        hBoxMain = new HBox();
+
+//        String style = "-fx-background-color: red;";
+        System.out.println("init");
+
+       
+//       this.hBoxMain = new HBox();
+       
         
-        table = new TableComponent(game);
-        List listPlayer = game.getPlayers();
-        hBoxMain.getChildren().add(table);
+        
+        
+//        AnchorPane.getChildren().add(table);
+//        fxmlLoader.setRoot(table);
     }    
+    
+    
+    
+    public FXMLViewController getFXMLViewController(){
+        return this.fxmlViewController;
+    }
+    
+    
+    public void setGame (Game game){
+        this.game = game;
+    }
+    
+    public void setTable(TableComponent table){
+        
+//        this.table = new TableComponent(this.game);
+//        this.pane.getChildren().add(table);
+        this.hBoxMain.getChildren().add(table);
+//        this.tBox.getChildren().add(table);
+    }
+    
+    
+    
+    public HBox getHbox(){
+        return this.hBoxMain;
+    }
+    
+    
+    public void setHBox(TableComponent table){
+        this.hBoxMain = new HBox(table);
+    }
+    
     
 }

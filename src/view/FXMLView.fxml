@@ -3,9 +3,8 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="view.FXMLViewController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXMLViewController">
    <children>
-      <HBox id="hBoxMain" prefHeight="400.0" prefWidth="600.0" />
+      <HBox id="hBoxMain" fx:id="hBoxMain" layoutX="6.0" layoutY="6.0" prefHeight="589.0" prefWidth="987.0" />
    </children>
 </AnchorPane>

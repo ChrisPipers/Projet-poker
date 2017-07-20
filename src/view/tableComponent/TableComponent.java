@@ -28,6 +28,10 @@ public class TableComponent extends GridPane {
     private List<Player> listPlayer;
     private VBox actionPlayer;
 
+    public TableComponent(){
+        initGridPaneTable();
+    }
+    
     public TableComponent(Game game) {
         this.game = game;
         
@@ -36,7 +40,10 @@ public class TableComponent extends GridPane {
         initGridPaneTable();
         initPlayerTable();
 //        initActionPlayerPoker();
-
+       
+this.minHeight(400);
+this.minWidth(400);
+        System.out.println("table init finish");
     }
 
     private void initGridPaneTable() {
@@ -90,8 +97,8 @@ public class TableComponent extends GridPane {
 //    }
 //    
     
-    public void unshowActionPlayerPoker(){
-        this.actionPlayer.setVisible(false);
-    }
+//    public void unshowActionPlayerPoker(){
+//        this.actionPlayer.setVisible(false);
+//    }
 
 }
