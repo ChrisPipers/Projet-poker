@@ -19,7 +19,21 @@ public class FlopComponent extends HBox {
     private DeckComponent deck;
     private TextField text;
     
-    
+    public FlopComponent(){
+        this.setMinHeight(70+30);
+        this.setMinWidth(62*5+90+200+100);
+        
+        
+        
+        this.setPrefWidth(62*5+90+200+100);
+        board = new HBox();
+        this.board.setMinHeight(70);
+        this.board.setMinWidth(62*5);
+        
+        deck = new DeckComponent();
+        this.getChildren().addAll(board, deck);
+        
+    }
     
     public FlopComponent(Game game){
         this.setMinHeight(70+30);

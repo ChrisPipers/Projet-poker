@@ -13,6 +13,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import model.Game;
 import model.Player;
+import view.flopComponent.FlopComponent;
 import view.playerComponent.PlayerComponent;
 import view.tableComponent.Position;
 
@@ -27,7 +28,8 @@ public class TableComponent extends GridPane {
     private List<Position> listPosPlayerTable;
     private List<Player> listPlayer;
     private VBox actionPlayer;
-
+    private PositionPlayer posPlayer;
+    
     public TableComponent(){
         initGridPaneTable();
     }
@@ -40,6 +42,7 @@ public class TableComponent extends GridPane {
         initGridPaneTable();
         initPlayerTable();
 //        initActionPlayerPoker();
+        initFlopComponent();
        
 this.minHeight(400);
 this.minWidth(400);
@@ -69,7 +72,7 @@ this.minWidth(400);
     }
 
     private void initPlayerTable() {
-        PositionPlayer posPlayer = new PositionPlayer();
+        posPlayer = new PositionPlayer();
         for (int i = 0; i < listPlayer.size(); i++) {
             PlayerComponent playerP = new PlayerComponent(listPlayer.get(i));
 //            final String style = "-fx-width: 60%;"
@@ -81,6 +84,20 @@ this.minWidth(400);
                     posPlayer.getPosPlayer(i).getI());
         }
     }
+    
+    
+    public void addPlayer(Player player, int k){
+        PlayerComponent playerP = new PlayerComponent(player);
+        this.add(playerP,posPlayer.getPosPlayer(k).getJ(),
+                    posPlayer.getPosPlayer(k).getI());
+    }
+    
+    public void initFlopComponent(){
+        FlopComponent flopC = new FlopComponent();
+        this.add(flopC,6,5);
+    }
+    
+    
 //    
 //    public void initActionPlayerPoker(){
 //        Position posAction = posTable.getPositionButtonActionBox();
