@@ -104,7 +104,7 @@ this.minWidth(400);
     }
     
     public void addChoiceBoxPlayer(Game game) throws IOException{
-        choiceB = new ChoiceBoxPlayer();
+        choiceB = new ChoiceBoxPlayer(game);
         this.add(choiceB, 12, 12);
     }
     

@@ -19,50 +19,22 @@ import model.GameException;
 public class ChoiceBoxPlayerController {
     
     private Game game;
-    
-    @FXML
-    private GridPane choiceBox;    
-    
-    @FXML
+      
+   
     private Button check;
     
-    @FXML
     private Button fold;
-    
-    @FXML
+
     private Button raise;
     
-    @FXML 
+
     private TextField sumRaise;
     
-    /**
-     *
-     * @return
-     */
-    public GridPane getChoiceBox(){
-       return this.choiceBox;
-    }
+   public ChoiceBoxPlayerController( ){
+       
+   }
     
-    private void handleButtonCheck(ActionEvent event) throws GameException {
-        check.addEventHandler(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event
-            ) {
-               
-                    if (game.getMinimium()==0){
-                        
-                        try {
-                            game.call();
-                        } catch (GameException ex) {
-                            Logger.getLogger(ChoiceBoxPlayerController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    }
-                 
-            }
-
-        }
-        );
-    }
+    
 
     private void handleButtonFold(ActionEvent event) throws GameException {
         fold.addEventHandler(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {

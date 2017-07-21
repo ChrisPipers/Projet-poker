@@ -1,9 +1,11 @@
 
 package view.choiceBoxPlayer;
 
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import model.Game;
 
 /**
  *
@@ -19,14 +21,23 @@ public class ChoiceBoxPlayer extends GridPane{
     
     private TextField sumRaise;
     
+    private ChoiceBoxPlayerController choiceBoxPlayerController;
+    
+    private Game game;
     
     
     
-    public ChoiceBoxPlayer(){
+    public ChoiceBoxPlayer(Game game){
         fold = new Button("Fold");
         check = new Button("Check");
         raise  = new Button("Raise");
         sumRaise = new TextField();
+        
+        choiceBoxPlayerController = new ChoiceBoxPlayerController();
+        
+        this.game = game;
+        
+        
         
         this.add(fold, 0, 0);
         this.add(check, 1, 0);
@@ -35,6 +46,8 @@ public class ChoiceBoxPlayer extends GridPane{
         defineSize();
         changeStyle();
 //        this.setBackground();
+
+        
     }
     
     private void defineSize(){
@@ -59,4 +72,11 @@ public class ChoiceBoxPlayer extends GridPane{
     }
     
     
+    public int getContainTextfield(){
+        return Integer.parseInt(this.sumRaise.getText());
+    }
+    
+    public void hideCheck(){
+        this.check.setVisible(false);
+    }
 }
