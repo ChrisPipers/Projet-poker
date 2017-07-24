@@ -40,6 +40,7 @@ public class TableComponent extends GridPane {
     private ChoiceBoxPlayer choiceB;
     private PlayerComponent playerP;
     private List <PlayerComponent> listPlayerC;
+    private FlopComponent flopC;
         
     public TableComponent(){
         initGridPaneTable();
@@ -112,7 +113,7 @@ this.minWidth(400);
     }
     
     public void initFlopComponent(){
-        FlopComponent flopC = new FlopComponent(game);
+         flopC = new FlopComponent(game);
         this.add(flopC,6,5);
     }
     
@@ -121,9 +122,12 @@ this.minWidth(400);
         this.add(choiceB, 12, 12);
     }
     
-    
     public void isVissibleChoiceBox(){
         this.choiceB.setVisible(true);
+    }
+    
+    public void isNotVissibleChoiceBox(){
+        this.choiceB.setVisible(false);
     }
     
     
@@ -131,6 +135,9 @@ this.minWidth(400);
         return this.playerP;
     }
     
+    public FlopComponent getFlopComponent(){
+        return this.flopC;
+    }
 //    public void setPlayerComponent(){
 //        this.playerP.set
 //    }

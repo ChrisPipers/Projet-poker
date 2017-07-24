@@ -59,6 +59,7 @@ System.out.println(game.getStatus() + "0");
         game.call();
         
         game.call();
+        table.getFlopComponent().setPot(game);
         System.out.println(game.getStatus() + "3");
         System.out.println(game.getSmallBlindValue());
 //        game.getCurrentPlayer().makeBet(game.getSmallBlindValue());

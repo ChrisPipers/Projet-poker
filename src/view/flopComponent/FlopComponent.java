@@ -107,6 +107,9 @@ public class FlopComponent extends HBox {
 //            this.board.getChildren().add(cardC);
 //        }
     }
+    public void resetBoard(){
+        this.getChildren().clear();
+    }
 
 //    INIT ,
 //            /**
