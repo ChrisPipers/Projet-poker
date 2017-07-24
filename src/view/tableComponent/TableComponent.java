@@ -16,6 +16,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import model.Game;
 import model.Player;
+import static model.Status.PREFLOP;
 import view.FXMLViewController;
 import view.choiceBoxPlayer.ChoiceBoxPlayer;
 import view.choiceBoxPlayer.ChoiceBoxPlayerController;
@@ -36,6 +37,8 @@ public class TableComponent extends GridPane {
     private VBox actionPlayer;
     private PositionPlayer posPlayer;
     private ChoiceBoxPlayer choiceB;
+    private PlayerComponent playerP;
+        
     public TableComponent(){
         initGridPaneTable();
     }
@@ -43,7 +46,6 @@ public class TableComponent extends GridPane {
     public TableComponent(Game game) throws IOException {
         this.game = game;
         
-       
         listPlayer = game.getPlayers();
         initGridPaneTable();
         initPlayerTable();
@@ -52,6 +54,11 @@ public class TableComponent extends GridPane {
         addChoiceBoxPlayer(game);
 this.minHeight(400);
 this.minWidth(400);
+        choiceB.visibleProperty().set(false);
+//        if (game.getStatus()==PREFLOP){
+//            choiceB.visibleProperty().set(true);
+//                    
+//        }
         System.out.println("table init finish");
     }
 
@@ -80,7 +87,7 @@ this.minWidth(400);
     private void initPlayerTable() {
         posPlayer = new PositionPlayer();
         for (int i = 0; i < listPlayer.size(); i++) {
-            PlayerComponent playerP = new PlayerComponent(listPlayer.get(i));
+            playerP = new PlayerComponent(listPlayer.get(i), game);
 //            final String style = "-fx-width: 60%;"
 //     +"-fx-height: 60%;";
 //            playerP.setStyle(style);
@@ -93,7 +100,7 @@ this.minWidth(400);
     
     
     public void addPlayer(Player player, int k){
-        PlayerComponent playerP = new PlayerComponent(player);
+        PlayerComponent playerP = new PlayerComponent(player, game);
         this.add(playerP,posPlayer.getPosPlayer(k).getJ(),
                     posPlayer.getPosPlayer(k).getI());
     }
@@ -108,6 +115,15 @@ this.minWidth(400);
         this.add(choiceB, 12, 12);
     }
     
+    
+    public void isVissibleChoiceBox(){
+        this.choiceB.setVisible(true);
+    }
+    
+    
+    public PlayerComponent getPlayerComponent(){
+        return this.playerP;
+    }
     
 //    
 //    public void initActionPlayerPoker(){

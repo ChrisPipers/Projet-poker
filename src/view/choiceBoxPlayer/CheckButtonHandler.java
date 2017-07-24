@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import model.Game;
 import model.GameException;
+import model.Player;
 
 /**
  *
@@ -15,9 +16,11 @@ import model.GameException;
 public class CheckButtonHandler implements EventHandler<ActionEvent> {
 
     private Game game;
+    private Player curentPlayer;
 
-    public CheckButtonHandler(Game game) {
+    public CheckButtonHandler( Player curentPlayer) {
         this.game = game;
+        this.curentPlayer = curentPlayer;
     }
 
    
@@ -29,6 +32,7 @@ public class CheckButtonHandler implements EventHandler<ActionEvent> {
 
             try {
                 game.call();
+//                game.
             } catch (GameException ex) {
                 Logger.getLogger(CheckButtonHandler.class.getName()).log(Level.SEVERE, null, ex);
             }

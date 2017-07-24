@@ -2,15 +2,19 @@ package view.playerComponent;
 
 import view.handPokerPlayer.handPokerPlayer;
 import java.util.List;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.TextAlignment;
+import model.Game;
 import model.Player;
 import model.cards.Card;
+import view.choiceBoxPlayer.ChoiceBoxPlayer;
 
 /**
  *
@@ -19,22 +23,35 @@ import model.cards.Card;
 public class PlayerComponent extends HBox {
 
     private ImageView picturePlayer;
-    
+    private ChoiceBoxPlayer choiceBoxPlayer;
+    private Game game;
+    private Player player;
+    private TextField textFButton;
 
-    public PlayerComponent(Player player) {
+    public PlayerComponent(Player player, Game game) {
+        
+        this.game = game;
+        this.player = player;
         this.setHeight(90);
         this.setWidth(250);
-        
+        this.choiceBoxPlayer = new ChoiceBoxPlayer(game);
         borderLayout();
         getHBoxCards(player);
         getPicturePlayer(player);
         getVBoxPlayer(player);
-        
+      
     }
     
     public void borderLayout(){
-        final String boderStyle = 
+         final String boderStyle;
+        if (this.player == game.getCurrentPlayer()) {
+             boderStyle = 
+                "-fx-border-color: red red red red ;"
+                     +"-fx-background-color: white;";
+        }else{
+        boderStyle = 
                 "-fx-border-color: black black black black;";
+        }
         this.setStyle(boderStyle);
     }
 
@@ -78,4 +95,17 @@ public class PlayerComponent extends HBox {
         getChildren().add(vboxPlayer);
     }
 
+    public void setHboxCards(){
+        List<Card> cards = player.getCards();
+        String sCard;
+        handPokerPlayer handP = new handPokerPlayer(cards);
+        this.getChildren().add(handP);
+    }
+    
+    
+//    public void initTextFieldButton(){
+//        this.textFButton = new TextField("")
+//    }
+    
+    
 }

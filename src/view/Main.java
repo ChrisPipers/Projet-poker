@@ -1,14 +1,15 @@
 package view;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
+import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import model.Game;
+import model.Player;
+import model.cards.Card;
 import view.tableComponent.TableComponent;
 
 /**
@@ -19,6 +20,7 @@ public class Main extends Application {
 
     private Game game;
     private TableComponent table;
+
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -33,10 +35,38 @@ public class Main extends Application {
         game.addPlayer("Patrick3", 1000, 'M');
         game.addPlayer("Patridck4", 1000, 'M');
         game.start();
-        Match match = new Match();
-        
+//        game.startMatch();
+        System.out.println(game.getStatus() + "0");
         table = new TableComponent(game);
+//        System.out.println(game.getSmallBlindValue()+"");
+        game.smallBlind(1);
+        
+        game.bigBlind(2);
+        System.out.println(game.getStatus() + "2");
 
+        List<Player> listP = game.getPlayers();
+        for (Player player : listP) {
+            System.out.println(player.getMoney());
+        }
+        game.call();
+        game.call();
+        game.call();
+        System.out.println(game.getStatus() + "3");
+        System.out.println(game.getSmallBlindValue());
+//        game.getCurrentPlayer().makeBet(game.getSmallBlindValue());
+//        game.getCurrentPlayer().makeBet(game.getSmallBlindValue()*2);
+        System.out.println(game.getPot() + "pot ");
+        System.out.println(game.getCurrentPlayer().getCards());
+
+//        List<Player> listP = game.getPlayers();
+        for (Player player : listP) {
+            
+            
+        }
+        List<Player> listePlay = game.getPlayers();
+        for (Player player : listePlay) {
+            table.getPlayerComponent().setHboxCards();
+        }
         controller.setGame(game);
 
         controller.setTable(table);
@@ -44,7 +74,7 @@ public class Main extends Application {
 //        controller.setHBox(table);
 //        Parent root =  (Parent) loader.load();
         Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
         stage.show();
 
@@ -56,11 +86,5 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-    
-    
-    
-    
-    
 
 }

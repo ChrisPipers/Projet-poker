@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import model.Game;
 import model.GameException;
+import model.Player;
 
 /**
  *
@@ -15,13 +16,15 @@ public class RaiseButtonHandler implements EventHandler<ActionEvent> {
 
     private Game game;
     private ChoiceBoxPlayer choiceBoxPlayer;
+    private Player curentPlayer;
 
     public RaiseButtonHandler(Game game, ChoiceBoxPlayer choiceBoxPlayre) {
         this.game = game;
         this.choiceBoxPlayer = choiceBoxPlayre;
     }
 
-   
+ 
+    
 
     @Override
     public void handle(ActionEvent event) {

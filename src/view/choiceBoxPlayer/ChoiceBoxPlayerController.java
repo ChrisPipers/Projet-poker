@@ -44,6 +44,7 @@ public class ChoiceBoxPlayerController {
 
                 try {
                     game.fold();
+                    System.out.println("fold");
                 } catch (GameException ex) {
                     Logger.getLogger(ChoiceBoxPlayerController.class.getName()).log(Level.SEVERE, null, ex);
                 }
