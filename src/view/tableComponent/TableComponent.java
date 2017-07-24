@@ -2,6 +2,7 @@ package view.tableComponent;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -38,6 +39,7 @@ public class TableComponent extends GridPane {
     private PositionPlayer posPlayer;
     private ChoiceBoxPlayer choiceB;
     private PlayerComponent playerP;
+    private List <PlayerComponent> listPlayerC;
         
     public TableComponent(){
         initGridPaneTable();
@@ -84,10 +86,14 @@ this.minWidth(400);
 
     }
 
+    
+    
     private void initPlayerTable() {
+        listPlayerC = new ArrayList<>();
         posPlayer = new PositionPlayer();
         for (int i = 0; i < listPlayer.size(); i++) {
             playerP = new PlayerComponent(listPlayer.get(i), game);
+            this.listPlayerC.add(playerP);
 //            final String style = "-fx-width: 60%;"
 //     +"-fx-height: 60%;";
 //            playerP.setStyle(style);
@@ -106,7 +112,7 @@ this.minWidth(400);
     }
     
     public void initFlopComponent(){
-        FlopComponent flopC = new FlopComponent();
+        FlopComponent flopC = new FlopComponent(game);
         this.add(flopC,6,5);
     }
     
@@ -124,6 +130,10 @@ this.minWidth(400);
     public PlayerComponent getPlayerComponent(){
         return this.playerP;
     }
+    
+//    public void setPlayerComponent(){
+//        this.playerP.set
+//    }
     
 //    
 //    public void initActionPlayerPoker(){

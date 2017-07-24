@@ -27,7 +27,7 @@ class Blind extends AbstrState {
         match.setState(match.getPreFlop());
         match.setDealIterator();
         match.dealPlayer(2);
-        match.dealBoard(3);
+//        match.dealBoard(3);
         match.setBetIterator();
         match.nextPlayer();
     }

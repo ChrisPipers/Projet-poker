@@ -7,6 +7,7 @@ import static javafx.application.Application.launch;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Game;
+import model.GameException;
 import model.cards.Card;
 import model.cards.Color;
 import model.cards.Value;
@@ -18,7 +19,7 @@ import model.cards.Value;
 public class table extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) throws IOException, GameException {
         Game game = new Game();
         Match match = new Match();
         game.addPlayer("Patrick", 1000, 'M');
@@ -32,7 +33,7 @@ public class table extends Application {
                         game.getPlayers().get(i).add(card);
 
         }
-
+        game.start();
         TableComponent table = new TableComponent(game);
 
         Scene scene1 = new Scene(table, 1280, 840);

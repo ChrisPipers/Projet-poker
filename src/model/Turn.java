@@ -35,6 +35,7 @@ class Turn extends AbstrState {
             match.setBetIterator();
             match.showBoard();
             match.setState(match.getRiver());
+            match.dealBoard(1);
             match.nextPlayer();
         }
     }

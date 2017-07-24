@@ -27,6 +27,8 @@ public class PlayerComponent extends HBox {
     private Game game;
     private Player player;
     private TextField textFButton;
+    private Label pot;
+    private HBox hBoxCards;
 
     public PlayerComponent(Player player, Game game) {
         
@@ -35,7 +37,9 @@ public class PlayerComponent extends HBox {
         this.setHeight(90);
         this.setWidth(250);
         this.choiceBoxPlayer = new ChoiceBoxPlayer(game);
+        this.hBoxCards = new HBox();
         borderLayout();
+        this.getChildren().add(hBoxCards);
         getHBoxCards(player);
         getPicturePlayer(player);
         getVBoxPlayer(player);
@@ -59,7 +63,7 @@ public class PlayerComponent extends HBox {
         List<Card> cards = player.getCards();
         String sCard;
         handPokerPlayer handP = new handPokerPlayer(cards);
-        this.getChildren().add(handP);
+        this.hBoxCards.getChildren().add(handP);
     }
 
     public void getPicturePlayer(Player player) {
@@ -85,7 +89,7 @@ public class PlayerComponent extends HBox {
         final String StyleLine = "-fx-background-position: center, center;"
                 + "-fx-background-size: cover, auto;";
         line.setStyle(StyleLine);
-        Label pot = new Label(Integer.toString(player.getMoney()));
+        pot = new Label(Integer.toString(player.getMoney()));
         pot.setTextAlignment(TextAlignment.CENTER);
 
 //        pot.setStyle(style);
@@ -99,7 +103,15 @@ public class PlayerComponent extends HBox {
         List<Card> cards = player.getCards();
         String sCard;
         handPokerPlayer handP = new handPokerPlayer(cards);
-        this.getChildren().add(handP);
+        this.hBoxCards.getChildren().add(handP);
+    }
+    
+    public void clearHBoxCards(){
+        this.hBoxCards.getChildren().clear();
+    }
+    
+    public void setLabelPot(Player player){
+        this.pot.setText(Integer.toString(player.getMoney()));
     }
     
     

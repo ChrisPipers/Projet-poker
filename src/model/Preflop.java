@@ -33,7 +33,7 @@ class Preflop extends AbstrState {
             match.setState(match.getFlop());
             match.setBetIterator();
             match.showBoard();
-            match.dealBoard(1);
+            match.dealBoard(3);
             match.nextPlayer();
         }
     }

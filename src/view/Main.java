@@ -43,13 +43,15 @@ public class Main extends Application {
         
         game.bigBlind(2);
         System.out.println(game.getStatus() + "2");
-
+System.out.println(game.getStatus() + "0");
+        table = new TableComponent(game);
         List<Player> listP = game.getPlayers();
         for (Player player : listP) {
             System.out.println(player.getMoney());
         }
         game.call();
         game.call();
+        
         game.call();
         System.out.println(game.getStatus() + "3");
         System.out.println(game.getSmallBlindValue());
