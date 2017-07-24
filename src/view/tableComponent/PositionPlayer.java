@@ -13,8 +13,8 @@ public class PositionPlayer {
     private final List <Position>listPosPlayer ;
     
     public PositionPlayer(){
-        int posX[]= {2,2,4,4,7,7,11,11,13,13};
-        int posY[]=  {3,7,1,9,0,10,1,9,3,7};
+        int posX[]= {3,1,1,3,7,11,13,13,11,7 };
+        int posY[]= {9,7,3,1,0, 1, 3, 7, 9,10};
 
         listPosPlayer = new ArrayList();
         

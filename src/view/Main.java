@@ -30,10 +30,16 @@ public class Main extends Application {
 //      GameView gameV = new GameView(game);
 
         game = new Game();
-        game.addPlayer("Patrick", 1000, 'M');
-        game.addPlayer("Patrick2", 1000, 'M');
-        game.addPlayer("Patrick3", 1000, 'M');
-        game.addPlayer("Patridck4", 1000, 'M');
+        game.addPlayer("1", 1000, 'M');
+        game.addPlayer("2", 1000, 'M');
+        game.addPlayer("3", 1000, 'M');
+        game.addPlayer("4", 1000, 'M');
+         game.addPlayer("5", 1000, 'M');
+        game.addPlayer("6", 1000, 'M');
+        game.addPlayer("7", 1000, 'M');
+        game.addPlayer("8", 1000, 'M');
+         game.addPlayer("9", 1000, 'M');
+        game.addPlayer("10", 1000, 'M');
         game.start();
 //        game.startMatch();
         System.out.println(game.getStatus() + "0");
@@ -46,9 +52,9 @@ public class Main extends Application {
 System.out.println(game.getStatus() + "0");
         table = new TableComponent(game);
         List<Player> listP = game.getPlayers();
-        for (Player player : listP) {
-            System.out.println(player.getMoney());
-        }
+//        for (Player player : listP) {
+//            System.out.println(player.getMoney());
+//        }
         game.call();
         game.call();
         
@@ -61,14 +67,14 @@ System.out.println(game.getStatus() + "0");
         System.out.println(game.getCurrentPlayer().getCards());
 
 //        List<Player> listP = game.getPlayers();
-        for (Player player : listP) {
-            
-            
-        }
-        List<Player> listePlay = game.getPlayers();
-        for (Player player : listePlay) {
-            table.getPlayerComponent().setHboxCards();
-        }
+//        for (Player player : listP) {
+//            
+//            
+//        }
+//        List<Player> listePlay = game.getPlayers();
+//        for (Player player : listePlay) {
+//            table.getPlayerComponent().setHboxCards();
+//        }
         controller.setGame(game);
 
         controller.setTable(table);
