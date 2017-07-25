@@ -57,7 +57,7 @@ public class TableComponent extends GridPane {
         addChoiceBoxPlayer(game);
 this.minHeight(400);
 this.minWidth(400);
-        choiceB.visibleProperty().set(false);
+//        choiceB.visibleProperty().set(false);
 //        if (game.getStatus()==PREFLOP){
 //            choiceB.visibleProperty().set(true);
 //                    
