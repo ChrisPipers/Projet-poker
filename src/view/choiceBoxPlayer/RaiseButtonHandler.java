@@ -28,6 +28,7 @@ public class RaiseButtonHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+        System.out.println("raise");
         int sumRaise = choiceBoxPlayer.getContainTextfield();
         try {
             game.raise(sumRaise);

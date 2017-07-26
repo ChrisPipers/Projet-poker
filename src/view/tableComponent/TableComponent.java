@@ -29,7 +29,7 @@ import view.tableComponent.Position;
  *
  * @author Mitch
  */
-public class TableComponent extends GridPane {
+public class TableComponent extends GridPane implements TableView {
 
 //    GridPane gridPaneTable;
     private Game game;
@@ -162,4 +162,22 @@ this.minWidth(400);
 //        this.actionPlayer.setVisible(false);
 //    }
 
+    @Override
+    public void updateFlop() {
+//        this.flopC.
+    }
+
+    @Override
+    public void updatePlayers() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void choiceBox() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
+    
 }

@@ -34,6 +34,8 @@ public class ChoiceBoxPlayer extends GridPane {
     private FoldButtonHandler foldButtonHandler;
     private RaiseButtonHandler raiseButtonHandler;
     private Player curentPlayer ;
+    
+    
     public ChoiceBoxPlayer(Game game) {
         fold = new Button("Fold");
         check = new Button("Check");
@@ -52,8 +54,13 @@ public class ChoiceBoxPlayer extends GridPane {
         );
         
         checkButtonHandler = new CheckButtonHandler(curentPlayer);
+        check.addEventHandler(ActionEvent.ACTION, checkButtonHandler);
+        
         foldButtonHandler = new FoldButtonHandler(curentPlayer, game);
+        fold.addEventHandler(ActionEvent.ACTION, foldButtonHandler);
+        
         raiseButtonHandler = new RaiseButtonHandler(game, this);
+        raise.addEventHandler(ActionEvent.ACTION, raiseButtonHandler);
         
         this.game = game;
         this.match = new Match();

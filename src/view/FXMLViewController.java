@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import model.Game;
+import model.Observer;
 import view.flopComponent.FlopComponent;
 import view.playerComponent.PlayerComponent;
 import view.tableComponent.TableComponent;
@@ -19,7 +20,7 @@ import view.tableComponent.TableComponent;
  *
  * @author Mitch
  */
-public class FXMLViewController implements Initializable {
+public class FXMLViewController implements Initializable, Observer {
 
     private Game game;
 //    private Stage stage;
@@ -93,6 +94,11 @@ public class FXMLViewController implements Initializable {
     
     public void setHBox(TableComponent table){
         this.hBoxMain = new HBox(table);
+    }
+
+    @Override
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

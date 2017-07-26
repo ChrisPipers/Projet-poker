@@ -20,7 +20,7 @@ import view.choiceBoxPlayer.ChoiceBoxPlayer;
  *
  * @author Mitch
  */
-public class PlayerComponent extends HBox {
+public class PlayerComponent extends HBox implements PlayerComponentView {
 
     private ImageView picturePlayer;
     private ChoiceBoxPlayer choiceBoxPlayer;
@@ -114,10 +114,18 @@ public class PlayerComponent extends HBox {
         this.pot.setText(Integer.toString(player.getMoney()));
     }
     
+    public void isFold(){
+        this.hBoxCards.setVisible(false);
+    }
     
 //    public void initTextFieldButton(){
 //        this.textFButton = new TextField("")
 //    }
+
+    @Override
+    public void upDate() {
+        
+    }
     
     
 }

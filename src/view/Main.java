@@ -20,6 +20,8 @@ public class Main extends Application {
 
     private Game game;
     private TableComponent table;
+    private FXMLViewController fxControl;
+    
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -28,7 +30,7 @@ public class Main extends Application {
         Parent root = (Parent) loader.load();
         FXMLViewController controller = loader.<FXMLViewController>getController();
 //      GameView gameV = new GameView(game);
-
+        fxControl = new FXMLViewController();
         game = new Game();
         game.addPlayer("1", 1000, 'M');
         game.addPlayer("2", 1000, 'M');

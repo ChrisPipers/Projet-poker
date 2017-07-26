@@ -4,9 +4,12 @@ package view.tableComponent;
  *
  * @author Mitch
  */
-public interface TableView {
+public interface TableView  {
  
-    public void update() ;
+    public void updateFlop() ;
     
+    public void updatePlayers();
+    
+    public void choiceBox();
     
 }

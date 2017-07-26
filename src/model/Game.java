@@ -3,7 +3,10 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Observable;
+//import java.util.Observer;
+//import java.util.Observable;
+import model.Observable;
+import model.Observer;
 import static model.Status.BLIND;
 import static model.Status.END_GAME;
 import static model.Status.END_MATCH;
@@ -19,12 +22,13 @@ import model.cards.Card;
  *
  * @author esiProfs
  */
-public class Game extends Observable implements Facade {
+public class Game implements Facade, Observable  {
 
     private final static int NB_MIN = 4;
     private Match match;
     private final List<Player> players;
     private Status status;
+    private final List<Observer> listObserver;            // pas de new car Observer est abstract
 
     /**
      * Main class of the poker game. It instanciates the list of players and set
@@ -33,6 +37,8 @@ public class Game extends Observable implements Facade {
     public Game() {
         players = new ArrayList<>();
         status = INIT;
+        listObserver = new ArrayList<>();
+
     }
 
     @Override
@@ -60,56 +66,56 @@ public class Game extends Observable implements Facade {
         players.get(indexNextButton).giveButtton();
         match = new Match(players);
         updateSatus();
-        notifyChange();
+        notifyObserver();
     }
 
     @Override
     public void addPlayer(String name, int money, char sexe) {
         Player player = new Player(name, money, sexe);
         players.add(player);
-        notifyChange();
+        notifyObserver();
     }
 
     @Override
     public void smallBlind(int amount) throws GameException {
         match.smallBlind(amount);
         updateSatus();
-        notifyChange();
+        notifyObserver();
     }
 
     @Override
     public void bigBlind(int amount) throws GameException {
         match.bigBlind(amount);
         updateSatus();
-        notifyChange();
+        notifyObserver();
     }
 
     @Override
     public void call() throws GameException {
         match.call();
         updateSatus();
-        notifyChange();
+        notifyObserver();
     }
 
     @Override
     public void allIn() throws GameException {
         match.allIn();
         updateSatus();
-        notifyChange();
+        notifyObserver();
     }
 
     @Override
     public void fold() throws GameException {
         match.fold();
         updateSatus();
-        notifyChange();
+        notifyObserver();
     }
 
     @Override
     public void raise(int amount) throws GameException {
         match.raise(amount);
         updateSatus();
-        notifyChange();
+        notifyObserver();
     }
 
     @Override
@@ -147,11 +153,6 @@ public class Game extends Observable implements Facade {
         return Collections.unmodifiableList(players);
     }
 
-    private void notifyChange() {
-        setChanged();
-        notifyObservers(this);
-    }
-
     @Override
     public Status getStatus() {
         return status;
@@ -179,15 +180,36 @@ public class Game extends Observable implements Facade {
             }
         }
     }
+//private void notifyOberver() {
+//        setChanged();
+//        notifyObservers(this);
+//    }
 
     @Override
     public void stop() {
         status = END_GAME;
-        notifyChange();
+        notifyObserver();
     }
 
     @Override
     public int getSmallBlindValue() {
         return Match.SMALLBLIND;
+    }
+    
+    @Override
+    public void notifyObserver() {
+        listObserver.stream().forEach((observer) -> {
+            observer.update();
+        });
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        listObserver.add(observer);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        listObserver.remove(observer);
     }
 }

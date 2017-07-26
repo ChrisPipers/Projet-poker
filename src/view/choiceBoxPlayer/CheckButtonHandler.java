@@ -27,6 +27,7 @@ public class CheckButtonHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+        System.out.println("check");
         if(game.getMinimium() == 0)
         {
 
