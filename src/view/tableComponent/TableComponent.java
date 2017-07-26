@@ -43,13 +43,14 @@ public class TableComponent extends GridPane implements TableView, Observer {
     private List <PlayerComponent> listPlayerC;
     private FlopComponent flopC;
         
-    public TableComponent(){
-        initGridPaneTable();
-    }
+//    public TableComponent(){
+//        initGridPaneTable();
+//    }
     
     public TableComponent(Game game) throws IOException {
         this.game = game;
-        
+                this.game.addObserver(this);
+
         listPlayer = game.getPlayers();
         initGridPaneTable();
         initPlayerTable();
@@ -165,12 +166,20 @@ this.minWidth(400);
 
     @Override
     public void updateFlop() {
-//        this.flopC.
+        this.flopC.update();
+        
+
+
     }
 
     @Override
     public void updatePlayers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (PlayerComponent playerP : listPlayerC) {
+//            playerP.update();
+            playerP.borderLayout();
+        }
+
+
     }
 
     @Override
@@ -180,7 +189,10 @@ this.minWidth(400);
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.flopC.update();
+        this.choiceB.update();
+        updatePlayers();
+        
     }
 
     

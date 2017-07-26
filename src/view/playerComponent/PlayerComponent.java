@@ -21,7 +21,7 @@ import view.choiceBoxPlayer.ChoiceBoxPlayer;
  *
  * @author Mitch
  */
-public class PlayerComponent extends HBox implements PlayerComponentView {
+public class PlayerComponent extends HBox implements Observer {
 
     private ImageView picturePlayer;
     private ChoiceBoxPlayer choiceBoxPlayer;
@@ -34,6 +34,8 @@ public class PlayerComponent extends HBox implements PlayerComponentView {
     public PlayerComponent(Player player, Game game) {
         
         this.game = game;
+                this.game.addObserver(this);
+
         this.player = player;
         this.setHeight(90);
         this.setWidth(250);
@@ -119,18 +121,25 @@ public class PlayerComponent extends HBox implements PlayerComponentView {
         this.hBoxCards.setVisible(false);
     }
     
+    public void setPot(){
+        this.pot.setText(Integer.toString(player.getMoney()));
+    }
+    
+    
+    
 //    public void initTextFieldButton(){
 //        this.textFButton = new TextField("")
 //    }
 
     @Override
-    public void upDate() {
-        
-    }
-
-    @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        setPot();
+//        setHboxCards();
+
+        if (this.player.isFold()){
+            clearHBoxCards();
+        }
+
     }
     
     

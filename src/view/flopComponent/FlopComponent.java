@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import model.Game;
+import model.Observer;
 import static model.Status.FLOP;
 import static model.Status.RIVER;
 import static model.Status.TURN;
@@ -16,7 +17,7 @@ import model.cards.Card;
  *
  * @author Mitch
  */
-public class FlopComponent extends HBox {
+public class FlopComponent extends HBox implements Observer{
 
     private HBox board;
     private DeckComponent deck;
@@ -30,6 +31,8 @@ public class FlopComponent extends HBox {
         this.setMinWidth(62 * 5 + 90 + 200 + 100);
 
         this.setPrefWidth(62 * 5 + 90 + 200 + 100);
+        
+        this.game.addObserver(this);
 
         deck = new DeckComponent();
         makeBoard(game);
@@ -149,4 +152,10 @@ public class FlopComponent extends HBox {
 //             *
 //             */
 //            END_GAME
+
+    @Override
+    public void update() {
+        
+        this.setBoard(game);
+    }
 }

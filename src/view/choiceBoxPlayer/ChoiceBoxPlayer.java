@@ -23,7 +23,7 @@ public class ChoiceBoxPlayer extends GridPane implements Observer {
     
     private Button raise;
     
-    private TextField sumRaise;
+    private TextField sumRaiseTF;
     
     private ChoiceBoxPlayerController choiceBoxPlayerController;
     
@@ -41,9 +41,9 @@ public class ChoiceBoxPlayer extends GridPane implements Observer {
         fold = new Button("Fold");
         check = new Button("Check");
         raise = new Button("Raise");
-        sumRaise = new TextField();
+        sumRaiseTF = new TextField();
         curentPlayer = game.getCurrentPlayer();
-        sumRaise.addEventFilter(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
+        sumRaiseTF.addEventFilter(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event
             ) {
@@ -69,10 +69,10 @@ public class ChoiceBoxPlayer extends GridPane implements Observer {
         this.add(fold, 0, 0);
         this.add(check, 1, 0);
         this.add(raise, 0, 1);
-        this.add(sumRaise, 1, 1);
+        this.add(sumRaiseTF, 1, 1);
         defineSize();
         changeStyle();
-        
+        this.game.addObserver(this);
         
 //        this.setBackground();
 
@@ -87,7 +87,7 @@ public class ChoiceBoxPlayer extends GridPane implements Observer {
         
         this.check.setMinSize(100, 40);
         this.raise.setMinSize(100, 40);
-        this.sumRaise.setMaxSize(100, 40);
+        this.sumRaiseTF.setMaxSize(100, 40);
         this.setMinSize(234, 120);
         this.setHgap(20);
         this.setVgap(20);
@@ -104,19 +104,24 @@ public class ChoiceBoxPlayer extends GridPane implements Observer {
     }
     
     public int getContainTextfield() {
-        return Integer.parseInt(this.sumRaise.getText());
+        return Integer.parseInt(this.sumRaiseTF.getText());
     }
     
     public void hideCheck() {
         this.check.setVisible(false);
     }
 
+    public void resetTextFieldRaise(){
+        this.sumRaiseTF.clear();
+    }
+    
+    
     @Override
     public void update() {
         if (this.game.getMinimium()!=0){
             hideCheck();
         }
-        
+        resetTextFieldRaise();
 
     }
     
