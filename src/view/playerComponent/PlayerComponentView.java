@@ -5,11 +5,13 @@
  */
 package view.playerComponent;
 
+import model.Observer;
+
 /**
  *
  * @author Mitch
  */
-public interface PlayerComponentView {
+public interface PlayerComponentView extends Observer{
         public void upDate();
 
 }

@@ -16,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import model.Game;
+import model.Observer;
 import model.Player;
 import static model.Status.PREFLOP;
 import view.FXMLViewController;
@@ -29,7 +30,7 @@ import view.tableComponent.Position;
  *
  * @author Mitch
  */
-public class TableComponent extends GridPane implements TableView {
+public class TableComponent extends GridPane implements TableView, Observer {
 
 //    GridPane gridPaneTable;
     private Game game;
@@ -174,6 +175,11 @@ this.minWidth(400);
 
     @Override
     public void choiceBox() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

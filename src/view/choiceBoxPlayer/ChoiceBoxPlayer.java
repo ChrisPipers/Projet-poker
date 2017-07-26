@@ -8,13 +8,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import model.Game;
+import model.Observer;
 import model.Player;
 
 /**
  *
  * @author Mitch
  */
-public class ChoiceBoxPlayer extends GridPane {
+public class ChoiceBoxPlayer extends GridPane implements Observer {
     
     private Button fold;
     
@@ -108,6 +109,15 @@ public class ChoiceBoxPlayer extends GridPane {
     
     public void hideCheck() {
         this.check.setVisible(false);
+    }
+
+    @Override
+    public void update() {
+        if (this.game.getMinimium()!=0){
+            hideCheck();
+        }
+        
+
     }
     
     
