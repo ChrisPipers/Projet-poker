@@ -11,6 +11,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import model.Game;
 import model.Observer;
+import model.Player;
+import view.choiceBoxPlayer.ChoiceBoxPlayer;
+import view.choiceBoxPlayer.ChoiceBoxPlayerController;
 import view.flopComponent.FlopComponent;
 import view.playerComponent.PlayerComponent;
 import view.tableComponent.TableComponent;
@@ -21,7 +24,7 @@ import view.tableComponent.TableComponent;
  * @author Mitch
  */
 public class FXMLViewController implements Initializable, Observer {
-
+//, Observer
     private Game game;
 //    private Stage stage;
     private FXMLViewController fxmlViewController;
@@ -45,6 +48,9 @@ public class FXMLViewController implements Initializable, Observer {
     @FXML
     private FlopComponent flop;
     
+    private ChoiceBoxPlayer choiceBoxPlayer;
+    
+    private ChoiceBoxPlayerController controlP;
     
     /**
      * Initializes the controller class.
@@ -52,10 +58,10 @@ public class FXMLViewController implements Initializable, Observer {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        hBoxMain = new HBox();
-
+        this.controlP = new ChoiceBoxPlayerController();
 //        String style = "-fx-background-color: red;";
         System.out.println("init");
-
+        
        
 //       this.hBoxMain = new HBox();
        
@@ -85,6 +91,11 @@ public class FXMLViewController implements Initializable, Observer {
 //        this.tBox.getChildren().add(table);
     }
     
+    public void setHBoxCardsPlayer(){
+        for (PlayerComponent player : table.getListPlayerC()) {
+            player.setHboxCards();
+        }
+    }
     
     
     public HBox getHbox(){
@@ -98,7 +109,7 @@ public class FXMLViewController implements Initializable, Observer {
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.table.update();
     }
     
     

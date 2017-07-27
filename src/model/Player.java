@@ -17,6 +17,7 @@ public class Player {
     private boolean button;
     private Hand hand;
     private char sexe;
+    private int sumRaise;
 
     private int money;
 
@@ -32,6 +33,7 @@ public class Player {
         this.name = name;
         this.money = money;
         this.sexe = sexe;
+        this.sumRaise = 0;
         cards = new PlayerCards();
     }
 
@@ -137,6 +139,7 @@ public class Player {
      * @param amount
      */
     public void makeBet(int amount) {
+        this.sumRaise = sumRaise+amount;
         money = this.money - amount;
         currentBet = currentBet + amount;
     }
@@ -174,12 +177,17 @@ public class Player {
     public PlayerCards getPlayerCards() {
         return cards;
     }
-    
-    public char getSexe(){
+
+    public char getSexe() {
         return this.sexe;
     }
     
-    
+    public int getSumRaise(){
+//        System.out.println(sumRaise + " sum raise      "
+//                + "****");
+        return this.sumRaise;
+        
+    }
 
     @Override
     public int hashCode() {
@@ -210,6 +218,11 @@ public class Player {
      */
     public void setHand(Hand hand) {
         this.hand = hand;
+    }
+    
+    
+    public void setSumRaise(int i){
+        this.sumRaise = i+sumRaise;
     }
 
     /**

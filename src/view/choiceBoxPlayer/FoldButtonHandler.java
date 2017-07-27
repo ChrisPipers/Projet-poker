@@ -28,10 +28,11 @@ public class FoldButtonHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         System.out.println("fold");
-                curentPlayer.fold();
-        try {
+//                curentPlayer.fold();
+        try {            
+//            curentPlayer.fold();
+
             game.fold();
-            curentPlayer.fold();
         } catch (GameException ex) {
             Logger.getLogger(FoldButtonHandler.class.getName()).log(Level.SEVERE, null, ex);
         }

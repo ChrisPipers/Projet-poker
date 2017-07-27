@@ -10,10 +10,5 @@ public interface TableView extends Observer {
  
     public void update();
     
-    public void updateFlop() ;
-    
-    public void updatePlayers();
-    
-    public void choiceBox();
     
 }

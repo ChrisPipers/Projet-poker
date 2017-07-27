@@ -69,8 +69,8 @@ public class FlopTest extends Application {
 //        System.out.println(game.getCards().size());
 
         FlopComponent flop = new FlopComponent(game);
-        flop.setBoard(game);
-        flop.setPot(game);
+        flop.setBoard();
+        flop.setPot();
         Scene scene = new Scene(flop, 800, 200);
 
         primaryStage.setTitle("Hello World!");

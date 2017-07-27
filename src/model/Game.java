@@ -3,10 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-//import java.util.Observer;
-//import java.util.Observable;
-import model.Observable;
-import model.Observer;
 import static model.Status.BLIND;
 import static model.Status.END_GAME;
 import static model.Status.END_MATCH;
@@ -28,7 +24,7 @@ public class Game implements Facade, Observable  {
     private Match match;
     private final List<Player> players;
     private Status status;
-    private final List<Observer> listObserver;            // pas de new car Observer est abstract
+    private final List<Observer> listObserver;            
 
     /**
      * Main class of the poker game. It instanciates the list of players and set
@@ -79,6 +75,7 @@ public class Game implements Facade, Observable  {
     @Override
     public void smallBlind(int amount) throws GameException {
         match.smallBlind(amount);
+        this.getCurrentPlayer().setSumRaise(amount);
         updateSatus();
         notifyObserver();
     }
@@ -86,8 +83,10 @@ public class Game implements Facade, Observable  {
     @Override
     public void bigBlind(int amount) throws GameException {
         match.bigBlind(amount);
+        this.getCurrentPlayer().setSumRaise(amount);
         updateSatus();
-        notifyObserver();
+        notifyObserver();      
+
     }
 
     @Override
@@ -114,6 +113,7 @@ public class Game implements Facade, Observable  {
     @Override
     public void raise(int amount) throws GameException {
         match.raise(amount);
+//        this.getCurrentPlayer().setSumRaise(amount);
         updateSatus();
         notifyObserver();
     }
@@ -159,6 +159,7 @@ public class Game implements Facade, Observable  {
     }
 
     private void updateSatus() {
+        System.out.println(status);
         if (status != END_GAME) {
             if (match == null) {
                 status = INIT;

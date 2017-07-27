@@ -24,7 +24,7 @@ import view.choiceBoxPlayer.ChoiceBoxPlayer;
 public class PlayerComponent extends HBox implements Observer {
 
     private ImageView picturePlayer;
-    private ChoiceBoxPlayer choiceBoxPlayer;
+    private final ChoiceBoxPlayer choiceBoxPlayer;
     private Game game;
     private Player player;
     private TextField textFButton;
@@ -41,7 +41,7 @@ public class PlayerComponent extends HBox implements Observer {
         this.setWidth(250);
         this.choiceBoxPlayer = new ChoiceBoxPlayer(game);
         this.hBoxCards = new HBox();
-        borderLayout();
+        setBorderLayout();
         this.getChildren().add(hBoxCards);
         getHBoxCards(player);
         getPicturePlayer(player);
@@ -49,7 +49,7 @@ public class PlayerComponent extends HBox implements Observer {
       
     }
     
-    public void borderLayout(){
+    public void setBorderLayout(){
          final String boderStyle;
         if (this.player == game.getCurrentPlayer()) {
              boderStyle = 
@@ -63,6 +63,7 @@ public class PlayerComponent extends HBox implements Observer {
     }
 
     public void getHBoxCards(Player player) {
+//        System.out.println(player.getCards().size()+" taille liste card player");
         List<Card> cards = player.getCards();
         String sCard;
         handPokerPlayer handP = new handPokerPlayer(cards);
@@ -71,7 +72,7 @@ public class PlayerComponent extends HBox implements Observer {
 
     public void getPicturePlayer(Player player) {
         String selectImage = ("view/Image/" + Character.toString(player.getSexe()) + ".png");
-        System.out.println(selectImage);
+//        System.out.println(selectImage);
         Image image = new Image(selectImage, 80, 80, false, false);
         picturePlayer = new ImageView();
         picturePlayer.setImage(image);
@@ -93,6 +94,7 @@ public class PlayerComponent extends HBox implements Observer {
                 + "-fx-background-size: cover, auto;";
         line.setStyle(StyleLine);
         pot = new Label(Integer.toString(player.getMoney()));
+        pot.setStyle("-fx-font-weight: bold;");
         pot.setTextAlignment(TextAlignment.CENTER);
 
 //        pot.setStyle(style);
@@ -115,6 +117,7 @@ public class PlayerComponent extends HBox implements Observer {
     
     public void setLabelPot(Player player){
         this.pot.setText(Integer.toString(player.getMoney()));
+        
     }
     
     public void isFold(){
@@ -134,6 +137,7 @@ public class PlayerComponent extends HBox implements Observer {
     @Override
     public void update() {
         setPot();
+        setBorderLayout();
 //        setHboxCards();
 
         if (this.player.isFold()){

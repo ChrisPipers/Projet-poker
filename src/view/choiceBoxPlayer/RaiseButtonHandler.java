@@ -30,9 +30,14 @@ public class RaiseButtonHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
         System.out.println("raise");
         int sumRaise = choiceBoxPlayer.getContainTextfield();
+//        if (sumRaise<game.getMinimium()){
+//           
+//        }
         try {
+//            game.getCurrentPlayer().
             game.raise(sumRaise);
         } catch (GameException ex) {
+//            System.out.println("minimum "+ game.getMinimium());
             Logger.getLogger(RaiseButtonHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
