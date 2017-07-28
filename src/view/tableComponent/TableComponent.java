@@ -13,6 +13,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import model.Game;
+import model.Observer;
 import model.Player;
 import view.choiceBoxPlayer.ChoiceBoxPlayer;
 import view.flopComponent.FlopComponent;
@@ -22,7 +23,7 @@ import view.playerComponent.PlayerComponent;
  *
  * @author Mitch
  */
-public class TableComponent extends GridPane implements TableView {
+public final class TableComponent extends GridPane implements TableView, Observer {
 
     private final Game game;
     private List<Position> listPosPlayerTable;
@@ -38,9 +39,6 @@ public class TableComponent extends GridPane implements TableView {
     private Label label;
     private HBox hbtf;
 
-//    public TableComponent(){
-//        initGridPaneTable();
-//    }
     public TableComponent(Game game) throws IOException {
         this.game = game;
         this.game.addObserver(this);
@@ -82,12 +80,6 @@ public class TableComponent extends GridPane implements TableView {
         for (int i = 0; i < listPlayer.size(); i++) {
             playerP = new PlayerComponent(listPlayer.get(i), game);
             this.listPlayerC.add(playerP);
-//            final String style = "-fx-width: 60%;"
-//     +"-fx-height: 60%;";
-//            playerP.setStyle(style);
-
-//            playerP.setSize();
-//            playerP.setHboxCards();
             this.add(playerP, posPlayer.getPosPlayer(i).getJ(),
                     posPlayer.getPosPlayer(i).getI());
         }
@@ -187,8 +179,8 @@ public class TableComponent extends GridPane implements TableView {
     
     @Override
     public void update() {
-        updateFlop() ;
-        
+        updatePlayers();
+//        this.updateFlop();
     }
 
 }

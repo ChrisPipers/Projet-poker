@@ -4,10 +4,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
 import model.Game;
 import model.GameException;
-import model.Player;
 
 /**
  *
@@ -15,12 +13,11 @@ import model.Player;
  */
 public class CheckButtonHandler implements EventHandler<ActionEvent> {
 
-    private Game game;
-    private Player curentPlayer;
+    private final Game game;
 
-    public CheckButtonHandler( Player curentPlayer) {
+    public CheckButtonHandler(Game game) {
         this.game = game;
-        this.curentPlayer = curentPlayer;
+//        this.curentPlayer = curentPlayer;
     }
 
    

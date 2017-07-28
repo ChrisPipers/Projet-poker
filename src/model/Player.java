@@ -139,7 +139,7 @@ public class Player {
      * @param amount
      */
     public void makeBet(int amount) {
-        this.sumRaise = sumRaise+amount;
+//        this.sumRaise = sumRaise+amount;
         money = this.money - amount;
         currentBet = currentBet + amount;
     }

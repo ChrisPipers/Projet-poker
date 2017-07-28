@@ -13,7 +13,7 @@ import model.Game;
 import model.Observer;
 import model.Player;
 import view.choiceBoxPlayer.ChoiceBoxPlayer;
-import view.choiceBoxPlayer.ChoiceBoxPlayerController;
+//import view.choiceBoxPlayer.ChoiceBoxPlayerController;
 import view.flopComponent.FlopComponent;
 import view.playerComponent.PlayerComponent;
 import view.tableComponent.TableComponent;
@@ -48,9 +48,10 @@ public class FXMLViewController implements Initializable, Observer {
     @FXML
     private FlopComponent flop;
     
+    @FXML
     private ChoiceBoxPlayer choiceBoxPlayer;
     
-    private ChoiceBoxPlayerController controlP;
+//    private ChoiceBoxPlayerController controlP;
     
     /**
      * Initializes the controller class.
@@ -58,22 +59,24 @@ public class FXMLViewController implements Initializable, Observer {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        hBoxMain = new HBox();
-        this.controlP = new ChoiceBoxPlayerController();
+//choiceBoxPlayer.update();
+        
+//        this.controlP = new ChoiceBoxPlayerController(choiceBoxPlayer);
 //        String style = "-fx-background-color: red;";
         System.out.println("init");
         
        
 //       this.hBoxMain = new HBox();
        
-        
-        
-        
+//        
+//        
+//        
 //        AnchorPane.getChildren().add(table);
 //        fxmlLoader.setRoot(table);
     }    
     
     
-    
+//    
     public FXMLViewController getFXMLViewController(){
         return this.fxmlViewController;
     }
@@ -110,6 +113,8 @@ public class FXMLViewController implements Initializable, Observer {
     @Override
     public void update() {
         this.table.update();
+        setTable(table);
+        this.setGame(game);
     }
     
     

@@ -12,13 +12,18 @@ import static model.Status.PREFLOP;
 import static model.Status.RIVER;
 import static model.Status.TURN;
 import model.cards.Card;
+import java.util.Observable;
+
+//import model.Observer;
+//import model.Observable;
+
 
 /**
  * The main class of the poker game.
  *
  * @author esiProfs
  */
-public class Game implements Facade, Observable  {
+public class Game extends Observable implements Facade {
 
     private final static int NB_MIN = 4;
     private Match match;
@@ -34,7 +39,7 @@ public class Game implements Facade, Observable  {
         players = new ArrayList<>();
         status = INIT;
         listObserver = new ArrayList<>();
-
+        
     }
 
     @Override
@@ -63,13 +68,18 @@ public class Game implements Facade, Observable  {
         match = new Match(players);
         updateSatus();
         notifyObserver();
+                notifyOberver();
+
     }
 
     @Override
     public void addPlayer(String name, int money, char sexe) {
         Player player = new Player(name, money, sexe);
         players.add(player);
+        updateSatus();
         notifyObserver();
+                notifyOberver();
+
     }
 
     @Override
@@ -78,6 +88,8 @@ public class Game implements Facade, Observable  {
         this.getCurrentPlayer().setSumRaise(amount);
         updateSatus();
         notifyObserver();
+                notifyOberver();
+
     }
 
     @Override
@@ -85,7 +97,9 @@ public class Game implements Facade, Observable  {
         match.bigBlind(amount);
         this.getCurrentPlayer().setSumRaise(amount);
         updateSatus();
-        notifyObserver();      
+        notifyObserver();  
+                notifyOberver();
+
 
     }
 
@@ -94,6 +108,8 @@ public class Game implements Facade, Observable  {
         match.call();
         updateSatus();
         notifyObserver();
+                notifyOberver();
+
     }
 
     @Override
@@ -101,6 +117,8 @@ public class Game implements Facade, Observable  {
         match.allIn();
         updateSatus();
         notifyObserver();
+                notifyOberver();
+
     }
 
     @Override
@@ -108,6 +126,8 @@ public class Game implements Facade, Observable  {
         match.fold();
         updateSatus();
         notifyObserver();
+                notifyOberver();
+
     }
 
     @Override
@@ -116,6 +136,8 @@ public class Game implements Facade, Observable  {
 //        this.getCurrentPlayer().setSumRaise(amount);
         updateSatus();
         notifyObserver();
+                notifyOberver();
+
     }
 
     @Override
@@ -160,6 +182,7 @@ public class Game implements Facade, Observable  {
 
     private void updateSatus() {
         System.out.println(status);
+//        notifyObserver();
         if (status != END_GAME) {
             if (match == null) {
                 status = INIT;
@@ -180,16 +203,23 @@ public class Game implements Facade, Observable  {
                 }
             }
         }
+        notifyOberver();
+        notifyObserver();
     }
-//private void notifyOberver() {
-//        setChanged();
-//        notifyObservers(this);
-//    }
+private void notifyOberver() {
+        setChanged();
+        notifyObserver();
+//                notifyOberver();
+
+    }
 
     @Override
     public void stop() {
         status = END_GAME;
+        updateSatus();
         notifyObserver();
+                notifyOberver();
+
     }
 
     @Override
@@ -197,19 +227,25 @@ public class Game implements Facade, Observable  {
         return Match.SMALLBLIND;
     }
     
-    @Override
+//    @Override
     public void notifyObserver() {
-        listObserver.stream().forEach((observer) -> {
-            observer.update();
+        setChanged();
+//        listObserver.stream().forEach((observer) -> {
+//            observer.update();
+//        });
+listObserver.forEach((observer) -> {
+    observer.update();
+//            notifyOberver();
+            
         });
     }
 
-    @Override
+//    @Override
     public void addObserver(Observer observer) {
         listObserver.add(observer);
     }
 
-    @Override
+//    @Override
     public void removeObserver(Observer observer) {
         listObserver.remove(observer);
     }

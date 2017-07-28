@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import model.Game;
 import model.GameException;
-import model.Player;
 
 /**
  *
@@ -14,9 +13,8 @@ import model.Player;
  */
 public class RaiseButtonHandler implements EventHandler<ActionEvent> {
 
-    private Game game;
-    private ChoiceBoxPlayer choiceBoxPlayer;
-    private Player curentPlayer;
+    private final Game game;
+    private final ChoiceBoxPlayer choiceBoxPlayer;
 
     public RaiseButtonHandler(Game game, ChoiceBoxPlayer choiceBoxPlayre) {
         this.game = game;
@@ -28,14 +26,16 @@ public class RaiseButtonHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-        System.out.println("raise");
+        
         int sumRaise = choiceBoxPlayer.getContainTextfield();
-//        if (sumRaise<game.getMinimium()){
-//           
-//        }
+
+        
         try {
-//            game.getCurrentPlayer().
-            game.raise(sumRaise);
+                        System.out.println("raise");
+
+//            game.getCurrentPlayer().getMoney();
+//            game.getCurrentPlayer().makeBet(sumRaise);
+            game.raise(sumRaise*2);
         } catch (GameException ex) {
 //            System.out.println("minimum "+ game.getMinimium());
             Logger.getLogger(RaiseButtonHandler.class.getName()).log(Level.SEVERE, null, ex);

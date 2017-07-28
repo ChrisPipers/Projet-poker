@@ -15,28 +15,29 @@ import model.Player;
  */
 public class FoldButtonHandler implements EventHandler<ActionEvent> {
 
-    private Game game;
+    private final Game game;
     private Player curentPlayer;
     
-    public FoldButtonHandler( Player curentPlayer, Game game) {
+    public FoldButtonHandler(Game game) {
         this.game = game;
-        this.curentPlayer = curentPlayer;
     }
 
    
 
     @Override
     public void handle(ActionEvent event) {
-        System.out.println("fold");
+       
 //                curentPlayer.fold();
-        try {            
+        try {          
+                         System.out.println("fold");
+
 //            curentPlayer.fold();
 
             game.fold();
         } catch (GameException ex) {
             Logger.getLogger(FoldButtonHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
+//            
         
     }
 
