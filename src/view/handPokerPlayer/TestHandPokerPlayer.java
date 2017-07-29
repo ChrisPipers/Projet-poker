@@ -1,11 +1,7 @@
 package view.handPokerPlayer;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.Player;
 import model.cards.Card;
@@ -20,7 +16,7 @@ public class TestHandPokerPlayer extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        Player player = new Player("Mitch", 0, 'M');
+        Player player = new Player("Mitch", 0);
         
         Card card1 = new Card(Color.CLUB, Value.ACE);
         Card card2 = new Card(Color.DIAMOND, Value.ACE);

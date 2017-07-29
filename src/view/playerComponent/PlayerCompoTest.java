@@ -22,10 +22,10 @@ public class PlayerCompoTest extends Application {
     public void start(Stage primaryStage) throws GameException {
         Deck deck = new Deck();
         Game game = new Game();
-        game.addPlayer("Patrick", 1000, 'M');
-        game.addPlayer("Patrick2", 1000, 'M');
-        game.addPlayer("Patrick3", 1000, 'M');
-        game.addPlayer("Patridck4", 1000, 'M');
+        game.addPlayer("Patrick", 1000);
+        game.addPlayer("Patrick2", 1000);
+        game.addPlayer("Patrick3", 1000);
+        game.addPlayer("Patridck4", 1000);
         game.start();
 //        String name = "Mitch123456789";
 //        int pot = 1000;

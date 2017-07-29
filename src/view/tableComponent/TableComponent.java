@@ -1,11 +1,8 @@
 package view.tableComponent;
 
-//import java.awt.TextField;
-import java.awt.TextField;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -15,6 +12,7 @@ import javafx.scene.layout.VBox;
 import model.Game;
 import model.Observer;
 import model.Player;
+import model.Status;
 import view.choiceBoxPlayer.ChoiceBoxPlayer;
 import view.flopComponent.FlopComponent;
 import view.playerComponent.PlayerComponent;
@@ -23,7 +21,7 @@ import view.playerComponent.PlayerComponent;
  *
  * @author Mitch
  */
-public final class TableComponent extends GridPane implements TableView, Observer {
+public final class TableComponent extends GridPane implements TableView {
 
     private final Game game;
     private List<Position> listPosPlayerTable;
@@ -49,7 +47,6 @@ public final class TableComponent extends GridPane implements TableView, Observe
         initPlayerTable();
         initFlopComponent();
         addChoiceBoxPlayer(game);
-        initMisePlayer();
 
         this.minHeight(400);
         this.minWidth(400);
@@ -96,29 +93,30 @@ public final class TableComponent extends GridPane implements TableView, Observe
         this.add(flopC, 6, 5);
     }
 
-    public void initMisePlayer() {
-        posMise = new PositionMise();
-        listLabel = new ArrayList<Label>();
-        
-        String styleMise = "-fx-background-color: white;"
-                    + "-fx-font-weight : bold;" ;
-        
-        for (int i = 0; i < listPlayer.size(); i++) {
-            for (Player player : listPlayer) {
-                label = new Label(Integer.toString(player.getSumRaise()));
-                label.setAlignment(Pos.CENTER);
-                label.setStyle(styleMise);
-                listLabel.add(label);
-                hbtf = new HBox();
-                hbtf.setMinSize(80, 60);
-                hbtf.setAlignment(Pos.CENTER);
-                hbtf.getChildren().add(label);
+//    public void initMisePlayer() {
+//        posMise = new PositionMise();
+//        listLabel = new ArrayList<Label>();
+//        
+//        String styleMise = "-fx-background-color: white;"
+//                    + "-fx-font-weight : bold;" ;
+//        
+//        for (int i = 0; i < listPlayer.size(); i++) {
+//            for (Player player : listPlayer) {
+////                label = new Label(Integer.toString(player.getSumRaise()));
+//                label.setAlignment(Pos.CENTER);
+//                label.setStyle(styleMise);
+//                listLabel.add(label);
+//                hbtf = new HBox();
+//                hbtf.setMinSize(80, 60);
+//                hbtf.setAlignment(Pos.CENTER);
+//                hbtf.getChildren().add(label);
+//
+//                this.add(hbtf, posMise.getPosMise(i).getJ(),
+//                        posMise.getPosMise(i).getI());
+//            }
+//        }
+//    }
 
-                this.add(hbtf, posMise.getPosMise(i).getJ(),
-                        posMise.getPosMise(i).getI());
-            }
-        }
-    }
 
     public void addChoiceBoxPlayer(Game game) throws IOException {
         choiceB = new ChoiceBoxPlayer(game);
@@ -145,11 +143,11 @@ public final class TableComponent extends GridPane implements TableView, Observe
         return this.listPlayerC;
     }
 
-    public void updateMise() {
-        for (int i = 0; i < listPlayer.size(); i++) {
-            listLabel.get(i).setText(Integer.toString(listPlayer.get(i).getSumRaise()));
-        }
-    }
+//    public void updateMise() {
+//        for (int i = 0; i < listPlayer.size(); i++) {
+////            listLabel.get(i).setText(Integer.toString(listPlayer.get(i).getSumRaise()));
+//        }
+//    }
 
 //    @Override
     public void updateFlop() {
@@ -180,6 +178,9 @@ public final class TableComponent extends GridPane implements TableView, Observe
     @Override
     public void update() {
         updatePlayers();
+        if (game.getStatus()== Status.END_MATCH){
+            
+        }
 //        this.updateFlop();
     }
 

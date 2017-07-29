@@ -12,12 +12,11 @@ import model.cards.Card;
 public class Player {
 
     private final String name;
+    private char sexe;
     private boolean fold;
     private PlayerCards cards;
     private boolean button;
     private Hand hand;
-    private char sexe;
-    private int sumRaise;
 
     private int money;
 
@@ -29,11 +28,9 @@ public class Player {
      *
      * @param other player to copy
      */
-    public Player(String name, int money, char sexe) {
+    public Player(String name, int money) {
         this.name = name;
         this.money = money;
-        this.sexe = sexe;
-        this.sumRaise = 0;
         cards = new PlayerCards();
     }
 
@@ -139,7 +136,6 @@ public class Player {
      * @param amount
      */
     public void makeBet(int amount) {
-//        this.sumRaise = sumRaise+amount;
         money = this.money - amount;
         currentBet = currentBet + amount;
     }
@@ -174,19 +170,8 @@ public class Player {
      *
      * @return the player's cards
      */
-    public PlayerCards getPlayerCards() {
+    PlayerCards getPlayerCards() {
         return cards;
-    }
-
-    public char getSexe() {
-        return this.sexe;
-    }
-    
-    public int getSumRaise(){
-//        System.out.println(sumRaise + " sum raise      "
-//                + "****");
-        return this.sumRaise;
-        
     }
 
     @Override
@@ -218,11 +203,6 @@ public class Player {
      */
     public void setHand(Hand hand) {
         this.hand = hand;
-    }
-    
-    
-    public void setSumRaise(int i){
-        this.sumRaise = i+sumRaise;
     }
 
     /**

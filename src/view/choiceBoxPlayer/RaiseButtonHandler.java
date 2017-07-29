@@ -21,23 +21,13 @@ public class RaiseButtonHandler implements EventHandler<ActionEvent> {
         this.choiceBoxPlayer = choiceBoxPlayre;
     }
 
- 
-    
-
     @Override
     public void handle(ActionEvent event) {
-        
         int sumRaise = choiceBoxPlayer.getContainTextfield();
 
-        
         try {
-                        System.out.println("raise");
-
-//            game.getCurrentPlayer().getMoney();
-//            game.getCurrentPlayer().makeBet(sumRaise);
-            game.raise(sumRaise*2);
+            game.call();
         } catch (GameException ex) {
-//            System.out.println("minimum "+ game.getMinimium());
             Logger.getLogger(RaiseButtonHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

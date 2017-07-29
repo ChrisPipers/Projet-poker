@@ -22,6 +22,8 @@ public class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
 
     private Button check;
 
+    private Button call;
+    
     private Button raise;
 
     private TextField sumRaiseTF;
@@ -31,6 +33,7 @@ public class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
 
     private Match match;
 
+    private CallBttonHandler callButtonHandler;
     private CheckButtonHandler checkButtonHandler;
     private FoldButtonHandler foldButtonHandler;
     private RaiseButtonHandler raiseButtonHandler;
@@ -38,9 +41,11 @@ public class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
 //    private final List<Observer> listObserver;
 
     public ChoiceBoxPlayer(Game game) {
+        this.game = game;
 //        this.listObserver = new ArrayList<>();
         fold = new Button("Fold");
         check = new Button("Check");
+        call = new Button("Call");
         raise = new Button("Raise");
         sumRaiseTF = new TextField();
 //        curentPlayer = game.getCurrentPlayer();
@@ -57,13 +62,16 @@ public class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
         }
         );
 
-        checkButtonHandler = new CheckButtonHandler(game);
+        checkButtonHandler = new CheckButtonHandler(this.game);
         check.addEventHandler(ActionEvent.ACTION, checkButtonHandler);
 
-        foldButtonHandler = new FoldButtonHandler(game);
+        callButtonHandler = new CallBttonHandler(game, this);
+        call.addEventHandler(ActionEvent.ACTION, callButtonHandler);
+        
+        foldButtonHandler = new FoldButtonHandler(this.game);
         fold.addEventHandler(ActionEvent.ACTION, foldButtonHandler);
 
-        raiseButtonHandler = new RaiseButtonHandler(game, this);
+        raiseButtonHandler = new RaiseButtonHandler(this.game, this);
         raise.addEventHandler(ActionEvent.ACTION, raiseButtonHandler);
 
         this.game = game;
@@ -71,6 +79,7 @@ public class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
 
         this.add(fold, 0, 0);
         this.add(check, 1, 0);
+        this.add(call, 1, 0);
         this.add(raise, 0, 1);
         this.add(sumRaiseTF, 1, 1);
         defineSize();
@@ -84,6 +93,7 @@ public class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
         this.fold.setMinSize(100, 40);
 
         this.check.setMinSize(100, 40);
+        this.call.setMinSize(100, 40);
         this.raise.setMinSize(100, 40);
         this.sumRaiseTF.setMaxSize(100, 40);
         this.setMinSize(234, 120);
@@ -93,6 +103,7 @@ public class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
         this.raise.setTranslateX(10);
         this.fold.setTranslateY(10);
         this.check.setTranslateY(10);
+        this.call.setTranslateY(10);
     }
 
     private void changeStyle() {

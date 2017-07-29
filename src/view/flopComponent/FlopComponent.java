@@ -3,12 +3,11 @@ package view.flopComponent;
 import view.cardComponent.CardComponent;
 import view.deckComponent.DeckComponent;
 import java.util.List;
-import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import model.Game;
-import model.Observer;
 import model.Status;
+//import model.Observer;
 import static model.Status.END_GAME;
 import static model.Status.FLOP;
 import static model.Status.RIVER;
@@ -19,12 +18,13 @@ import model.cards.Card;
  *
  * @author Mitch
  */
-public class FlopComponent extends HBox implements Observer {
+public final class FlopComponent extends HBox implements FlopView {
 
     private HBox board;
-    private DeckComponent deck;
+    private final DeckComponent deck;
     private TextField text;
-    private Game game;
+    private final Game game;
+    private Status status;
 
     public FlopComponent(Game game) {
         this.game = game;
@@ -83,26 +83,37 @@ public class FlopComponent extends HBox implements Observer {
 
     public void setBoard() {
         List<Card> cardsBoard = game.getBoard();
-        if (game.getStatus() == FLOP) {
-            for (Card card : cardsBoard) {
-                card.show();
-                System.out.println("1");
-                CardComponent cardC = new CardComponent(card);
-                this.board.getChildren().add(cardC);
+        if (null != game.getStatus()) {
+            switch (game.getStatus()) {
+                case FLOP:
+                    for (Card card : cardsBoard) {
+                        card.show();
+                        System.out.println("1");
+                        CardComponent cardC = new CardComponent(card);
+                        this.board.getChildren().add(cardC);
+                    }
+                    break;
+                case TURN: {
+                    Card card = cardsBoard.get(3);
+                    card.show();
+                    CardComponent cardC = new CardComponent(card);
+                    this.board.getChildren().add(cardC);
+                    break;
+                }
+                case RIVER: {
+                    Card card = cardsBoard.get(4);
+                    card.show();
+                    CardComponent cardC = new CardComponent(card);
+                    this.board.getChildren().add(cardC);
+                    break;
+                }
+                case END_MATCH:
+                    resetBoard();
+                    resetPot();
+                    break;
+                default:
+                    break;
             }
-        } else if (game.getStatus() == TURN) {
-            Card card = cardsBoard.get(3);
-            card.show();
-            CardComponent cardC = new CardComponent(card);
-            this.board.getChildren().add(cardC);
-        } else if (game.getStatus() == RIVER) {
-            Card card = cardsBoard.get(4);
-            card.show();
-            CardComponent cardC = new CardComponent(card);
-            this.board.getChildren().add(cardC);
-        } else if (game.getStatus() == END_GAME) {
-            resetBoard();
-            resetPot();
         }
 
     }
@@ -110,10 +121,14 @@ public class FlopComponent extends HBox implements Observer {
     public void resetBoard() {
         this.getChildren().clear();
     }
-    
+
     @Override
     public void update() {
         setPot();
+//        if (game.hasChanged()){
+            
+        
         setBoard();
+//        }
     }
 }

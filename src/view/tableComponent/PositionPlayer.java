@@ -21,14 +21,10 @@ public class PositionPlayer {
             listPosPlayer.add(new Position(posY[i], posX[i]));
         }
 
-
-        
     }
     
     public Position getPosPlayer(int j){
         return this.listPosPlayer.get(j);
     }
-    
-   
     
 }

@@ -22,10 +22,10 @@ public class table extends Application {
     public void start(Stage primaryStage) throws IOException, GameException {
         Game game = new Game();
         Match match = new Match();
-        game.addPlayer("Patrick", 1000, 'M');
-        game.addPlayer("Patrick2", 1000, 'M');
-        game.addPlayer("Patrick3", 1000, 'M');
-        game.addPlayer("Patrick4", 1000, 'M');
+        game.addPlayer("Patrick", 1000);
+        game.addPlayer("Patrick2", 1000);
+        game.addPlayer("Patrick3", 1000);
+        game.addPlayer("Patrick4", 1000);
         Card card = new Card(Color.CLUB, Value.ACE);
         
         for (int i = 0; i < game.getPlayers().size(); i++) {
@@ -33,7 +33,16 @@ public class table extends Application {
                         game.getPlayers().get(i).add(card);
 
         }
+        
+        
         game.start();
+        game.call();
+
+                game.call();
+        game.call();
+        game.call();
+
+
         TableComponent table = new TableComponent(game);
 
         Scene scene1 = new Scene(table, 1280, 840);

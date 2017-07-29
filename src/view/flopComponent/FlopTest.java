@@ -19,18 +19,18 @@ public class FlopTest extends Application {
         Game game = new Game();
 
         Match match = new Match();
-        game.addPlayer("Patrick", 1000, 'M');
-        game.addPlayer("Patrick2", 1000, 'M');
-        game.addPlayer("Patrick3", 1000, 'M');
-        game.addPlayer("Patrick4", 1000, 'M');
+        game.addPlayer("Patrick", 1000);
+        game.addPlayer("Patrick2", 1000);
+        game.addPlayer("Patrick3", 1000);
+        game.addPlayer("Patrick4", 1000);
         game.start();
         
-                System.out.println(game.getStatus()+"1");
+                System.out.println(game.getStatus()+" 1");
                 System.out.println(game.getBoard().size());
 
         game.smallBlind(1);
         game.bigBlind(2);
-                System.out.println(game.getStatus()+"2");
+                System.out.println(game.getStatus()+" 2");
                 System.out.println(game.getBoard().size()+"taille board");
 
         game.call();
