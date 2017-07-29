@@ -1,6 +1,5 @@
 package view;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Game;
 import model.Player;
-import model.cards.Card;
 import view.tableComponent.TableComponent;
 
 /**
@@ -30,6 +28,7 @@ public class Main extends Application {
         FXMLViewController controller = loader.<FXMLViewController>getController();
 
         fxControl = new FXMLViewController();
+
         game = new Game();
         game.addPlayer("1", 1000);
         game.addPlayer("2", 1000);
@@ -49,13 +48,10 @@ public class Main extends Application {
         game.bigBlind(game.getSmallBlindValue() * 2);
         table = new TableComponent(game);
 
-//        table = new TableComponent(game);
-//controller.setTable(table);
         List<Player> listP = game.getPlayers();
-//        table.getFlopComponent().setPot(game);
-//        table.updateFlop();
+
         controller.setGame(game);
-        
+        game.addObserver(controller);
         controller.setTable(table);
         Scene scene = new Scene(root);
 

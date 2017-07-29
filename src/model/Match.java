@@ -398,7 +398,7 @@ class Match {
      *
      * @return if the match is over
      */
-    boolean isOver() {
+    public boolean isOver() {
         return isOver;
     }
 

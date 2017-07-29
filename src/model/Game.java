@@ -158,6 +158,10 @@ public class Game extends Observable implements Facade {
     public Status getStatus() {
         return status;
     }
+    
+    public boolean getIsOver(){
+        return this.match.isOver();
+    }
 
     private void updateSatus() {
         if (status != END_GAME) {
@@ -182,6 +186,9 @@ public class Game extends Observable implements Facade {
         }
     }
 
+ 
+    
+    
     @Override
     public void stop() {
         status = END_GAME;

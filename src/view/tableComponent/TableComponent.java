@@ -51,6 +51,9 @@ public final class TableComponent extends GridPane implements TableView {
         this.minHeight(400);
         this.minWidth(400);
         
+        
+        
+        
     }
 
     private void initGridPaneTable() {
@@ -60,12 +63,13 @@ public final class TableComponent extends GridPane implements TableView {
         for (int i = 0; i < 14; i++) {
             this.getRowConstraints().add(new RowConstraints(60));
         }
-        final String style = "-fx-background-color: dimgray;"
+        final String style = "-fx-background-color: darkslategrey    ;"
                 + "-fx-background-image: url(view/Image/tablepoker.png);"
                 + "-fx-background-size: 1200 860;"
                 + "-fx-background-position: center bottom; "
                 + "-fx-repeat: no-repeat;"
-                + "-fx-grid-lines-visible: true";
+//                + "-fx-grid-lines-visible: true"
+                ;
 
         this.setStyle(style);
 

@@ -123,6 +123,7 @@ public final class PlayerComponent extends HBox implements Observer {
 
     @Override
     public void update() {
+        System.out.println("player comp");
         setPot();
         setBorderLayout();
         if (this.player.isFold()) {
