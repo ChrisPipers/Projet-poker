@@ -150,7 +150,7 @@ public class Game extends Observable implements Facade {
     }
 
     private void notifyChange() {
-//        setChanged();
+        setChanged();
         notifyObserver();
     }
 

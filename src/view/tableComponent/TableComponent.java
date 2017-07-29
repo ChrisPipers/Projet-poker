@@ -178,9 +178,10 @@ public final class TableComponent extends GridPane implements TableView {
     @Override
     public void update() {
         updatePlayers();
-        if (game.getStatus()== Status.END_MATCH){
-            
-        }
+//        this.flopC.update();
+//        if (game.getStatus()== Status.END_MATCH){
+//            
+//        }
 //        this.updateFlop();
     }
 

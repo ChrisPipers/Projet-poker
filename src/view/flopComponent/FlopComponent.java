@@ -29,6 +29,7 @@ public final class FlopComponent extends HBox implements FlopView {
     public FlopComponent(Game game) {
         this.game = game;
         this.game.addObserver(this);
+        this.status = game.getStatus();
 
         this.setMinHeight(70 + 30);
         this.setMinWidth(62 * 5 + 90 + 200 + 100);
@@ -83,9 +84,10 @@ public final class FlopComponent extends HBox implements FlopView {
 
     public void setBoard() {
         List<Card> cardsBoard = game.getBoard();
-        if (null != game.getStatus()) {
+        if (null != game.getStatus()&& (this.status!= game.getStatus())) {
             switch (game.getStatus()) {
                 case FLOP:
+                    this.status = FLOP;
                     for (Card card : cardsBoard) {
                         card.show();
                         System.out.println("1");
@@ -94,6 +96,7 @@ public final class FlopComponent extends HBox implements FlopView {
                     }
                     break;
                 case TURN: {
+                    this.status = TURN;
                     Card card = cardsBoard.get(3);
                     card.show();
                     CardComponent cardC = new CardComponent(card);
@@ -101,6 +104,7 @@ public final class FlopComponent extends HBox implements FlopView {
                     break;
                 }
                 case RIVER: {
+                    this.status = RIVER;
                     Card card = cardsBoard.get(4);
                     card.show();
                     CardComponent cardC = new CardComponent(card);
@@ -108,6 +112,7 @@ public final class FlopComponent extends HBox implements FlopView {
                     break;
                 }
                 case END_MATCH:
+                    
                     resetBoard();
                     resetPot();
                     break;
