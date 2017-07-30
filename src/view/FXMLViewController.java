@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.css.CssMetaData;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -19,6 +20,7 @@ import model.Player;
 import model.PlayerIterator;
 import model.Pot;
 import model.Pots;
+import model.cards.Card;
 import view.choiceBoxPlayer.ChoiceBoxPlayer;
 import view.flopComponent.FlopComponent;
 import view.playerComponent.PlayerComponent;
@@ -108,6 +110,21 @@ public class FXMLViewController implements Initializable, Observer {
 
     }
 
+    public void showAllHand(){
+        for (PlayerComponent playerC : table.getListPlayerC()) {
+            Player p = playerC.getPlayer();
+            for (Card card : p.getCards()) {
+                card.show();
+            }
+            playerC.setHboxCards();
+        }
+ {
+            
+        }
+    }
+    
+    
+    
     @Override
     public void update() {
         System.out.println("update fxml ");
@@ -117,6 +134,7 @@ public class FXMLViewController implements Initializable, Observer {
         if (game.getIsOver()) {
             try {
                 //            game.up
+                showAllHand();
                 defineWinner();
             } catch (GameException ex) {
                 Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);

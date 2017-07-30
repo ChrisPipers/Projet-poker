@@ -133,6 +133,11 @@ public final class PlayerComponent extends HBox implements Observer {
         this.pot.setText(Integer.toString(player.getMoney()));
     }
     
+    public Player getPlayer(){
+        return this.player;
+    }
+    
+    
 //    public void isCurrentPlayer(){
 //        if (this.game.getCurrentPlayer() == this.player) {
 //            
