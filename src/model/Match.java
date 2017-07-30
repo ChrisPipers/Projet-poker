@@ -29,7 +29,7 @@ import model.cards.Deck;
  *
  * @author esiProfs
  */
-class Match {
+public class Match {
 
     final static int SMALLBLIND = 1;
 
@@ -58,7 +58,7 @@ class Match {
      * @param players list of players
      * @throws model.GameException if a player does not own enough chips
      */
-    Match(List<Player> players) throws GameException {
+    public Match(List<Player> players) throws GameException {
         for (Player player : players) {
             if (player.getMoney() < 10 * SMALLBLIND) {
                 throw new GameException("Les joueurs doivent posséder au moins 10 fois la SMALLBLIND en caisse");
@@ -131,6 +131,11 @@ class Match {
      */
     List<Card> getBoard() {
         return board.getCards();
+    }
+    
+    
+    public Pots getPots(){
+        return this.potList;
     }
 
     /**
@@ -363,6 +368,11 @@ class Match {
      */
     boolean onlyOne() {
         return iterator.onlyOne();
+    }
+    
+    
+    public PlayerIterator getIterator(){
+        return this.iterator;
     }
 
     /**

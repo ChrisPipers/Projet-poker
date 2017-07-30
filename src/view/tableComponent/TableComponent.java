@@ -10,7 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import model.Game;
-import model.Observer;
+import observer.Observer;
 import model.Player;
 import model.Status;
 import view.choiceBoxPlayer.ChoiceBoxPlayer;

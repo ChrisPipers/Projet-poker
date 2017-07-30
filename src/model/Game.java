@@ -1,5 +1,6 @@
 package model;
 
+import observer.Observer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -62,7 +63,7 @@ public class Game extends Observable implements Facade {
             }
         }
         players.get(indexNextButton).giveButtton();
-        match = new Match(players);
+        this.match = new Match(players);
         updateSatus();
         notifyChange();
     }
@@ -149,6 +150,14 @@ public class Game extends Observable implements Facade {
     @Override
     public List<Player> getPlayers() {
         return Collections.unmodifiableList(players);
+    }
+    
+    /**
+     *
+     * @return
+     */
+    public Match getMatch(){
+        return this.match;
     }
 
     private void notifyChange() {

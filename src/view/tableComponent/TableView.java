@@ -1,6 +1,6 @@
 package view.tableComponent;
 
-import model.Observer;
+import observer.Observer;
 
 /**
  *

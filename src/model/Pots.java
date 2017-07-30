@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author esiProfs
  */
-class Pots {
+public class Pots {
 
     private Pot current;
     private final List<Pot> pots;
@@ -18,9 +18,9 @@ class Pots {
      * Sum of money that players wager during a single hand. The pot may contain
      * some sub-pots if a player is all in.
      */
-    Pots() {
+    public Pots() {
         pots = new ArrayList<>();
-        current = new Pot();
+        this.current = new Pot();
     }
 
     /**
@@ -40,6 +40,11 @@ class Pots {
     void addMoney(int amount) {
         current.add(amount);
     }
+    
+    
+    public List<Pot> getListPots(){
+        return this.pots;
+    }
 
     /**
      * Return the sum of the pot, current bets include.
@@ -52,6 +57,10 @@ class Pots {
             total += pot.getTotal();
         }
         return total;
+    }
+    
+    public Pot getPots(){
+        return this.current;
     }
 
     /**

@@ -1,7 +1,7 @@
 
 package view.flopComponent;
 
-import model.Observer;
+import observer.Observer;
 
 /**
  *

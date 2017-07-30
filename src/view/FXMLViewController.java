@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -11,8 +13,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import model.Game;
-import model.Observer;
+import model.GameException;
+import observer.Observer;
 import model.Player;
+import model.PlayerIterator;
+import model.Pot;
+import model.Pots;
 import view.choiceBoxPlayer.ChoiceBoxPlayer;
 import view.flopComponent.FlopComponent;
 import view.playerComponent.PlayerComponent;
@@ -32,6 +38,8 @@ public class FXMLViewController implements Initializable, Observer {
     @FXML
     private AnchorPane AnchorPane;
 
+    private PlayerIterator iterator;
+    
     @FXML
     private Pane pane;
 
@@ -92,27 +100,21 @@ public class FXMLViewController implements Initializable, Observer {
         this.hBoxMain = new HBox(table);
     }
 
-    public void defineWinner() {
-        for (int i = 0; i < game.getPlayers().size(); i++) {
-//            for (int j = 1; j < game.getPlayers().size(); j++) {
-            if (!game.getPlayers().get(i).isFold()) {
-
-                if (!game.getPlayers().get(i + 1).isFold()) {
-                    int val = game.getPlayers().get(i).compareHand(game.getPlayers().get(i + 1));
-                    if (val < 0) {
-                        this.listWinner.clear();
-                        this.listWinner.add(game.getPlayers().get(i + 1));
-                        i = i + 1;
-                    } else if (val == 0) {
-                        this.listWinner.add(game.getPlayers().get(i + 1));
-                    }
-                }
-            }
+    public void defineWinner() throws GameException {
+        List <Pot> listPots = new ArrayList<>();
+        Pots pot = game.getMatch().getPots();
+        listPots = pot.getListPots();
+        for (Pot listPot : listPots) {
+            PlayerIterator it = game.getMatch().getIterator();
+            PlayerIterator itPlayer = new PlayerIterator(it);
+            listWinner = listPot.findWinners(itPlayer);
         }
+        
     }
 
     public void displayWinner() {
-        String winners = null;
+        System.out.println(listWinner.size()+" nb de victorieux ");
+        String winners = "";
         for (Player player : listWinner) {
             winners = winners + " " + player.getName();
         }
@@ -137,8 +139,12 @@ public class FXMLViewController implements Initializable, Observer {
 //        setTable(table);
 //        this.setGame(game);
         if (game.getIsOver()) {
-//            game.up
-            defineWinner();
+            try {
+                //            game.up
+                defineWinner();
+            } catch (GameException ex) {
+                Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             displayWinner();
 
 //            restartGame();

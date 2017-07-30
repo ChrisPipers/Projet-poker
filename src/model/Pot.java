@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author esiProfs
  */
-class Pot {
+public class Pot {
 
     private int total;
     private final List<Player> members;
@@ -16,7 +16,7 @@ class Pot {
     /**
      * A sub-pot has no money and no members for start.
      */
-    Pot() {
+    public Pot() {
         total = 0;
         members = new ArrayList<>();
     }
@@ -61,7 +61,7 @@ class Pot {
      * @param iterator iterator of players
      * @return all the winners of this sub-pot
      */
-    List<Player> findWinners(PlayerIterator iterator) {
+    public List<Player> findWinners(PlayerIterator iterator) {
         List<Player> winners = new ArrayList<>();
         Player currentPlayer;
         while (iterator.hasNext()) {
