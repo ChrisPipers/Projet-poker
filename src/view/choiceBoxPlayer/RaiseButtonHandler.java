@@ -26,7 +26,7 @@ public class RaiseButtonHandler implements EventHandler<ActionEvent> {
         int sumRaise = choiceBoxPlayer.getContainTextfield();
 
         try {
-            game.call();
+            game.raise(sumRaise);
         } catch (GameException ex) {
             Logger.getLogger(RaiseButtonHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
