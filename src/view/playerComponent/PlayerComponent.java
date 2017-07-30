@@ -42,7 +42,7 @@ public final class PlayerComponent extends HBox implements Observer {
         this.hBoxCards = new HBox();
         setBorderLayout();
         this.getChildren().add(hBoxCards);
-        initHBoxCards(player);
+//        initHBoxCards();
         initPicturePlayer(player);
         initVBoxPlayer(player);
 
@@ -54,14 +54,25 @@ public final class PlayerComponent extends HBox implements Observer {
             boderStyle
                     = "-fx-border-color: red red red red ;"
                     + "-fx-background-color: white;";
+            for (Card card : this.player.getCards()) {
+                card.show();
+            }
+            setHboxCards();
         } else {
+            for (Card card : this.player.getCards()) {
+                card.hide();
+            }
+            setHboxCards();
             boderStyle
                     = "-fx-border-color: black black black black;";
         }
         this.setStyle(boderStyle);
+        
     }
 
-    public void initHBoxCards(Player player) {
+    
+
+    public void initHBoxCards() {
         List<Card> cards = player.getCards();
         String sCard;
         handPokerPlayer handP = new handPokerPlayer(cards);
@@ -98,6 +109,7 @@ public final class PlayerComponent extends HBox implements Observer {
     }
 
     public void setHboxCards() {
+        this.hBoxCards.getChildren().clear();
         List<Card> cards = player.getCards();
         String sCard;
         handPokerPlayer handP = new handPokerPlayer(cards);
@@ -120,12 +132,18 @@ public final class PlayerComponent extends HBox implements Observer {
     public void setPot() {
         this.pot.setText(Integer.toString(player.getMoney()));
     }
+    
+//    public void isCurrentPlayer(){
+//        if (this.game.getCurrentPlayer() == this.player) {
+//            
+//        }
+//    }
 
     @Override
     public void update() {
-        System.out.println("player comp");
         setPot();
         setBorderLayout();
+//        isCurrentPlayer();
         if (this.player.isFold()) {
             clearHBoxCards();
         }

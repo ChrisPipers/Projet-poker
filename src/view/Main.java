@@ -26,10 +26,10 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLView.fxml"));
         Parent root = (Parent) loader.load();
         FXMLViewController controller = loader.<FXMLViewController>getController();
-
         fxControl = new FXMLViewController();
 
         game = new Game();
+
         game.addPlayer("1", 1000);
         game.addPlayer("2", 1000);
         game.addPlayer("3", 1000);
@@ -40,24 +40,24 @@ public class Main extends Application {
         game.addPlayer("8", 1000);
         game.addPlayer("9", 1000);
         game.addPlayer("10", 1000);
+
         game.start();
-        System.out.println(game.getStatus() + "0");
 
         game.smallBlind(game.getSmallBlindValue());
-
         game.bigBlind(game.getSmallBlindValue() * 2);
+
         table = new TableComponent(game);
 
         List<Player> listP = game.getPlayers();
 
         controller.setGame(game);
+
         game.addObserver(controller);
+
         controller.setTable(table);
         Scene scene = new Scene(root);
-
         stage.setScene(scene);
         stage.show();
-
     }
 
     /**

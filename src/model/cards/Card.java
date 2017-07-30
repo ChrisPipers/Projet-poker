@@ -37,6 +37,10 @@ public class Card implements Comparable<Card> {
     public void show() {
         this.hide = false;
     }
+    
+    public void hide(){
+        this.hide = true;
+    }
 
 
     public boolean isNext(Card other) {

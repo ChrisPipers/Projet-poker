@@ -34,5 +34,12 @@ public class handPokerPlayer extends HBox {
         cardCL = new CardComponent(listCard.get(0));
         cardCR = new CardComponent(listCard.get(1));
     }
+    
+    
+    public void SetVissibleHand(){
+        this.cardCL.setVissibleHand();
+        this.cardCR.setVissibleHand();
+        
+    }
 
 }

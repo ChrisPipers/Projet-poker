@@ -111,4 +111,9 @@ public class Hand implements Comparable<Hand> {
         return all;
     }
 
+    public void unshowHand(){
+        for (Card card : selected) {
+            
+        }
+    }
 }

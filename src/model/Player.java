@@ -26,12 +26,16 @@ public class Player {
     /**
      * Copy constructor.
      *
-     * @param other player to copy
+     * the valor of the bounty is 1 because if he win, he recover her bounty too
+     * 
+     * @param name
+     * @param money
+     * 
      */
     public Player(String name, int money) {
         this.name = name;
         this.money = money;
-        this.bounty = 0;
+        this.bounty = 1;
         cards = new PlayerCards();
     }
 

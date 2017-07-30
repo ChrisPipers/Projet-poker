@@ -33,33 +33,12 @@ public class FXMLViewController implements Initializable, Observer {
 
     private Game game;
     private FXMLViewController fxmlViewController;
-
-//    private HBox tBox;
-    @FXML
-    private AnchorPane AnchorPane;
-
+    private TableComponent table;
+    private List<Player> listWinner;
     private PlayerIterator iterator;
-    
-    @FXML
-    private Pane pane;
 
     @FXML
     private HBox hBoxMain;
-
-    @FXML
-    private TableComponent table;
-
-    @FXML
-    private PlayerComponent playerC;
-
-    @FXML
-    private FlopComponent flop;
-
-    @FXML
-    private ChoiceBoxPlayer choiceBoxPlayer;
-
-    private List<Player> listWinner;
-//    private ChoiceBoxPlayerController controlP;
 
     /**
      * Initializes the controller class.
@@ -101,7 +80,7 @@ public class FXMLViewController implements Initializable, Observer {
     }
 
     public void defineWinner() throws GameException {
-        List <Pot> listPots = new ArrayList<>();
+        List<Pot> listPots = new ArrayList<>();
         Pots pot = game.getMatch().getPots();
         listPots = pot.getListPots();
         for (Pot listPot : listPots) {
@@ -109,11 +88,11 @@ public class FXMLViewController implements Initializable, Observer {
             PlayerIterator itPlayer = new PlayerIterator(it);
             listWinner = listPot.findWinners(itPlayer);
         }
-        
+
     }
 
     public void displayWinner() {
-        System.out.println(listWinner.size()+" nb de victorieux ");
+        System.out.println(listWinner.size() + " nb de victorieux ");
         String winners = "";
         for (Player player : listWinner) {
             winners = winners + " " + player.getName();
@@ -129,9 +108,6 @@ public class FXMLViewController implements Initializable, Observer {
 
     }
 
-//    public void restartGame(){
-//        game = new Game();
-//    }
     @Override
     public void update() {
         System.out.println("update fxml ");
@@ -147,7 +123,6 @@ public class FXMLViewController implements Initializable, Observer {
             }
             displayWinner();
 
-//            restartGame();
         }
     }
 

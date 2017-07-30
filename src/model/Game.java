@@ -50,6 +50,8 @@ public class Game extends Observable implements Facade {
 
     @Override
     public void startMatch() throws GameException {
+        
+        
         if (match != null && !match.isOver()) {
             throw new GameException("Vous devez terminer le match en cours");
         }
@@ -62,6 +64,7 @@ public class Game extends Observable implements Facade {
                 indexNextButton = (indexNextButton + 1) % players.size();
             }
         }
+       
         players.get(indexNextButton).giveButtton();
         this.match = new Match(players);
         updateSatus();

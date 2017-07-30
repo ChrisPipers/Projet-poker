@@ -164,6 +164,7 @@ public final class TableComponent extends GridPane implements TableView {
     public void updatePlayers() {
         for (PlayerComponent playerP : listPlayerC) {
             playerP.update();
+//            playerP.isCurrentPlayer();
             playerP.setBorderLayout();
         }
 

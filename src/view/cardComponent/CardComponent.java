@@ -15,20 +15,24 @@ import model.cards.Card;
  */
 public class CardComponent extends Parent {
 
-    private final String stringCard;
-
+    private String stringCard;
+    private Card card;
     /**
      * this is the constructor allows a deck entry in parameter
      *
      * @param card
      */
     public CardComponent(Card card) {
+        this.card = card;
+        
+        
+        
         if (card.isHidden()) {
             stringCard = "view/Image/cards/" + "dos" + ".png";
         } else {
-
             stringCard = "view/Image/cards/" + card.toString() + ".png";
         }
+        
         final String style = "-fx-repeat: no-repeat;"
                 + "-fx-image-size: cover, auto;"
                 + "-fx-background-position: center, center;"
@@ -62,12 +66,8 @@ public class CardComponent extends Parent {
         return this.stringCard;
     }
 
-    public void isVissible(Card card) {
-        if (card.isHidden() == true) {
-            System.out.println("card is hide");
-        } else {
-            System.out.println(card.toString());
-        }
+    public void setVissibleHand(){
+        this.stringCard = "view/Image/cards/" + this.card.toString() + ".png";
     }
 
 }

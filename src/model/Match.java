@@ -64,6 +64,8 @@ public class Match {
                 throw new GameException("Les joueurs doivent posséder au moins 10 fois la SMALLBLIND en caisse");
             }
         }
+        
+        
         System.out.println(minimum+ " minimum");
         iterator = new PlayerIterator(players);
         currentPlayer = iterator.next();
@@ -90,7 +92,7 @@ public class Match {
             Player player = iterator.next();
             for (int i = 0; i < nbCards; i++) {
                 Card card = deck.pick();
-                card.show();
+//                card.hide();
                 player.add(card);
             }
         }

@@ -9,7 +9,7 @@ import model.cards.Card;
  * Each player owns two cards. These cards are dealt during the preflop.
  * @author esiProfs
  */
-class PlayerCards {
+public class PlayerCards {
 
     private final List<Card> cards;
 
@@ -37,6 +37,18 @@ class PlayerCards {
             card.show();
         }
     }
+    
+    
+ /**
+     * unshow all the card to the player.
+     */
+    public void unshow() {
+        for (Card card : cards) {
+            card.hide();
+        }
+    }
+    
+    
 
     /**
      * Return an unmodifiableList of cards.
