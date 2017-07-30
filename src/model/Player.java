@@ -19,7 +19,7 @@ public class Player {
     private Hand hand;
 
     private int money;
-
+    private int bounty;
     private int currentBet;
     private int currentProfit;
 
@@ -31,6 +31,7 @@ public class Player {
     public Player(String name, int money) {
         this.name = name;
         this.money = money;
+        this.bounty = 0;
         cards = new PlayerCards();
     }
 
@@ -285,7 +286,7 @@ public class Player {
     public Category getCategory() {
         return (hand == null) ? null : hand.getCategory();
     }
-
+    
     /**
      * Withdraw money from the current bet.
      *
@@ -313,4 +314,10 @@ public class Player {
         return fold;
     }
 
+    public void setBounty(){
+        this.bounty = this.bounty+1;
+    }
+    
+    
+    
 }

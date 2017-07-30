@@ -21,6 +21,7 @@ import model.cards.Card;
  */
 public class Game extends Observable implements Facade {
 
+    private int valorBounty;
     private final List<Observer> listObserver;
     private final static int NB_MIN = 4;
     private Match match;
@@ -35,6 +36,7 @@ public class Game extends Observable implements Facade {
         players = new ArrayList<>();
         status = INIT;
         listObserver = new ArrayList<>();
+        this.valorBounty = 5;
     }
 
     @Override
