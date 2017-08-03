@@ -146,11 +146,23 @@ public final class PlayerComponent extends HBox implements Observer {
 
     @Override
     public void update() {
+        System.out.println("maj playerC");
         setPot();
         setBorderLayout();
 //        isCurrentPlayer();
         if (this.player.isFold()) {
             clearHBoxCards();
+        }
+        
+        if (this.game.getIsOver()){
+            if (!this.player.isFold()) {
+                for (Card card : this.player.getCards()) {
+                    card.show();
+                }
+            
+            setHboxCards();
+            setPot();
+            }
         }
     }
 

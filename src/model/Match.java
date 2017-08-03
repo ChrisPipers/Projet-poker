@@ -394,8 +394,9 @@ public class Match {
 
     /**
      * The players with the best hand according being played win the pot.
+     * @throws model.GameException
      */
-    void splitPot() throws GameException {
+    public void splitPot() throws GameException {
         potList.split(iterator);
     }
 

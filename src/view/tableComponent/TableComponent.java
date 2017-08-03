@@ -13,6 +13,7 @@ import model.Game;
 import observer.Observer;
 import model.Player;
 import model.Status;
+import model.cards.Card;
 import view.choiceBoxPlayer.ChoiceBoxPlayer;
 import view.flopComponent.FlopComponent;
 import view.playerComponent.PlayerComponent;
@@ -144,6 +145,7 @@ public final class TableComponent extends GridPane implements TableView {
     }
     
     public List<PlayerComponent> getListPlayerC() {
+        System.out.println("reste"+ listPlayerC.size());
         return this.listPlayerC;
     }
 
@@ -178,15 +180,31 @@ public final class TableComponent extends GridPane implements TableView {
         
     }
 //
+    public void showAllHand() {
+        for (PlayerComponent playerC : listPlayerC) {
+            
+        
+            Player p = playerC.getPlayer();
+            if (!p.isFold() ) {
+//                for (Card card : p.getCards()) {
+//                    card.show();
+//                    
+//                }
+                
+                playerC.setHboxCards();
+            }
+        }
+
+    }
 
     
     @Override
     public void update() {
         updatePlayers();
 //        this.flopC.update();
-//        if (game.getStatus()== Status.END_MATCH){
-//            
-//        }
+        if (game.getStatus()== Status.END_MATCH){
+            showAllHand();
+        }
 //        this.updateFlop();
     }
 

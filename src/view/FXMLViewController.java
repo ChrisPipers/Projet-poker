@@ -6,13 +6,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.css.CssMetaData;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import model.Game;
 import model.GameException;
 import observer.Observer;
@@ -21,8 +18,6 @@ import model.PlayerIterator;
 import model.Pot;
 import model.Pots;
 import model.cards.Card;
-import view.choiceBoxPlayer.ChoiceBoxPlayer;
-import view.flopComponent.FlopComponent;
 import view.playerComponent.PlayerComponent;
 import view.tableComponent.TableComponent;
 
@@ -110,21 +105,8 @@ public class FXMLViewController implements Initializable, Observer {
 
     }
 
-    public void showAllHand(){
-        for (PlayerComponent playerC : table.getListPlayerC()) {
-            Player p = playerC.getPlayer();
-            for (Card card : p.getCards()) {
-                card.show();
-            }
-            playerC.setHboxCards();
-        }
- {
-            
-        }
-    }
     
-    
-    
+
     @Override
     public void update() {
         System.out.println("update fxml ");
@@ -132,12 +114,19 @@ public class FXMLViewController implements Initializable, Observer {
 //        setTable(table);
 //        this.setGame(game);
         if (game.getIsOver()) {
+//            showAllHand();
             try {
+               
                 //            game.up
-                showAllHand();
+//                game.getStatus().
+//            game.getMatch().splitPot();
+//        Thread.sleep(2000);
                 defineWinner();
+//                game.split 
             } catch (GameException ex) {
                 Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (InterruptedException ex) {
+//                Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
             displayWinner();
 

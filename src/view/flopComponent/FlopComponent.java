@@ -130,10 +130,7 @@ public final class FlopComponent extends HBox implements FlopView {
     @Override
     public void update() {
         setPot();
-//        if (game.hasChanged()){
-            
         
         setBoard();
-//        }
     }
 }
