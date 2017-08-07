@@ -27,5 +27,9 @@ public enum Bet {
     /**
      *
      */
-    FOLD;
+    FOLD,
+    /**
+     * 
+     */
+    CHECK;
 }

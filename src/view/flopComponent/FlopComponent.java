@@ -84,7 +84,7 @@ public final class FlopComponent extends HBox implements FlopView {
 
     public void setBoard() {
         List<Card> cardsBoard = game.getBoard();
-        if (null != game.getStatus()&& (this.status!= game.getStatus())) {
+        if (null != game.getStatus() && (this.status != game.getStatus())) {
             switch (game.getStatus()) {
                 case FLOP:
                     this.status = FLOP;
@@ -111,26 +111,25 @@ public final class FlopComponent extends HBox implements FlopView {
                     this.board.getChildren().add(cardC);
                     break;
                 }
-                case END_MATCH:
-                    
-                    resetBoard();
-                    resetPot();
-                    break;
-                default:
-                    break;
+
             }
         }
 
     }
 
     public void resetBoard() {
+        
+ 
+        
+   
         this.getChildren().clear();
     }
 
     @Override
     public void update() {
-        setPot();
-        
         setBoard();
+        setPot();
+
+        
     }
 }

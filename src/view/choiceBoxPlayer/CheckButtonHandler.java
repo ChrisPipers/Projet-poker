@@ -29,9 +29,12 @@ public class CheckButtonHandler implements EventHandler<ActionEvent> {
         {
 
             try {
-                game.call();
-//                game.
+//                if (game.getMinimium()> game.getSmallBlindValue()*2){
+//                    throw new ChoiceBoxViewException("la valeur minimum ")
+//                }
+                game.check();
             } catch (GameException ex) {
+                
                 Logger.getLogger(CheckButtonHandler.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

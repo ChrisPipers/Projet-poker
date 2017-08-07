@@ -16,9 +16,11 @@ public class Flop extends AbstrState {
     public Flop(Match match) {
         this.match = match;
         availableBet = new ArrayList<>();
+        availableBet.add(Bet.CHECK);
         availableBet.add(Bet.CALL);
         availableBet.add(Bet.FOLD);
         availableBet.add(Bet.RAISE);
+        
     }
 
     @Override
@@ -35,8 +37,10 @@ public class Flop extends AbstrState {
             match.showBoard();
             match.dealBoard(1);
             match.nextPlayer();
+            match.setMinimum(0);
         }
     }
+
 
     @Override
     public void smallBlind(Player currentPlayer, int minimum, int amount, Pots pot) throws GameException {
@@ -47,5 +51,7 @@ public class Flop extends AbstrState {
     public void bigBlind(Player currentPlayer, int minimum, int amount, Pots pot) throws GameException {
         throw new GameException("bigBlind Impossible");
     }
+
+  
 
 }

@@ -122,6 +122,11 @@ public class FXMLViewController implements Initializable, Observer {
 //            game.getMatch().splitPot();
 //        Thread.sleep(2000);
                 defineWinner();
+                
+                
+                
+                
+                
 //                game.split 
             } catch (GameException ex) {
                 Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
@@ -129,7 +134,7 @@ public class FXMLViewController implements Initializable, Observer {
 //                Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
             displayWinner();
-
+            table.getFlopComponent().resetBoard();
         }
     }
 

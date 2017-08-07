@@ -21,6 +21,7 @@ class Turn extends AbstrState {
         availableBet.add(Bet.CALL);
         availableBet.add(Bet.FOLD);
         availableBet.add(Bet.RAISE);
+        availableBet.add(Bet.CHECK);
     }
 
     @Override
@@ -37,6 +38,8 @@ class Turn extends AbstrState {
             match.setState(match.getRiver());
             match.dealBoard(1);
             match.nextPlayer();
+            match.setMinimum(0);
+
         }
     }
 
@@ -49,4 +52,6 @@ class Turn extends AbstrState {
     public void bigBlind(Player currentPlayer, int minimum, int amount, Pots pot) throws GameException {
         throw new GameException("bigBlind Impossible");
     }
+
+    
 }

@@ -140,6 +140,11 @@ public class Match {
         return this.potList;
     }
 
+    
+    void check() throws GameException {
+        state.check(currentPlayer);
+    }
+    
     /**
      * Increase the size of an existing bet in the same betting round.
      *
@@ -148,6 +153,7 @@ public class Match {
      * player does not own enough money, or if the amount is not > 0
      */
     void raise(int amount) throws GameException {
+        this.minimum = amount;
         state.raise(currentPlayer, minimum, amount, potList);
     }
 

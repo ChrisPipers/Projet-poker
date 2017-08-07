@@ -8,6 +8,8 @@ import java.util.List;
  */
 interface State {
 
+    
+    
     /**
      * The current player matches a bet/raise.
      *
@@ -18,6 +20,11 @@ interface State {
      */
     void call(Player currentPlayer, int minimum, Pots pot) throws GameException;
 
+    
+    
+    
+    void check(Player currentPlayer) throws GameException;
+    
     /**
      * The current player discards his hand and forfeits interest in the current
      * pot.

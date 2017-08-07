@@ -80,6 +80,9 @@ public class Pot {
                 }
             }
         }
+        for (Player winner : winners) {
+            System.out.println(winner.getName()+" le joueur gagnant est ");
+        }
         return winners;
     }
 

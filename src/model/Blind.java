@@ -33,6 +33,12 @@ class Blind extends AbstrState {
     }
 
     @Override
+    public void check(Player currentPlayer) throws GameException {
+        throw new GameException("check Impossible");
+    }
+    
+    
+    @Override
     public void call(Player currentPlayer, int minimum, Pots pot) throws GameException {
         throw new GameException("Call Impossible");
     }

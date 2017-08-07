@@ -133,6 +133,14 @@ public class Player {
     public int getMoney() {
         return money;
     }
+    
+    
+    
+    
+    public void chech(){
+        money = this.money;
+       currentBet = currentBet;
+    }
 
     /**
      * Make the bet. Add the amount to the currentBet and withdraw the amount

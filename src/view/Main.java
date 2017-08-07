@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import model.Game;
 import model.Player;
 import view.tableComponent.TableComponent;
+import view.thread.WaitForAnimation;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Main extends Application {
     private Game game;
     private TableComponent table;
     private FXMLViewController fxControl;
+    private WaitForAnimation wait ;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -28,6 +30,8 @@ public class Main extends Application {
         FXMLViewController controller = loader.<FXMLViewController>getController();
         fxControl = new FXMLViewController();
 
+        wait = new WaitForAnimation(1);
+        
         game = new Game();
 
         game.addPlayer("1", 1000);
@@ -42,10 +46,14 @@ public class Main extends Application {
         game.addPlayer("10", 1000);
 
         game.start();
-
+        table = new TableComponent(game);
+//        wait.run();
         game.smallBlind(game.getSmallBlindValue());
-        game.bigBlind(game.getSmallBlindValue() * 2);
+//        wait.run();
+                table = new TableComponent(game);
 
+        game.bigBlind(game.getSmallBlindValue() * 2);
+//wait.run();
         table = new TableComponent(game);
 
         List<Player> listP = game.getPlayers();

@@ -93,6 +93,13 @@ public class Game extends Observable implements Facade {
     }
 
     @Override
+    public void check() throws GameException {
+        match.check();
+        updateSatus();
+        notifyChange();
+    }
+
+    @Override
     public void call() throws GameException {
         match.call();
         updateSatus();

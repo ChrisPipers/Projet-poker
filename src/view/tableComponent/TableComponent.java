@@ -125,7 +125,7 @@ public final class TableComponent extends GridPane implements TableView {
 
     public void addChoiceBoxPlayer(Game game) throws IOException {
         choiceB = new ChoiceBoxPlayer(game);
-        this.add(choiceB, 12, 12);
+        this.add(choiceB, 11, 12);
     }
 
     public void isVissibleChoiceBox() {

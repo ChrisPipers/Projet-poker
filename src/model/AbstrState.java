@@ -24,6 +24,18 @@ abstract class AbstrState implements State {
      *
      */
     protected Match match;
+    
+    
+    @Override
+    public void check(Player currentPlayer) throws GameException {
+        if (match.getMinimum() != 0) {
+            throw new GameException("Chech impossible " + match.getMinimum());
+        }
+        
+        
+        nextState();
+    }
+    
 
     @Override
     public void call(Player currentPlayer, int minimum, Pots pot) throws GameException {
@@ -48,7 +60,7 @@ abstract class AbstrState implements State {
         if (currentPlayer.getMoney() < amount + minimum) {
             throw new GameException("Raise impossible " + currentPlayer.getMoney() + " " + amount + " " + minimum);
         }
-        currentPlayer.makeBet(amount + minimum);
+        currentPlayer.makeBet(amount );
         match.setRaiseIterator();
         nextState();
     }

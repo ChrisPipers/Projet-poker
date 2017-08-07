@@ -21,6 +21,7 @@ class River extends AbstrState {
         availableBet.add(Bet.CALL);
         availableBet.add(Bet.FOLD);
         availableBet.add(Bet.RAISE);
+        availableBet.add(Bet.CHECK);
     }
 
     @Override

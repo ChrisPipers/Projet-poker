@@ -28,6 +28,10 @@ public interface Facade {
      */
     void bigBlind(int amount) throws GameException;
 
+    
+    
+    void check() throws GameException;
+    
     /**
      * Match a bet/raise.
      *
