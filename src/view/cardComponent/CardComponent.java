@@ -1,6 +1,5 @@
 package view.cardComponent;
 
-import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,10 +12,11 @@ import model.cards.Card;
  *
  * @author Chris
  */
-public class CardComponent extends Parent {
+public final class CardComponent extends Parent {
 
     private String stringCard;
-    private Card card;
+    private final Card card;
+
     /**
      * this is the constructor allows a deck entry in parameter
      *
@@ -24,21 +24,14 @@ public class CardComponent extends Parent {
      */
     public CardComponent(Card card) {
         this.card = card;
-        
-        
-        
+
         if (card.isHidden()) {
             stringCard = "view/Image/cards/" + "dos" + ".png";
         } else {
             stringCard = "view/Image/cards/" + card.toString() + ".png";
         }
-        
-        final String style = "-fx-repeat: no-repeat;"
-                + "-fx-image-size: cover, auto;"
-                + "-fx-background-position: center, center;"
-                + "-fx-background-repeat: no-repeat;"
-                + "-fx-background-size: cover, auto;";
-        this.setStyle(style);
+        defineStyle();
+
         Image image = new Image(stringCard, 150, 150, false, false);
         ImageView iv2 = new ImageView();
         iv2.setImage(image);
@@ -49,24 +42,28 @@ public class CardComponent extends Parent {
         getChildren().add(iv2);
     }
 
+    private void defineStyle() {
+        final String style = "-fx-repeat: no-repeat;"
+                + "-fx-image-size: cover, auto;"
+                + "-fx-background-position: center, center;"
+                + "-fx-background-repeat: no-repeat;"
+                + "-fx-background-size: cover, auto;";
+        this.setStyle(style);
+    }
+
     /**
      * this class allows to add a event to recovery the valors of the card
      *
+     * @return 
      */
     public String eventCard() {
-        this.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                CardComponent card = (CardComponent) event.getSource();
-
-////                System.out.println(stringCard);
-
-            }
+        this.setOnMouseClicked((MouseEvent event) -> {
+            CardComponent card1 = (CardComponent) event.getSource();
         });
         return this.stringCard;
     }
 
-    public void setVissibleHand(){
+    public void setVissibleHand() {
         this.stringCard = "view/Image/cards/" + this.card.toString() + ".png";
     }
 
