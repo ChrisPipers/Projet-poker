@@ -140,7 +140,7 @@ public final class TableComponent extends GridPane implements TableView {
         updatePlayers();
         if (game.getStatus() == Status.END_MATCH) {
             showAllHand();
-            this.flopC.getChildren().clear();
+
         }
     }
 

@@ -9,6 +9,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import model.Bet;
 import model.Game;
+import model.Status;
 
 /**
  *
@@ -157,8 +158,11 @@ public final class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
 
     @Override
     public void update() {
-        adaptVissibilityOfButton();
-        resetTextFieldRaise();
+            adaptVissibilityOfButton();
+            resetTextFieldRaise();
+        if (game.getStatus() ==Status.END_GAME){
+            this.setVisible(false);
+        }
     }
 
 }

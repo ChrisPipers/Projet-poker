@@ -39,18 +39,23 @@ public class FoldButtonHandler implements EventHandler<ActionEvent> {
 
     private void makeAlert() throws GameException {
         alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Error ");
-        alert.setHeaderText("Call not possible ");
-        alert.setContentText("Call not possible ");
+        alert.setTitle("Warning  ");
+        alert.setHeaderText("You can use check ");
+        alert.setContentText("Comfirm your choice ");
 
-        ButtonType buttonComfirm = new ButtonType("Comfirm");
+        ButtonType buttonCheck = new ButtonType("Check");
+        ButtonType buttonFold = new ButtonType("Fold");
         ButtonType buttonCancel = new ButtonType("Cancel");
+        
 
-        alert.getButtonTypes().setAll(buttonComfirm, buttonCancel);
+        alert.getButtonTypes().setAll(buttonCheck, buttonFold, buttonCancel);
 
         Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.get() == buttonComfirm) {
+        if (result.get() == buttonCheck) {
+            game.check();
+
+        }else if(result.get() == buttonFold) {
             game.fold();
         }
 

@@ -28,11 +28,9 @@ public final class PlayerComponent extends HBox implements Observer {
     private final Player player;
     private TextField textFButton;
     private Label pot;
+    private Label bounty;
     private final HBox hBoxCards;
 
-   
-    
-    
     public PlayerComponent(Player player, Game game) {
 
         this.game = game;
@@ -70,10 +68,8 @@ public final class PlayerComponent extends HBox implements Observer {
                     = "-fx-border-color: black black black black;";
         }
         this.setStyle(boderStyle);
-        
-    }
 
-    
+    }
 
     public void initHBoxCards() {
         List<Card> cards = player.getCards();
@@ -106,7 +102,10 @@ public final class PlayerComponent extends HBox implements Observer {
         pot.setStyle("-fx-font-weight: bold;");
         pot.setTextAlignment(TextAlignment.CENTER);
         VBox vboxPlayer = new VBox(6);
-        vboxPlayer.getChildren().addAll(name, line, pot);
+        
+        Label bounty = new Label(Double.toString(player.getBounty()));
+        
+        vboxPlayer.getChildren().addAll(name, line, pot, bounty);
         vboxPlayer.setStyle(style);
         getChildren().add(vboxPlayer);
     }
@@ -136,29 +135,25 @@ public final class PlayerComponent extends HBox implements Observer {
     public void setPot() {
         this.pot.setText(Integer.toString(player.getMoney()));
     }
-    
-    public Player getPlayer(){
+
+    public Player getPlayer() {
         return this.player;
     }
 
-
     @Override
     public void update() {
-        setPot();
-        setBorderLayout();
-        if (this.player.isFold()) {
-            clearHBoxCards();
-        }
-        
-        if (this.game.getIsOver()){
-            if (!this.player.isFold()) {
+        if (!this.player.isFold()) {
+            setPot();
+            setBorderLayout();
+            if (this.game.getIsOver()) {
                 for (Card card : this.player.getCards()) {
                     card.show();
+                    setHboxCards();
+                    setPot();
                 }
-            
-            setHboxCards();
-            setPot();
             }
+        } else {
+            this.hBoxCards.setVisible(false);
         }
     }
 

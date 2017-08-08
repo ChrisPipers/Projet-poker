@@ -4,13 +4,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import model.Game;
 import model.GameException;
 import observer.Observer;
@@ -19,8 +23,6 @@ import model.PlayerIterator;
 import model.Pot;
 import model.Pots;
 import model.Status;
-import static model.Status.END_MATCH;
-import model.cards.Card;
 import view.playerComponent.PlayerComponent;
 import view.tableComponent.TableComponent;
 
@@ -36,7 +38,8 @@ public class FXMLViewController implements Initializable, Observer {
     private TableComponent table;
     private List<Player> listWinner;
     private PlayerIterator iterator;
-
+    private Stage stage;
+    private Scene scene;
     @FXML
     private HBox hBoxMain;
 
@@ -48,7 +51,6 @@ public class FXMLViewController implements Initializable, Observer {
         this.listWinner = new ArrayList<>();
     }
 
-//    
     public FXMLViewController getFXMLViewController() {
         return this.fxmlViewController;
     }
@@ -58,11 +60,7 @@ public class FXMLViewController implements Initializable, Observer {
     }
 
     public void setTable(TableComponent table) {
-
-//        this.table = new TableComponent(this.game);
-//        this.pane.getChildren().add(table);
         this.hBoxMain.getChildren().add(table);
-//        this.tBox.getChildren().add(table);
     }
 
     public void setHBoxCardsPlayer() {
@@ -83,13 +81,13 @@ public class FXMLViewController implements Initializable, Observer {
         List<Pot> listPots = new ArrayList<>();
         Pots pot = game.getMatch().getPots();
         listPots = pot.getListPots();
-        
         for (Pot listPot : listPots) {
             PlayerIterator it = game.getMatch().getIterator();
             PlayerIterator itPlayer = new PlayerIterator(it);
             listWinner = listPot.findWinners(itPlayer);
         }
-
+//        int cpt = game.getPlayers().size();
+//        this.game.
     }
 
     public void displayWinner() throws IOException {
@@ -99,61 +97,47 @@ public class FXMLViewController implements Initializable, Observer {
             winners = winners + " " + player.getName();
         }
         winners = winners + " Good game";
-        
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Winner(s)");
-        alert.setHeaderText("The Winner(s) is(are) the Player ");
 
-        alert.setContentText(winners);
-        alert.showAndWait();
-        
-//        this.table.getChildren().clear();
-//        this.table = new TableComponent(game);
-        
+        alertBox(winners);
 
     }
 
-    
+    private void alertBox(String winners) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Winner(s)");
+        alert.setHeaderText("The Winner(s) is(are) the Player ");
+        ButtonType buttonComfirm = new ButtonType("Comfirm");
+        alert.getButtonTypes().setAll(buttonComfirm);
+
+        alert.setContentText(winners);
+        alert.show();
+
+    }
 
     @Override
     public void update() {
-//        System.out.println("update fxml ");
-//        this.table.update();
-//        setTable(table);
-
-//        this.setGame(game);
-        if(game.getStatus()== Status.END_GAME){
-            table.updatePotPlayer();
-        }
-
-
+//        if(game.getStatus()== Status.END_GAME){
+//            table.updatePotPlayer();
+//        }
         if (game.getIsOver()) {
             try {
-                //            showAllHand();
-                
-                //            game.up
-//                game.getStatus().
-//            game.getMatch().splitPot();
-//        Thread.sleep(2000);
-defineWinner();
+
+                defineWinner();
                 try {
                     this.table = new TableComponent(game);
                 } catch (IOException ex) {
                     Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-
-
                 try {
                     displayWinner();
-//            table.getFlopComponent().resetBoard();
                 } catch (IOException ex) {
                     Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } catch (GameException ex) {
                 Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
     }
 

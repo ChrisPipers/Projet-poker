@@ -32,7 +32,8 @@ abstract class AbstrState implements State {
             throw new GameException("Chech impossible " + match.getMinimum());
         }
         
-        
+        currentPlayer.makeBet(0);
+
         nextState();
     }
     

@@ -50,8 +50,7 @@ public class Game extends Observable implements Facade {
 
     @Override
     public void startMatch() throws GameException {
-        
-        
+
         if (match != null && !match.isOver()) {
             throw new GameException("Vous devez terminer le match en cours");
         }
@@ -64,7 +63,7 @@ public class Game extends Observable implements Facade {
                 indexNextButton = (indexNextButton + 1) % players.size();
             }
         }
-       
+
         players.get(indexNextButton).giveButtton();
         this.match = new Match(players);
         updateSatus();
@@ -161,12 +160,12 @@ public class Game extends Observable implements Facade {
     public List<Player> getPlayers() {
         return Collections.unmodifiableList(players);
     }
-    
+
     /**
      *
      * @return
      */
-    public Match getMatch(){
+    public Match getMatch() {
         return this.match;
     }
 
@@ -179,8 +178,8 @@ public class Game extends Observable implements Facade {
     public Status getStatus() {
         return status;
     }
-    
-    public boolean getIsOver(){
+
+    public boolean getIsOver() {
         return this.match.isOver();
     }
 
@@ -190,6 +189,7 @@ public class Game extends Observable implements Facade {
                 status = INIT;
             } else if (match.isOver()) {
                 status = END_MATCH;
+
             } else {
                 State state = match.getState();
                 if (state instanceof Blind) {
@@ -204,16 +204,23 @@ public class Game extends Observable implements Facade {
                     status = RIVER;
                 }
             }
-        }else
-        
-        {
-            updateSatus();
         }
     }
 
- 
-    
-    
+    public void setNbPlayer(List<Player> listPlayer) {
+        int nbBounty = 0;
+        for (int i = 0; i < players.size(); i++) {
+            if (!players.get(i).isFold()){
+                if (players.get(i).getMoney()==0){
+                    nbBounty +=1;
+                }
+            }
+            for (int j = 0; j < listPlayer.size(); j++) {
+                listPlayer.get(i).setBounty(nbBounty/listPlayer.size());
+            }
+        }
+    }
+
     @Override
     public void stop() {
         status = END_GAME;
@@ -225,22 +232,20 @@ public class Game extends Observable implements Facade {
         return Match.SMALLBLIND;
     }
 
-//    @Override
     public void addObserver(Observer observer) {
         listObserver.add(observer);
     }
 
-//    @Override
     public void removeObserver(Observer observer) {
         listObserver.remove(observer);
     }
 
 //    @Override
     public void notifyObserver() {
-       //        System.out.println(this.status);
-        listObserver.stream().forEach((observer) -> {
-            observer.update();
-        });
-        
+        for (int i = 0; i < listObserver.size(); i++) {
+
+            listObserver.get(i).update();
+        }
+
     }
 }

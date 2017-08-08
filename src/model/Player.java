@@ -19,7 +19,7 @@ public class Player {
     private Hand hand;
 
     private int money;
-    private int bounty;
+    private double bounty;
     private int currentBet;
     private int currentProfit;
 
@@ -138,8 +138,7 @@ public class Player {
     
     
     public void chech(){
-        money = this.money;
-       currentBet = currentBet;
+        
     }
 
     /**
@@ -187,6 +186,11 @@ public class Player {
         return cards;
     }
 
+    public double getBounty(){
+        return this.bounty;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 5;
@@ -328,8 +332,11 @@ public class Player {
         return fold;
     }
 
-    public void setBounty(){
-        this.bounty = this.bounty+1;
+    
+    public void setBounty(double bount){
+        
+        this.bounty = this.bounty+bount;
+        
     }
     
     

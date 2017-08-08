@@ -29,8 +29,7 @@ public class Main extends Application {
         Parent root = (Parent) loader.load();
         FXMLViewController controller = loader.<FXMLViewController>getController();
         fxControl = new FXMLViewController();
-
-        wait = new WaitForAnimation(1);
+        
         
         game = new Game();
 
