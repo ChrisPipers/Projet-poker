@@ -152,16 +152,16 @@ public final class TableComponent extends GridPane implements TableView {
 //    public void updateMise() {
 //        for (int i = 0; i < listPlayer.size(); i++) {
 ////            listLabel.get(i).setText(Integer.toString(listPlayer.get(i).getSumRaise()));
-//        }
-//    }
-
-//    @Override
-    public void updateFlop() {
-        this.flopC.setBoard();
-
-    }
+////        }
+////    }
 //
-//    @Override
+////    @Override
+//    public void updateFlop() {
+//        this.flopC.setBoard();
+//
+//    }
+////
+////    @Override
 
     public void updatePlayers() {
         for (PlayerComponent playerP : listPlayerC) {

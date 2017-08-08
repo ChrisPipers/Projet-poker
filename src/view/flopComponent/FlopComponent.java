@@ -7,7 +7,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import model.Game;
 import model.Status;
-//import model.Observer;
 import static model.Status.END_GAME;
 import static model.Status.FLOP;
 import static model.Status.RIVER;
@@ -21,7 +20,7 @@ import model.cards.Card;
 public final class FlopComponent extends HBox implements FlopView {
 
     private HBox board;
-    private final DeckComponent deck;
+    private DeckComponent deck;
     private TextField text;
     private final Game game;
     private Status status;
@@ -35,27 +34,26 @@ public final class FlopComponent extends HBox implements FlopView {
         this.setMinWidth(62 * 5 + 90 + 200 + 100);
         this.setPrefWidth(62 * 5 + 90 + 200 + 100);
 
-        deck = new DeckComponent();
-
         makeBoard(game);
+        makeDeck();
         makePot(game);
 
-        this.board.setTranslateY(20);
-        this.deck.setTranslateY(20);
-        this.text.setTranslateY(20);
-        this.text.setTranslateX(-520);
-
         this.getChildren().addAll(board, deck, text);
-
     }
 
-    public void makeBoard(Game game) {
+    private void makeBoard(Game game) {
         this.board = new HBox();
         this.board.setMinHeight(70);
         this.board.setMinWidth(64 * 5);
+        this.board.setTranslateY(20);
     }
 
-    public void makePot(Game game) {
+    private void makeDeck() {
+        this.deck = new DeckComponent();
+        this.deck.setTranslateY(20);
+    }
+
+    private void makePot(Game game) {
         String style = "-fx-background-color: red;"
                 + "-fx-font-family: monospace;"
                 + "-fx-font-size: 16;"
@@ -68,21 +66,15 @@ public final class FlopComponent extends HBox implements FlopView {
         this.text.setStyle(style);
         this.text.setMinHeight(50);
         this.text.setMinWidth(120);
+        this.text.setTranslateY(20);
+        this.text.setTranslateX(-520);
     }
 
-    public void setPot() {
-        if (game.getStatus() == END_GAME) {
-            resetPot();
-        } else {
-            this.text.setText(Integer.toString(game.getPot()));
-        }
-    }
-
-    public void resetPot() {
+    private void resetPot() {
         this.text.setText(Integer.toString(0));
     }
 
-    public void setBoard() {
+    private void setBoard() {
         List<Card> cardsBoard = game.getBoard();
         if (null != game.getStatus() && (this.status != game.getStatus())) {
             switch (game.getStatus()) {
@@ -90,7 +82,6 @@ public final class FlopComponent extends HBox implements FlopView {
                     this.status = FLOP;
                     for (Card card : cardsBoard) {
                         card.show();
-//                        System.out.println("1");
                         CardComponent cardC = new CardComponent(card);
                         this.board.getChildren().add(cardC);
                     }
@@ -117,12 +108,12 @@ public final class FlopComponent extends HBox implements FlopView {
 
     }
 
-    public void resetBoard() {
-        
- 
-        
-   
-        this.getChildren().clear();
+    private void setPot() {
+        if (game.getStatus() == END_GAME) {
+            resetPot();
+        } else {
+            this.text.setText(Integer.toString(game.getPot()));
+        }
     }
 
     @Override
@@ -130,6 +121,5 @@ public final class FlopComponent extends HBox implements FlopView {
         setBoard();
         setPot();
 
-        
     }
 }

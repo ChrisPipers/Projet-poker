@@ -25,7 +25,7 @@ public final class DeckComponent extends HBox {
         }
     }
 
-    public ImageView getCardImageView() {
+    private ImageView getCardImageView() {
         stringCard = "view/Image/cards/" + "dos" + ".png";
         Image image = new Image(stringCard, 150, 150, false, false);
         iv2 = new ImageView();

@@ -37,7 +37,7 @@ public class FoldButtonHandler implements EventHandler<ActionEvent> {
 
     }
 
-    public void makeAlert() throws GameException {
+    private void makeAlert() throws GameException {
         alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Error ");
         alert.setHeaderText("Call not possible ");

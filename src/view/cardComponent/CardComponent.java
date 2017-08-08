@@ -56,7 +56,7 @@ public final class CardComponent extends Parent {
      *
      * @return 
      */
-    public String eventCard() {
+    private String eventCard() {
         this.setOnMouseClicked((MouseEvent event) -> {
             CardComponent card1 = (CardComponent) event.getSource();
         });

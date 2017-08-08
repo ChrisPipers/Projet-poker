@@ -118,11 +118,7 @@ public final class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
         return Integer.parseInt(this.sumRaiseTF.getText());
     }
 
-    public void hideButton(Button but) {
-        but.setVisible(false);
-    }
-
-    public void hideAllButton() {
+    private void hideAllButton() {
         this.call.setVisible(false);
         this.check.setVisible(false);
         this.raise.setVisible(false);
