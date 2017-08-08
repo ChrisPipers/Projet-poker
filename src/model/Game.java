@@ -4,7 +4,7 @@ import model.observer.Observer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Observable;
+//import java.util.Observable;
 import static model.Status.BLIND;
 import static model.Status.END_GAME;
 import static model.Status.END_MATCH;
@@ -14,13 +14,14 @@ import static model.Status.PREFLOP;
 import static model.Status.RIVER;
 import static model.Status.TURN;
 import model.cards.Card;
+import model.observer.Observable;
 
 /**
  * The main class of the poker game.
  *
  * @author esiProfs
  */
-public class Game extends Observable implements Facade {
+public class Game implements Observable, Facade {
     
     private final int valorBounty;
     private int bountyInGame;
@@ -179,7 +180,7 @@ public class Game extends Observable implements Facade {
     }
     
     private void notifyChange() {
-        setChanged();
+//        setChanged();
         notifyObserver();
     }
     

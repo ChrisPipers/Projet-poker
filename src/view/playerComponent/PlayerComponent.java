@@ -14,7 +14,6 @@ import model.Game;
 import model.observer.Observer;
 import model.Player;
 import model.cards.Card;
-import view.choiceBoxPlayer.ChoiceBoxPlayer;
 
 /**
  *
@@ -23,7 +22,6 @@ import view.choiceBoxPlayer.ChoiceBoxPlayer;
 public final class PlayerComponent extends HBox implements Observer {
 
     private ImageView picturePlayer;
-    private final ChoiceBoxPlayer choiceBoxPlayer;
     private final Game game;
     private final Player player;
     private TextField textFButton;
@@ -40,7 +38,6 @@ public final class PlayerComponent extends HBox implements Observer {
         this.player = player;
         this.setHeight(90);
         this.setWidth(250);
-        this.choiceBoxPlayer = new ChoiceBoxPlayer(game);
         this.hBoxCards = new HBox();
         setBorderLayout();
         this.getChildren().add(hBoxCards);
