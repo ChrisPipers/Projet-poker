@@ -10,10 +10,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import model.Game;
-import observer.Observer;
 import model.Player;
 import model.Status;
-import model.cards.Card;
 import view.choiceBoxPlayer.ChoiceBoxPlayer;
 import view.flopComponent.FlopComponent;
 import view.playerComponent.PlayerComponent;
@@ -41,20 +39,13 @@ public final class TableComponent extends GridPane implements TableView {
     public TableComponent(Game game) throws IOException {
         this.game = game;
         this.game.addObserver(this);
-
         listPlayer = game.getPlayers();
-
         initGridPaneTable();
         initPlayerTable();
         initFlopComponent();
         addChoiceBoxPlayer(game);
-
         this.minHeight(400);
         this.minWidth(400);
-        
-        
-        
-        
     }
 
     private void initGridPaneTable() {
@@ -68,12 +59,9 @@ public final class TableComponent extends GridPane implements TableView {
                 + "-fx-background-image: url(view/Image/tablepoker.png);"
                 + "-fx-background-size: 1200 860;"
                 + "-fx-background-position: center bottom; "
-                + "-fx-repeat: no-repeat;"
-//                + "-fx-grid-lines-visible: true"
-                ;
+                + "-fx-repeat: no-repeat;";
 
         this.setStyle(style);
-
     }
 
     private void initPlayerTable() {
@@ -98,31 +86,6 @@ public final class TableComponent extends GridPane implements TableView {
         this.add(flopC, 6, 5);
     }
 
-//    public void initMisePlayer() {
-//        posMise = new PositionMise();
-//        listLabel = new ArrayList<Label>();
-//        
-//        String styleMise = "-fx-background-color: white;"
-//                    + "-fx-font-weight : bold;" ;
-//        
-//        for (int i = 0; i < listPlayer.size(); i++) {
-//            for (Player player : listPlayer) {
-////                label = new Label(Integer.toString(player.getSumRaise()));
-//                label.setAlignment(Pos.CENTER);
-//                label.setStyle(styleMise);
-//                listLabel.add(label);
-//                hbtf = new HBox();
-//                hbtf.setMinSize(80, 60);
-//                hbtf.setAlignment(Pos.CENTER);
-//                hbtf.getChildren().add(label);
-//
-//                this.add(hbtf, posMise.getPosMise(i).getJ(),
-//                        posMise.getPosMise(i).getI());
-//            }
-//        }
-//    }
-
-
     public void addChoiceBoxPlayer(Game game) throws IOException {
         choiceB = new ChoiceBoxPlayer(game);
         this.add(choiceB, 11, 12);
@@ -143,82 +106,42 @@ public final class TableComponent extends GridPane implements TableView {
     public FlopComponent getFlopComponent() {
         return this.flopC;
     }
-    
+
     public List<PlayerComponent> getListPlayerC() {
-//        System.out.println("reste"+ listPlayerC.size());
         return this.listPlayerC;
     }
 
-//    public void updateMise() {
-//        for (int i = 0; i < listPlayer.size(); i++) {
-////            listLabel.get(i).setText(Integer.toString(listPlayer.get(i).getSumRaise()));
-////        }
-////    }
-//
-////    @Override
-//    public void updateFlop() {
-//        this.flopC.setBoard();
-//
-//    }
-////
-////    @Override
-
     public void updatePlayers() {
-        for (PlayerComponent playerP : listPlayerC) {
-            playerP.update();
-//            playerP.isCurrentPlayer();
-            playerP.setBorderLayout();
-        }
+        listPlayerC.stream().map((playerC) -> {
+            playerC.update();
+            return playerC;
+        }).forEachOrdered((playerC) -> {
+            playerC.setBorderLayout();
+        });
+    }
 
-//        for (int i = 0; i < listPlayerC.size(); i++) {
-//            
-//        
-//            listPlayerC.get(i).update();
-//            listPlayerC.get(i).setBorderLayout();
-//        }
-        
-        
+    public void updatePotPlayer() {
+        listPlayerC.forEach((playerC) -> {
+            playerC.setPot();
+        });
     }
-    
-    
-    public void updatePotPlayer(){
-        for (PlayerComponent playerP : listPlayerC) {
-            playerP.setPot();
-        }
-    }
-    
-    
-//
+
     public void showAllHand() {
-        for (PlayerComponent playerC : listPlayerC) {
-            
-        
+        listPlayerC.forEach((playerC) -> {
             Player p = playerC.getPlayer();
-            if (!p.isFold() ) {
-//                for (Card card : p.getCards()) {
-//                    card.show();
-//                    
-//                }
-                
+            if (!p.isFold()) {
                 playerC.setHboxCards();
             }
-        }
-
+        });
     }
 
-    
     @Override
     public void update() {
         updatePlayers();
-//        this.flopC.update();
-        if (game.getStatus()== Status.END_MATCH){
+        if (game.getStatus() == Status.END_MATCH) {
             showAllHand();
-//            for (PlayerComponent playerComponent : listPlayerC) {
-//                playerComponent.getChildren().clear();
-//            }
-//            this.flopC.getChildren().clear();
+            this.flopC.getChildren().clear();
         }
-//        this.updateFlop();
     }
 
 }

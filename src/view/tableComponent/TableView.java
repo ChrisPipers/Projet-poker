@@ -7,8 +7,6 @@ import observer.Observer;
  * @author Mitch
  */
 public interface TableView extends Observer {
- 
-    public void update();
-    
-    
+    @Override
+    public void update();   
 }
