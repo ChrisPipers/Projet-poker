@@ -107,8 +107,8 @@ public class FXMLViewController implements Initializable, Observer {
         alert.setContentText(winners);
         alert.showAndWait();
         
-        this.table.getChildren().clear();
-        this.table = new TableComponent(game);
+//        this.table.getChildren().clear();
+//        this.table = new TableComponent(game);
         
 
     }

@@ -17,26 +17,14 @@ public class CheckButtonHandler implements EventHandler<ActionEvent> {
 
     public CheckButtonHandler(Game game) {
         this.game = game;
-//        this.curentPlayer = curentPlayer;
     }
-
-   
 
     @Override
     public void handle(ActionEvent event) {
-        System.out.println("check");
-        if(game.getMinimium() == 0)
-        {
-
-            try {
-//                if (game.getMinimium()> game.getSmallBlindValue()*2){
-//                    throw new ChoiceBoxViewException("la valeur minimum ")
-//                }
-                game.check();
-            } catch (GameException ex) {
-                
-                Logger.getLogger(CheckButtonHandler.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+            game.check();
+        } catch (GameException ex) {
+            Logger.getLogger(CheckButtonHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

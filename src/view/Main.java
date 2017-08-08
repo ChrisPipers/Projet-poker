@@ -38,12 +38,12 @@ public class Main extends Application {
         game.addPlayer("2", 1000);
         game.addPlayer("3", 1000);
         game.addPlayer("4", 1000);
-        game.addPlayer("5", 1000);
-        game.addPlayer("6", 1000);
-        game.addPlayer("7", 1000);
-        game.addPlayer("8", 1000);
-        game.addPlayer("9", 1000);
-        game.addPlayer("10", 1000);
+//        game.addPlayer("5", 1000);
+//        game.addPlayer("6", 1000);
+//        game.addPlayer("7", 1000);
+//        game.addPlayer("8", 1000);
+//        game.addPlayer("9", 1000);
+//        game.addPlayer("10", 1000);
 
         game.start();
         table = new TableComponent(game);
