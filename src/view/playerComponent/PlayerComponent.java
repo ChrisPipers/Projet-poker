@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.TextAlignment;
 import model.Game;
-import observer.Observer;
+import model.observer.Observer;
 import model.Player;
 import model.cards.Card;
 import view.choiceBoxPlayer.ChoiceBoxPlayer;

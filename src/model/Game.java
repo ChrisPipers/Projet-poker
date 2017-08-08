@@ -1,6 +1,6 @@
 package model;
 
-import observer.Observer;
+import model.observer.Observer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,7 +22,8 @@ import model.cards.Card;
  */
 public class Game extends Observable implements Facade {
     
-    private int valorBounty;
+    private final int valorBounty;
+    private int bountyInGame;
     private final List<Observer> listObserver;
     private final static int NB_MIN = 4;
     private Match match;
@@ -37,7 +38,8 @@ public class Game extends Observable implements Facade {
         players = new ArrayList<>();
         status = INIT;
         listObserver = new ArrayList<>();
-        this.valorBounty = 0;
+        this.valorBounty = 5;
+        this.bountyInGame = 0;
     }
     
     @Override
@@ -107,9 +109,7 @@ public class Game extends Observable implements Facade {
     
     @Override
     public void allIn() throws GameException {
-        System.out.println(valorBounty + "valor bounty");
-        this.valorBounty += 1;
-        System.out.println(valorBounty);
+        this.bountyInGame += 1;
 //        match.setBounty();
         match.allIn();
         updateSatus();

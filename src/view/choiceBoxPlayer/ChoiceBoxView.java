@@ -1,6 +1,6 @@
 package view.choiceBoxPlayer;
 
-import observer.Observer;
+import model.observer.Observer;
 
 /**
  *

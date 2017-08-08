@@ -5,7 +5,7 @@
  */
 package view.playerComponent;
 
-import observer.Observer;
+import model.observer.Observer;
 
 /**
  *

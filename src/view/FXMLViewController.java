@@ -16,12 +16,11 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import model.Game;
 import model.GameException;
-import observer.Observer;
+import model.observer.Observer;
 import model.Player;
 import model.PlayerIterator;
 import model.Pot;
 import model.Pots;
-import static model.Status.END_GAME;
 import view.playerComponent.PlayerComponent;
 import view.tableComponent.TableComponent;
 
