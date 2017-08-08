@@ -27,10 +27,19 @@ class Preflop extends AbstrState {
         if (match.onlyOne()) {
             match.splitPot();
             match.end();
-    
         } else if (match.hasNext()) {
             match.nextPlayer();
-        } else {
+        } else 
+            if(match.allAllIn()){
+                match.setState(match.getFlop());
+                match.dealBoard(5);
+                 match.showDown();
+            match.splitPot();
+            for (Player player : match.getListPlayer()) {
+                System.out.println(player.getMoney()+" money gameeeer");
+            }
+            match.end();
+            }else{
             this.addPot();
             match.setState(match.getFlop());
             match.setBetIterator();

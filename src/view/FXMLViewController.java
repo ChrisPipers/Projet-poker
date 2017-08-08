@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +21,7 @@ import model.Player;
 import model.PlayerIterator;
 import model.Pot;
 import model.Pots;
-import model.Status;
+import static model.Status.END_GAME;
 import view.playerComponent.PlayerComponent;
 import view.tableComponent.TableComponent;
 
@@ -116,25 +115,17 @@ public class FXMLViewController implements Initializable, Observer {
 
     @Override
     public void update() {
-//        if(game.getStatus()== Status.END_GAME){
-//            table.updatePotPlayer();
-//        }
+        
         if (game.getIsOver()) {
             try {
-
                 defineWinner();
-                try {
-                    this.table = new TableComponent(game);
-                } catch (IOException ex) {
-                    Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                try {
-                    displayWinner();
-                } catch (IOException ex) {
-                    Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
-                }
             } catch (GameException ex) {
+                Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            try {
+                displayWinner();
+            } catch (IOException ex) {
                 Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
 

@@ -31,6 +31,10 @@ class Turn extends AbstrState {
             match.splitPot();
             
             match.end();
+        }else if (match.allAllIn()){
+            match.showBoard();
+            match.setState(match.getRiver());
+            match.dealBoard(1);
         } else if (match.hasNext()) {
             match.nextPlayer();
         } else {

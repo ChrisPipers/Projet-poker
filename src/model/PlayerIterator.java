@@ -83,6 +83,7 @@ public class PlayerIterator implements Iterator<Player> {
     @Override
     public Player next() {
         if (!hasNext()) {
+
             throw new NoSuchElementException();
         }
         int index = (current + startIndex) % players.size();
@@ -114,11 +115,28 @@ public class PlayerIterator implements Iterator<Player> {
         int count = 0;
         while (count < 2 && iterator.hasNext()) {
             Player next = iterator.next();
+
             if (next.canPlay()) {
                 count++;
             }
         }
         return count == 1;
+    }
+
+    public boolean allAllIn() {
+        Iterator<Player> iterator = players.iterator();
+        int count = 0;
+        int count2 = 0;
+        while (iterator.hasNext()) {
+            Player next = iterator.next();
+            count++;
+            if (next.canPlay() && next.isAllin()) {
+                count2++;
+            }
+        }
+        System.out.println("all in ?"+(count2 == count && (count-count2)<=1));
+        return (count2 == count && (count-count2)<=1);
+
     }
 
     List<Player> getPlayers() {

@@ -331,9 +331,7 @@ private List<Player>players;
      */
     void nextPlayer() {
         
-        
             currentPlayer = iterator.next();
-        
     }
 
     /**
@@ -376,6 +374,7 @@ private List<Player>players;
         iterator = new BetIterator(iterator);
     }
 
+    
     /**
      * Check if only one player remains,
      *
@@ -385,6 +384,17 @@ private List<Player>players;
         return iterator.onlyOne();
     }
 
+    
+    
+    
+    boolean allAllIn(){
+        return iterator.allAllIn();
+    }
+    
+    
+    void nextState(){
+        nextState();
+    }
     public PlayerIterator getIterator() {
         return this.iterator;
     }

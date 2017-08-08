@@ -32,6 +32,13 @@ class River extends AbstrState {
             match.splitPot();
             System.out.println("1");
             match.end();
+        }else if (match.allAllIn()){
+            match.showDown();
+            match.splitPot();
+            for (Player player : match.getListPlayer()) {
+                System.out.println(player.getMoney()+" ici money gameeeer");
+            }
+            match.end();
         } else if (match.hasNext()) {
             match.nextPlayer();
         } else {

@@ -276,6 +276,7 @@ public class Player {
      */
     void addprofit(int amount) {
         currentProfit += amount;
+        money = money+currentProfit;
     }
 
     /**
@@ -330,6 +331,11 @@ public class Player {
      */
     public boolean isFold() {
         return fold;
+    }
+    
+    public boolean isAllin()
+    {
+        return this.money==0;
     }
 
     

@@ -94,10 +94,14 @@ public class Pot {
     void split(List<Player> winners) {
         System.out.println("splitage");
         System.out.println(this.total+ " pot");
-        for (Player winner : winners) {
+        for (int i = 0; i < winners.size(); i++) {
+            System.out.println(winners.get(i).getName());
+            System.out.println(winners.size()+"win size");
             int amount = total / winners.size();
+            System.out.println("amount" +amount);
             System.out.println(amount +" amount vaut ");
-            winner.addprofit(amount);
+            winners.get(i).addprofit(amount);
+            winners.remove(i);
         }
         if (!winners.isEmpty()) {
             System.out.println(total +" tooottta");

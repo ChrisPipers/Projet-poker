@@ -97,7 +97,7 @@ abstract class AbstrState implements State {
 
     @Override
     public void allIn(Player currentPlayer, int minimum, Pots pot) throws GameException {
-        if (currentPlayer.getMoney() >= minimum) {
+        if (currentPlayer.getMoney() <= minimum) {
             throw new GameException("Il vous reste suffisament d'argent pour parier " + currentPlayer.getMoney() + " " + minimum);
         }
         currentPlayer.allIn();

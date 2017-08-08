@@ -3,14 +3,16 @@ package model;
 import java.util.ArrayList;
 
 /**
- * The third bet's round, the flop allow to all players to call, fold, raise or allIn.
- * All players owns two cards and the board shows three cards. 
+ * The third bet's round, the flop allow to all players to call, fold, raise or
+ * allIn. All players owns two cards and the board shows three cards.
+ *
  * @author esiProfs
  */
 public class Flop extends AbstrState {
 
     /**
      * The third state of a poker match is the Flop.
+     *
      * @param match ongoing match
      */
     public Flop(Match match) {
@@ -20,7 +22,7 @@ public class Flop extends AbstrState {
         availableBet.add(Bet.CALL);
         availableBet.add(Bet.FOLD);
         availableBet.add(Bet.RAISE);
-        
+
     }
 
     @Override
@@ -28,10 +30,20 @@ public class Flop extends AbstrState {
         if (match.onlyOne()) {
             match.splitPot();
             match.end();
-            
+        } else if (match.allAllIn()) {
+match.setState(match.getTurn());
+            match.dealBoard(1);
+            match.setState(match.getRiver());
+            match.dealBoard(1);
+            match.showDown();
+            match.splitPot();
+            for (Player player : match.getListPlayer()) {
+                System.out.println(player.getMoney() + " money gameeeer");
+            }
+            match.end();
         } else if (match.hasNext()) {
             match.nextPlayer();
-           
+
         } else {
             this.addPot();
             match.setState(match.getTurn());
@@ -42,18 +54,7 @@ public class Flop extends AbstrState {
             match.setMinimum(0);
         }
     }
-    
-  
-    @Override
-    public void smallBlind(Player currentPlayer, int minimum, int amount, Pots pot) throws GameException {
-        throw new GameException("smallBlind Impossible");
-    }
 
-    @Override
-    public void bigBlind(Player currentPlayer, int minimum, int amount, Pots pot) throws GameException {
-        throw new GameException("bigBlind Impossible");
-    }
 
-  
 
 }
