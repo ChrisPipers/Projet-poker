@@ -29,6 +29,7 @@ public final class PlayerComponent extends HBox implements Observer {
     private TextField textFButton;
     private Label pot;
     private Label bounty;
+
     private final HBox hBoxCards;
 
     public PlayerComponent(Player player, Game game) {
@@ -103,7 +104,7 @@ public final class PlayerComponent extends HBox implements Observer {
         pot.setTextAlignment(TextAlignment.CENTER);
         VBox vboxPlayer = new VBox(6);
         
-        Label bounty = new Label(Double.toString(player.getBounty()));
+        bounty = new Label(Double.toString(player.getBounty()));
         
         vboxPlayer.getChildren().addAll(name, line, pot, bounty);
         vboxPlayer.setStyle(style);
@@ -136,6 +137,9 @@ public final class PlayerComponent extends HBox implements Observer {
         this.pot.setText(Integer.toString(player.getMoney()));
     }
 
+    public void setBounty(){
+        this.bounty.setText(Double.toString(player.getBounty()));
+    }
     public Player getPlayer() {
         return this.player;
     }
@@ -150,6 +154,7 @@ public final class PlayerComponent extends HBox implements Observer {
                     card.show();
                     setHboxCards();
                     setPot();
+                    setBounty();
                 }
             }
         } else {

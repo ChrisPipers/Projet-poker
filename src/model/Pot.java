@@ -97,6 +97,7 @@ public class Pot {
            
 System.out.println("total"+total);
             int amount = total / winners.size();
+            System.out.println("bountyyyy" + bounty);
             double partOfBounty = bounty / winners.size();
 //            System.out.println("amount" +amount);
 //            System.out.println(amount +" amount vaut ");
