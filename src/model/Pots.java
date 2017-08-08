@@ -56,22 +56,27 @@ public class Pots {
         for (Pot pot : pots) {
             total += pot.getTotal();
         }
+        
         return total;
     }
     
     public Pot getPots(){
         return this.current;
     }
+    
+    
+    
 
     /**
      * Split the pot between the winners.
      */
-    void split(PlayerIterator iterator) throws GameException {
+    void split(PlayerIterator iterator, int bounty) throws GameException {
         List<Player> winners;
+//        int total = getTotal();
         for (Pot pot : pots) {
             PlayerIterator it = new PlayerIterator(iterator);
             winners = pot.findWinners(it);
-            pot.split(winners);
+            pot.split(winners, bounty);
         }
     }
 

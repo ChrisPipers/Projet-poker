@@ -22,6 +22,7 @@ public final class FlopComponent extends HBox implements FlopView {
     private HBox board;
     private DeckComponent deck;
     private TextField text;
+    private TextField bounty;
     private final Game game;
     private Status status;
 
@@ -34,14 +35,15 @@ public final class FlopComponent extends HBox implements FlopView {
         this.setMinWidth(62 * 5 + 90 + 200 + 100);
         this.setPrefWidth(62 * 5 + 90 + 200 + 100);
 
-        makeBoard(game);
+        makeBoard();
         makeDeck();
-        makePot(game);
+        makePot();
+        makeBounty();
 
-        this.getChildren().addAll(board, deck, text);
+        this.getChildren().addAll(board, deck, text, bounty);
     }
 
-    private void makeBoard(Game game) {
+    private void makeBoard() {
         this.board = new HBox();
         this.board.setMinHeight(70);
         this.board.setMinWidth(64 * 5);
@@ -53,7 +55,7 @@ public final class FlopComponent extends HBox implements FlopView {
         this.deck.setTranslateY(20);
     }
 
-    private void makePot(Game game) {
+    private void makePot() {
         String style = "-fx-background-color: red;"
                 + "-fx-font-family: monospace;"
                 + "-fx-font-size: 16;"
@@ -70,8 +72,30 @@ public final class FlopComponent extends HBox implements FlopView {
         this.text.setTranslateX(-520);
     }
 
+    private void makeBounty(){
+         String style = "-fx-background-color: red;"
+                + "-fx-font-family: monospace;"
+                + "-fx-font-size: 16;"
+                + "-fx-alignment: center;"
+                + "-fx-font-weight: bold;";
+
+        String bount = String.valueOf(0);
+
+        this.bounty = new TextField("" + bount);
+        this.bounty.setStyle(style);
+        this.bounty.setMinHeight(50);
+        this.bounty.setMinWidth(120);
+        this.bounty.setTranslateY(20);
+        this.bounty.setTranslateX(-520);
+    }
+    
+    
     private void resetPot() {
         this.text.setText(Integer.toString(0));
+    }
+    
+    private void resetBounty() {
+        this.bounty.setText(Integer.toString(0));
     }
 
     private void setBoard() {
@@ -116,10 +140,19 @@ public final class FlopComponent extends HBox implements FlopView {
         }
     }
 
+    private void setBounty(){
+         if (game.getStatus() == END_GAME) {
+            resetBounty();
+        } else {
+            this.bounty.setText(Integer.toString(game.getBounty()));
+        }
+    }
+    
     @Override
     public void update() {
         setBoard();
         setPot();
+        setBounty();
 
     }
 }

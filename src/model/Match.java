@@ -43,6 +43,7 @@ private List<Player>players;
 
     private final Pots potList;
     private final Deck deck;
+    private int bounty;
 
     private final Board board;
 
@@ -80,6 +81,7 @@ private List<Player>players;
         deck.shuffle();
         isOver = false;
         state = blind;
+        bounty = 0;
     }
 
     /**
@@ -187,6 +189,7 @@ private List<Player>players;
      */
     void allIn() throws GameException {
         state.allIn(currentPlayer, minimum, potList);
+        setBounty();
     }
 
     /**
@@ -263,6 +266,12 @@ private List<Player>players;
         return minimum;
     }
 
+    
+    int getBounty(){
+        return bounty;
+    }
+    
+    
     /**
      * Return the blind state.
      *
@@ -374,6 +383,9 @@ private List<Player>players;
         iterator = new BetIterator(iterator);
     }
 
+    void setBounty(){
+        bounty = bounty+1;
+    }
     
     /**
      * Check if only one player remains,
@@ -420,7 +432,7 @@ private List<Player>players;
      * @throws model.GameException
      */
     public void splitPot() throws GameException {
-        potList.split(iterator);
+        potList.split(iterator, bounty);
     }
 
     /**

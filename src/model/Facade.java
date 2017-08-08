@@ -96,6 +96,10 @@ public interface Facade {
      */
     List<Player> getPlayers();
 
+    
+    public int getBounty();
+    
+    
     /**
      * Return the pot's content.
      *

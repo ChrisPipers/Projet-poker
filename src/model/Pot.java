@@ -38,6 +38,7 @@ public class Pot {
     int getTotal() {
         return total;
     }
+    
 
     /**
      * Check if the player is a member of the sub-pot.
@@ -91,20 +92,20 @@ public class Pot {
      *
      * @param winners list of winners
      */
-    void split(List<Player> winners) {
-        System.out.println("splitage");
-        System.out.println(this.total+ " pot");
+    void split(List<Player> winners, int bounty) {
         for (int i = 0; i < winners.size(); i++) {
-            System.out.println(winners.get(i).getName());
-            System.out.println(winners.size()+"win size");
+           
+System.out.println("total"+total);
             int amount = total / winners.size();
-            System.out.println("amount" +amount);
-            System.out.println(amount +" amount vaut ");
+            double partOfBounty = bounty / winners.size();
+//            System.out.println("amount" +amount);
+//            System.out.println(amount +" amount vaut ");
             winners.get(i).addprofit(amount);
+            winners.get(i).setBounty(partOfBounty);
             winners.remove(i);
         }
         if (!winners.isEmpty()) {
-            System.out.println(total +" tooottta");
+//            System.out.println(total +" tooottta");
             winners.get(0).addprofit(total % winners.size());
         }
     }
