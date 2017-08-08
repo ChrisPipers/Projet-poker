@@ -90,7 +90,7 @@ public final class FlopComponent extends HBox implements FlopView {
                     this.status = FLOP;
                     for (Card card : cardsBoard) {
                         card.show();
-                        System.out.println("1");
+//                        System.out.println("1");
                         CardComponent cardC = new CardComponent(card);
                         this.board.getChildren().add(cardC);
                     }

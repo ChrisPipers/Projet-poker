@@ -80,9 +80,9 @@ public class Pot {
                 }
             }
         }
-        for (Player winner : winners) {
-            System.out.println(winner.getName()+" le joueur gagnant est ");
-        }
+//        for (Player winner : winners) {
+//            System.out.println(winner.getName()+" le joueur gagnant est ");
+//        }
         return winners;
     }
 
@@ -92,11 +92,15 @@ public class Pot {
      * @param winners list of winners
      */
     void split(List<Player> winners) {
+        System.out.println("splitage");
+        System.out.println(this.total+ " pot");
         for (Player winner : winners) {
             int amount = total / winners.size();
+            System.out.println(amount +" amount vaut ");
             winner.addprofit(amount);
         }
         if (!winners.isEmpty()) {
+            System.out.println(total +" tooottta");
             winners.get(0).addprofit(total % winners.size());
         }
     }

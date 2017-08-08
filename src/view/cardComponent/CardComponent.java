@@ -59,7 +59,7 @@ public class CardComponent extends Parent {
             public void handle(MouseEvent event) {
                 CardComponent card = (CardComponent) event.getSource();
 
-                System.out.println(stringCard);
+////                System.out.println(stringCard);
 
             }
         });

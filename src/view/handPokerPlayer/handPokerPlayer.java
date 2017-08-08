@@ -16,7 +16,7 @@ public class handPokerPlayer extends HBox {
     private CardComponent cardCR;
 
     public handPokerPlayer(List<Card> listCard) {
-        System.out.println(listCard.size());
+//        System.out.println(listCard.size());
         if (!listCard.isEmpty()) {
             cardCL = new CardComponent(listCard.get(0));
             cardCR = new CardComponent(listCard.get(1));

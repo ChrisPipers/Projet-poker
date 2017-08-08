@@ -38,7 +38,7 @@ public class Match {
     private final State flop;
     private final State turn;
     private final State river;
-
+private List<Player>players;
     private State state;
 
     private final Pots potList;
@@ -59,14 +59,14 @@ public class Match {
      * @throws model.GameException if a player does not own enough chips
      */
     public Match(List<Player> players) throws GameException {
+        this.players = players;
         for (Player player : players) {
             if (player.getMoney() < 10 * SMALLBLIND) {
                 throw new GameException("Les joueurs doivent posséder au moins 10 fois la SMALLBLIND en caisse");
             }
         }
-        
-        
-        System.out.println(minimum+ " minimum");
+
+//        System.out.println(minimum + " minimum");
         iterator = new PlayerIterator(players);
         currentPlayer = iterator.next();
         blind = new Blind(this);
@@ -110,6 +110,12 @@ public class Match {
         }
     }
 
+    
+    public List<Player> getListPlayer()
+    {
+        return this.players;
+    }
+    
     /**
      * Show the board'scards.
      */
@@ -134,17 +140,15 @@ public class Match {
     List<Card> getBoard() {
         return board.getCards();
     }
-    
-    
-    public Pots getPots(){
+
+    public Pots getPots() {
         return this.potList;
     }
 
-    
     void check() throws GameException {
         state.check(currentPlayer);
     }
-    
+
     /**
      * Increase the size of an existing bet in the same betting round.
      *
@@ -326,7 +330,10 @@ public class Match {
      * Find the next player.
      */
     void nextPlayer() {
-        currentPlayer = iterator.next();
+        
+        
+            currentPlayer = iterator.next();
+        
     }
 
     /**
@@ -377,9 +384,8 @@ public class Match {
     boolean onlyOne() {
         return iterator.onlyOne();
     }
-    
-    
-    public PlayerIterator getIterator(){
+
+    public PlayerIterator getIterator() {
         return this.iterator;
     }
 
@@ -400,6 +406,7 @@ public class Match {
 
     /**
      * The players with the best hand according being played win the pot.
+     *
      * @throws model.GameException
      */
     public void splitPot() throws GameException {

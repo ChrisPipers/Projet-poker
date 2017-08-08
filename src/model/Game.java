@@ -204,6 +204,10 @@ public class Game extends Observable implements Facade {
                     status = RIVER;
                 }
             }
+        }else
+        
+        {
+            updateSatus();
         }
     }
 
@@ -233,9 +237,10 @@ public class Game extends Observable implements Facade {
 
 //    @Override
     public void notifyObserver() {
-        System.out.println(this.status);
+       //        System.out.println(this.status);
         listObserver.stream().forEach((observer) -> {
             observer.update();
         });
+        
     }
 }

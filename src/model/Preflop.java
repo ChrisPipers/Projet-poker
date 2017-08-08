@@ -27,6 +27,7 @@ class Preflop extends AbstrState {
         if (match.onlyOne()) {
             match.splitPot();
             match.end();
+    
         } else if (match.hasNext()) {
             match.nextPlayer();
         } else {

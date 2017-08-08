@@ -57,10 +57,10 @@ abstract class AbstrState implements State {
         if (amount == 0) {
             throw new GameException("Raise doit être strictement suérieure à 0 " + amount + " " + minimum);
         }
-        if (currentPlayer.getMoney() < amount + minimum) {
+        if (currentPlayer.getMoney() < amount) {
             throw new GameException("Raise impossible " + currentPlayer.getMoney() + " " + amount + " " + minimum);
         }
-        currentPlayer.makeBet(amount );
+        currentPlayer.makeBet(amount);
         match.setRaiseIterator();
         nextState();
     }
@@ -96,9 +96,9 @@ abstract class AbstrState implements State {
 
     @Override
     public void allIn(Player currentPlayer, int minimum, Pots pot) throws GameException {
-        if (currentPlayer.getMoney() >= minimum) {
-            throw new GameException("Il vous reste suffisament d'argent pour parier " + currentPlayer.getMoney() + " " + minimum);
-        }
+//        if (currentPlayer.getMoney() >= minimum) {
+//            throw new GameException("Il vous reste suffisament d'argent pour parier " + currentPlayer.getMoney() + " " + minimum);
+//        }
         currentPlayer.allIn();
         nextState();
     }

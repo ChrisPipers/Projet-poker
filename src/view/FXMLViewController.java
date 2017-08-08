@@ -1,5 +1,6 @@
 package view;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,8 @@ import model.Player;
 import model.PlayerIterator;
 import model.Pot;
 import model.Pots;
+import model.Status;
+import static model.Status.END_MATCH;
 import model.cards.Card;
 import view.playerComponent.PlayerComponent;
 import view.tableComponent.TableComponent;
@@ -80,6 +83,7 @@ public class FXMLViewController implements Initializable, Observer {
         List<Pot> listPots = new ArrayList<>();
         Pots pot = game.getMatch().getPots();
         listPots = pot.getListPots();
+        
         for (Pot listPot : listPots) {
             PlayerIterator it = game.getMatch().getIterator();
             PlayerIterator itPlayer = new PlayerIterator(it);
@@ -88,20 +92,24 @@ public class FXMLViewController implements Initializable, Observer {
 
     }
 
-    public void displayWinner() {
+    public void displayWinner() throws IOException {
         System.out.println(listWinner.size() + " nb de victorieux ");
         String winners = "";
         for (Player player : listWinner) {
             winners = winners + " " + player.getName();
         }
         winners = winners + " Good game";
-
+        
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Winner(s)");
         alert.setHeaderText("The Winner(s) is(are) the Player ");
 
         alert.setContentText(winners);
         alert.showAndWait();
+        
+        this.table.getChildren().clear();
+        this.table = new TableComponent(game);
+        
 
     }
 
@@ -109,32 +117,43 @@ public class FXMLViewController implements Initializable, Observer {
 
     @Override
     public void update() {
-        System.out.println("update fxml ");
+//        System.out.println("update fxml ");
 //        this.table.update();
 //        setTable(table);
+
 //        this.setGame(game);
+        if(game.getStatus()== Status.END_GAME){
+            table.updatePotPlayer();
+        }
+
+
         if (game.getIsOver()) {
-//            showAllHand();
             try {
-               
+                //            showAllHand();
+                
                 //            game.up
 //                game.getStatus().
 //            game.getMatch().splitPot();
 //        Thread.sleep(2000);
-                defineWinner();
-                
-                
-                
-                
-                
-//                game.split 
+defineWinner();
+                try {
+                    this.table = new TableComponent(game);
+                } catch (IOException ex) {
+                    Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+
+
+                try {
+                    displayWinner();
+//            table.getFlopComponent().resetBoard();
+                } catch (IOException ex) {
+                    Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } catch (GameException ex) {
                 Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (InterruptedException ex) {
-//                Logger.getLogger(FXMLViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            displayWinner();
-            table.getFlopComponent().resetBoard();
+            
         }
     }
 

@@ -30,6 +30,9 @@ public final class PlayerComponent extends HBox implements Observer {
     private Label pot;
     private final HBox hBoxCards;
 
+   
+    
+    
     public PlayerComponent(Player player, Game game) {
 
         this.game = game;
@@ -117,6 +120,7 @@ public final class PlayerComponent extends HBox implements Observer {
     }
 
     public void clearHBoxCards() {
+        this.player.isFold();
         this.hBoxCards.getChildren().clear();
     }
 
@@ -136,20 +140,12 @@ public final class PlayerComponent extends HBox implements Observer {
     public Player getPlayer(){
         return this.player;
     }
-    
-    
-//    public void isCurrentPlayer(){
-//        if (this.game.getCurrentPlayer() == this.player) {
-//            
-//        }
-//    }
+
 
     @Override
     public void update() {
-        System.out.println("maj playerC");
         setPot();
         setBorderLayout();
-//        isCurrentPlayer();
         if (this.player.isFold()) {
             clearHBoxCards();
         }

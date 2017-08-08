@@ -16,6 +16,8 @@ class River extends AbstrState {
      * @param match ongoing match
      */
     River(Match match) {
+        
+      
         this.match = match;
         availableBet = new ArrayList<>();
         availableBet.add(Bet.CALL);
@@ -28,13 +30,20 @@ class River extends AbstrState {
     public void nextState() throws GameException {
         if (match.onlyOne()) {
             match.splitPot();
+            System.out.println("1");
             match.end();
         } else if (match.hasNext()) {
             match.nextPlayer();
         } else {
-            this.addPot();
+//            this.addPot();
             match.showDown();
+//////            System.out.println(match.getPot()+" pot final ");
             match.splitPot();
+//                        System.out.println("2");
+
+            for (Player player : match.getListPlayer()) {
+                System.out.println(player.getMoney()+" money gameeeer");
+            }
             match.end();
         }
     }

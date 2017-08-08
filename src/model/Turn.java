@@ -16,6 +16,7 @@ class Turn extends AbstrState {
      * @param match ongoing match
      */
     Turn(Match match) {
+       
         this.match = match;
         availableBet = new ArrayList<>();
         availableBet.add(Bet.CALL);
@@ -28,11 +29,13 @@ class Turn extends AbstrState {
     public void nextState() throws GameException {
         if (match.onlyOne()) {
             match.splitPot();
+            
             match.end();
         } else if (match.hasNext()) {
             match.nextPlayer();
         } else {
-            this.addPot();
+//            this.addPot();
+//            System.out.println(match.getPot());
             match.setBetIterator();
             match.showBoard();
             match.setState(match.getRiver());

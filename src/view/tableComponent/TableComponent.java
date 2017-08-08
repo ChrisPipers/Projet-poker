@@ -145,7 +145,7 @@ public final class TableComponent extends GridPane implements TableView {
     }
     
     public List<PlayerComponent> getListPlayerC() {
-        System.out.println("reste"+ listPlayerC.size());
+//        System.out.println("reste"+ listPlayerC.size());
         return this.listPlayerC;
     }
 
@@ -179,6 +179,15 @@ public final class TableComponent extends GridPane implements TableView {
         
         
     }
+    
+    
+    public void updatePotPlayer(){
+        for (PlayerComponent playerP : listPlayerC) {
+            playerP.setPot();
+        }
+    }
+    
+    
 //
     public void showAllHand() {
         for (PlayerComponent playerC : listPlayerC) {
@@ -204,6 +213,10 @@ public final class TableComponent extends GridPane implements TableView {
 //        this.flopC.update();
         if (game.getStatus()== Status.END_MATCH){
             showAllHand();
+            for (PlayerComponent playerComponent : listPlayerC) {
+                playerComponent.getChildren().clear();
+            }
+            this.flopC.getChildren().clear();
         }
 //        this.updateFlop();
     }

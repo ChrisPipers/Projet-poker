@@ -26,6 +26,8 @@ public class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
     private Button call;
 
     private Button raise;
+    
+    private Button allin;
 
     private TextField sumRaiseTF;
 
@@ -38,6 +40,7 @@ public class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
     private CheckButtonHandler checkButtonHandler;
     private FoldButtonHandler foldButtonHandler;
     private RaiseButtonHandler raiseButtonHandler;
+    private AllinButtonHandler allinButtonHandler;
     private Player curentPlayer;
     private List<Bet> avaibleBet;
 
@@ -50,7 +53,9 @@ public class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
         check = new Button("Check");
         call = new Button("Call");
         raise = new Button("Raise");
+        allin = new Button("All-in");
         sumRaiseTF = new TextField();
+        
 //        curentPlayer = game.getCurrentPlayer();
         this.avaibleBet = game.getAvailable();
         sumRaiseTF.addEventFilter(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
@@ -76,6 +81,9 @@ public class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
         raiseButtonHandler = new RaiseButtonHandler(this.game, this);
         raise.addEventHandler(ActionEvent.ACTION, raiseButtonHandler);
 
+        allinButtonHandler = new AllinButtonHandler(this.game, this);
+        allin.addEventHandler(ActionEvent.ACTION, allinButtonHandler);
+        
         this.game = game;
         this.match = new Match();
 
@@ -84,6 +92,7 @@ public class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
         this.add(call, 1, 0);
         this.add(raise, 0, 1);
         this.add(sumRaiseTF, 1, 1);
+        this.add(allin, 2, 1);
         defineSize();
         changeStyle();
         adaptVissibilityOfButton();
@@ -94,7 +103,8 @@ public class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
 
     private void defineSize() {
         this.fold.setMinSize(100, 40);
-
+        
+        this.allin.setMinSize(100, 40);
         this.check.setMinSize(100, 40);
         this.call.setMinSize(100, 40);
         this.raise.setMinSize(100, 40);
@@ -158,7 +168,7 @@ public class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
 
     @Override
     public void update() {
-        System.out.println("update box");
+//        System.out.println("update box");
         
         adaptVissibilityOfButton();
         resetTextFieldRaise();

@@ -28,8 +28,10 @@ public class Flop extends AbstrState {
         if (match.onlyOne()) {
             match.splitPot();
             match.end();
+            
         } else if (match.hasNext()) {
             match.nextPlayer();
+           
         } else {
             this.addPot();
             match.setState(match.getTurn());
@@ -40,8 +42,8 @@ public class Flop extends AbstrState {
             match.setMinimum(0);
         }
     }
-
-
+    
+  
     @Override
     public void smallBlind(Player currentPlayer, int minimum, int amount, Pots pot) throws GameException {
         throw new GameException("smallBlind Impossible");

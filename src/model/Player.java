@@ -259,7 +259,9 @@ public class Player {
      *
      */
     void allIn() {
-        currentBet = currentBet + money;
+        if (currentBet<money){
+            currentBet =  money;
+        }
         money = 0;
     }
 
