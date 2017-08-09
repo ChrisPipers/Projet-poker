@@ -2,8 +2,6 @@ package BaseDeDonnées;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Properties;
-import sun.security.util.Password;
 
 /**
  *
@@ -11,26 +9,12 @@ import sun.security.util.Password;
  */
 public class DriverManager {
     
-    private Connection connection;
+    private Connection conn;
 
     public Connection getConnection() throws SQLException {
 
-        Properties connectionProps = new Properties();
-        connectionProps.put("netbeans", this.userName);
-        connectionProps.put("123456", this.password);
-
-        if (this.dbms.equals("mysql")) {
-            conn = DriverManager.getConnection(
-                    "jdbc:" + this.dbms + "://"
-                    + this.serverName
-                    + ":" + this.portNumber + "/",
-                    connectionProps);
-        } else if (this.dbms.equals("derby")) {
-            conn = DriverManager.getConnection(
-                    "jdbc:" + this.dbms + ":"
-                    + this.dbName
-                    + ";create=true",
-                    connectionProps);
+        if (conn == null) {
+            conn = java.sql.DriverManager.getConnection("jdbc:derby://localhost:1527/PokerPlayer", "Netbeans", "123456");
         }
         System.out.println("Connected to database");
         return conn;
