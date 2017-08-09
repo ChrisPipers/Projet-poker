@@ -1,12 +1,17 @@
 package view;
 
-import Controller.FXMLViewController;
+import BaseDeDonnées.MainBaseDeDonnées;
+import BaseDeDonnées.ManagementBaseDeDonnées;
+import BaseDeDonnées.PlayerBDD;
+import java.awt.Toolkit;
 import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javax.swing.ImageIcon;
 import model.Game;
 import model.Player;
 import view.tableComponent.TableComponent;
@@ -24,31 +29,44 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
+        
+        stage.getIcons().add(new Image("./view/Image/logo.png"));
+    
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLView.fxml"));
         Parent root = (Parent) loader.load();
         FXMLViewController controller = loader.<FXMLViewController>getController();
         fxControl = new FXMLViewController();
-        
-        
-        game = new Game();
 
-        game.addPlayer("1", 1000);
-        game.addPlayer("2", 1000);
-        game.addPlayer("3", 1000);
-        game.addPlayer("4", 1000);
+        game = new Game();
+//
+//        MainBaseDeDonnées.connect();
+//        int nbPlayer = ManagementBaseDeDonnées.getNbPlayer();
+
+//        if (nbPlayer == 0) {
+            game.addPlayer("1", 1000, 1);
+            game.addPlayer("2", 1000, 1);
+            game.addPlayer("3", 1000, 1);
+            game.addPlayer("4", 1000, 1);
+//            MainBaseDeDonnées.addPlayersToBDD(game.getPlayers());
+//        } else {
+//            List<PlayerBDD> players = ManagementBaseDeDonnées.getPlayer();
+//            for (PlayerBDD p : players) {
+//                game.addPlayer(p.getName(), p.getMoney(), p.getBounty());
+//            }
+//        }
+
 //        game.addPlayer("5", 1000);
 //        game.addPlayer("6", 1000);
 //        game.addPlayer("7", 1000);
 //        game.addPlayer("8", 1000);
 //        game.addPlayer("9", 1000);
 //        game.addPlayer("10", 1000);
-
         game.start();
         table = new TableComponent(game);
 //        wait.run();
         game.smallBlind(game.getSmallBlindValue());
 //        wait.run();
-                table = new TableComponent(game);
+        table = new TableComponent(game);
 
         game.bigBlind(game.getSmallBlindValue() * 2);
 //wait.run();

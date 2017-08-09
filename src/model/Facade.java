@@ -17,7 +17,7 @@ public interface Facade {
      * @param money amount of player's chips
      * @param sexe
      */
-    void addPlayer(String name, int money);
+    void addPlayer(String name, int money, double bounty);
 
     /**
      * Bet the given amount.

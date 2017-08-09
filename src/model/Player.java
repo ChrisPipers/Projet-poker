@@ -32,10 +32,10 @@ public class Player {
      * @param money
      * 
      */
-    public Player(String name, int money) {
+    public Player(String name, int money, double bounty) {
         this.name = name;
         this.money = money;
-        this.bounty = 1;
+        this.bounty = bounty;
         cards = new PlayerCards();
     }
 

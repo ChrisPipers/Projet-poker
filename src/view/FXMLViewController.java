@@ -1,5 +1,6 @@
-package Controller;
+package view;
 
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -114,7 +115,7 @@ public class FXMLViewController implements Initializable, Observer {
 
     @Override
     public void update() {
-        
+
         if (game.getIsOver()) {
             try {
                 defineWinner();

@@ -74,8 +74,8 @@ public class Game implements Observable, Facade {
     }
     
     @Override
-    public void addPlayer(String name, int money) {
-        Player player = new Player(name, money);
+    public void addPlayer(String name, int money, double bounty) {
+        Player player = new Player(name, money, bounty);
         players.add(player);
         notifyChange();
     }
