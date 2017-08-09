@@ -9,9 +9,9 @@ public class PlayerBDD {
     private int IDPlayer;
     private String name;
     private int money;
-    private int bounty;
+    private double bounty;
 
-    public PlayerBDD(int IDPlayer, String name, int money, int bounty) {
+    public PlayerBDD(int IDPlayer, String name, int money, double bounty) {
         this.IDPlayer = IDPlayer;
         this.name = name;
         this.money = money;
@@ -22,7 +22,7 @@ public class PlayerBDD {
         this.money = money;
     }
 
-    public void setBounty(int bounty) {
+    public void setBounty(double bounty) {
         this.bounty = bounty;
     }
 
@@ -38,7 +38,7 @@ public class PlayerBDD {
         return money;
     }
     
-    public int getBounty(){
+    public double getBounty(){
         return bounty;
     }
 

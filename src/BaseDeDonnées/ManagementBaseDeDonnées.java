@@ -28,7 +28,7 @@ public class ManagementBaseDeDonnées {
         }
     }
 
-    public static void addPlayer(String name, int money, int bounty) throws SQLException {
+    public static void addPlayer(String name, int money, double bounty) throws SQLException {
         int nbPlayer = getNbPlayer();
         String query = "add player (IDPlayer, name, money, bounty ) values("
                 + (nbPlayer + 1) + ", '"
@@ -109,7 +109,7 @@ public class ManagementBaseDeDonnées {
             preparedStmt = conn.prepareStatement(query);
             ResultSet result = preparedStmt.executeQuery();
             while (result.next()) {
-                listPlayer.add(new PlayerBDD(result.getInt(1), result.getString(2), result.getInt(3), result.getInt(3)));
+                listPlayer.add(new PlayerBDD(result.getInt(1), result.getString(2), result.getInt(3), result.getDouble(3)));
             }
             return listPlayer;
         } catch (SQLException e) {

@@ -16,7 +16,7 @@ public class BaseDeDonnées {
 
         String query = "add player"
                 + "(IDPlayer INTEGER not NULL,"
-                + "name VARCHAR (40),"
+                + "name VARCHAR (50),"
                 + "money INTEGER,"
                 + "bounty INTEGER"
                 + "PRIMARY KEY (IDPlayer))";
