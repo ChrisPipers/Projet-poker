@@ -38,22 +38,22 @@ public class Main extends Application {
         fxControl = new FXMLViewController();
 
         game = new Game();
-//
-//        MainBaseDeDonnées.connect();
-//        int nbPlayer = ManagementBaseDeDonnées.getNbPlayer();
 
-//        if (nbPlayer == 0) {
+        MainBaseDeDonnées.connect();
+        int nbPlayer = ManagementBaseDeDonnées.getNbPlayer();
+
+        if (nbPlayer == 0) {
             game.addPlayer("1", 1000, 1);
             game.addPlayer("2", 1000, 1);
             game.addPlayer("3", 1000, 1);
             game.addPlayer("4", 1000, 1);
-//            MainBaseDeDonnées.addPlayersToBDD(game.getPlayers());
-//        } else {
-//            List<PlayerBDD> players = ManagementBaseDeDonnées.getPlayer();
-//            for (PlayerBDD p : players) {
-//                game.addPlayer(p.getName(), p.getMoney(), p.getBounty());
-//            }
-//        }
+            MainBaseDeDonnées.addPlayersToBDD(game.getPlayers());
+        } else {
+            List<PlayerBDD> players = ManagementBaseDeDonnées.getPlayer();
+            for (PlayerBDD p : players) {
+                game.addPlayer(p.getName(), p.getMoney(), p.getBounty());
+            }
+        }
 
 //        game.addPlayer("5", 1000);
 //        game.addPlayer("6", 1000);

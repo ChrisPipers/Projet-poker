@@ -1,6 +1,7 @@
 package BaseDeDonnées;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,8 +14,8 @@ import java.util.List;
  */
 public class ManagementBaseDeDonnées {
 
-    public static void majPlayer(String name, int money, int bounty) throws SQLException {
-        Connection conn = DriverManager.getConnection();
+    public static void majPlayer(String name, int money, int bounty) throws SQLException, BaseDeDonnéesExcetion {
+        Connection conn = DriverManagerP.getConnection();
         PreparedStatement preparedStmt;
         try {
             String query = "maj player set money = ? set bounty = ? where name = ?";
@@ -28,7 +29,7 @@ public class ManagementBaseDeDonnées {
         }
     }
 
-    public static void addPlayer(String name, int money, double bounty) throws SQLException {
+    public static void addPlayer(String name, int money, double bounty) throws SQLException, BaseDeDonnéesExcetion {
         int nbPlayer = getNbPlayer();
         String query = "add player (IDPlayer, name, money, bounty ) values("
                 + (nbPlayer + 1) + ", '"
@@ -38,7 +39,7 @@ public class ManagementBaseDeDonnées {
 
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection();
+            conn = DriverManagerP.getConnection();
             PreparedStatement preparedStmt;
 
             preparedStmt = conn.prepareStatement(query);
@@ -50,11 +51,11 @@ public class ManagementBaseDeDonnées {
     }
 
     // le nom est unique 
-    public static boolean existPlayer(String name) throws SQLException {
+    public static boolean existPlayer(String name) throws SQLException, BaseDeDonnéesExcetion {
         Connection conn = null;
         String query = "SELECT * FROM PokerPlayer WHERE name = ?";
         try {
-            conn = DriverManager.getConnection();
+            conn = DriverManagerP.getConnection();
             PreparedStatement preparedStmt = conn.prepareStatement(query);
             preparedStmt.setString(1, name);
             ResultSet result = preparedStmt.executeQuery();
@@ -69,8 +70,8 @@ public class ManagementBaseDeDonnées {
 
     }
 
-    public static int getNbPlayer() throws SQLException {
-        Connection conn = DriverManager.getConnection();
+    public static int getNbPlayer() throws SQLException, BaseDeDonnéesExcetion {
+        Connection conn = DriverManagerP.getConnection();
         PreparedStatement preparedStmt;
         String query = "SELECT count(*) FROM PokerPlayer";
         try {
@@ -84,8 +85,8 @@ public class ManagementBaseDeDonnées {
         }
     }
 
-    public static int getIDPlayer(String name) throws SQLException {
-        Connection conn = DriverManager.getConnection();
+    public static int getIDPlayer(String name) throws SQLException, BaseDeDonnéesExcetion {
+        Connection conn = DriverManagerP.getConnection();
         PreparedStatement preparedStmt;
         String query = "SELECT IdPlayer FROM PokerPlayer where name = '" + name + "'";
         try {
@@ -100,9 +101,9 @@ public class ManagementBaseDeDonnées {
     }
     
 
-    public static List<PlayerBDD> getPlayer() throws SQLException {
+    public static List<PlayerBDD> getPlayer() throws SQLException, BaseDeDonnéesExcetion {
         List<PlayerBDD> listPlayer = new ArrayList();
-        Connection conn = DriverManager.getConnection();
+        Connection conn = DriverManagerP.getConnection();
         PreparedStatement preparedStmt;
         String query = "SELECT * FROM PokerPlayer ";
         try {
@@ -117,9 +118,9 @@ public class ManagementBaseDeDonnées {
         }
     }
 
-    public static List<Integer> getIDAllPlayer(String name) throws SQLException {
+    public static List<Integer> getIDAllPlayer(String name) throws SQLException, BaseDeDonnéesExcetion {
         List<Integer> listIdAllPlayer = new ArrayList();
-        Connection conn = DriverManager.getConnection();
+        Connection conn = DriverManagerP.getConnection();
         PreparedStatement preparedStmt;
         String query = "SELECT IDPlayer FROM PokerPlayer where name = '"+name+"'";
         try {
