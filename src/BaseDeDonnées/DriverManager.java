@@ -8,15 +8,19 @@ import java.sql.SQLException;
  * @author Mitch
  */
 public class DriverManager {
-    
-    private Connection conn;
 
-    public Connection getConnection() throws SQLException {
+    private static Connection conn;
+
+    public static Connection getConnection() throws SQLException {
 
         if (conn == null) {
-            conn = java.sql.DriverManager.getConnection("jdbc:derby://localhost:1527/PokerPlayer", "Netbeans", "123456");
+            try {
+                conn = java.sql.DriverManager.getConnection("jdbc:derby://localhost:1527/PokerPlayer", "Netbeans", "123456");
+                System.out.println("Connected to database");
+            } catch (SQLException e) {
+                throw new SQLException(" impossible to connected database " + e.getMessage());
+            }
         }
-        System.out.println("Connected to database");
         return conn;
     }
 }
