@@ -1,6 +1,5 @@
 package view;
 
-import BaseDeDonnées.MainBaseDeDonnées;
 import BaseDeDonnées.ManagementBaseDeDonnées;
 import BaseDeDonnées.PlayerBDD;
 import java.awt.Toolkit;
