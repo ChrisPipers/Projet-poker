@@ -14,7 +14,7 @@ public class DriverManagerP {
     public static Connection getConnection() throws BaseDeDonnéesExcetion {
 
             try {
-                conn = DriverManager.getConnection("jdbc:derby://localhost:1527/PokerPlayer", "netbeans", "123456");
+                conn = DriverManager.getConnection("jdbc:derby://localhost:1527/PokerPlayer2", "Mitch", "Mitch");
                 System.out.println("Connected to database");
             } catch (SQLException e) {
                 throw new BaseDeDonnéesExcetion(" impossible to connected database " + e.getMessage());
@@ -22,4 +22,6 @@ public class DriverManagerP {
         
         return conn;
     }
+    
 }
+

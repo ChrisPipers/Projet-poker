@@ -16,18 +16,18 @@ import model.Player;
 public class mainBaseDeDonnees {
 
     public static void connect() throws SQLException, BaseDeDonnéesExcetion {
-        Connection conn = null;
+//        Connection conn = null;
 
-        conn = DriverManagerP.getConnection();
+        Connection conn = DriverManagerP.getConnection();
         Statement stmt = conn.createStatement();
 
         DatabaseMetaData dbm = conn.getMetaData();
 
         ResultSet result = dbm.getTables(null, null, "PLAYER", null);
         if (result.next()) {
-            System.out.println("Table exists");
+            System.out.println("player exists");
         } else {
-            System.out.println("Table doesn't exist");
+            System.out.println("player doesn't exist");
             BaseDeDonnées.addPlayer();
         }
 

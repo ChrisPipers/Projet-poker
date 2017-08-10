@@ -1,6 +1,6 @@
 package view;
 
-import BaseDeDonnes.ManagementBaseDeDonnées;
+import BaseDeDonnées.ManagementBaseDeDonnées;
 import BaseDeDonnées.PlayerBDD;
 import BaseDeDonnées.mainBaseDeDonnees;
 import java.util.List;
@@ -26,15 +26,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
-        
-        stage.getIcons().add(new Image("./view/Image/logo.png"));
-    
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLView.fxml"));
-        Parent root = (Parent) loader.load();
-        FXMLViewController controller = loader.<FXMLViewController>getController();
-        fxControl = new FXMLViewController();
-
         game = new Game();
 
         mainBaseDeDonnees.connect();
@@ -52,6 +43,13 @@ public class Main extends Application {
                 game.addPlayer(p.getName(), p.getMoney(), p.getBounty());
             }
         }
+
+        stage.getIcons().add(new Image("./view/Image/logo.png"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLView.fxml"));
+        Parent root = (Parent) loader.load();
+        FXMLViewController controller = loader.<FXMLViewController>getController();
+        fxControl = new FXMLViewController();
 
 //        game.addPlayer("5", 1000);
 //        game.addPlayer("6", 1000);
