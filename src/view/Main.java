@@ -1,8 +1,8 @@
 package view;
 
-import BaseDeDonnées.ManagementBaseDeDonnées;
+import BaseDeDonnes.ManagementBaseDeDonnées;
 import BaseDeDonnées.PlayerBDD;
-import java.awt.Toolkit;
+import BaseDeDonnées.mainBaseDeDonnees;
 import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javax.swing.ImageIcon;
 import model.Game;
 import model.Player;
 import view.tableComponent.TableComponent;
@@ -38,7 +37,7 @@ public class Main extends Application {
 
         game = new Game();
 
-        MainBaseDeDonnées.connect();
+        mainBaseDeDonnees.connect();
         int nbPlayer = ManagementBaseDeDonnées.getNbPlayer();
 
         if (nbPlayer == 0) {
@@ -46,7 +45,7 @@ public class Main extends Application {
             game.addPlayer("2", 1000, 1);
             game.addPlayer("3", 1000, 1);
             game.addPlayer("4", 1000, 1);
-            MainBaseDeDonnées.addPlayersToBDD(game.getPlayers());
+            mainBaseDeDonnees.addPlayersToBDD(game.getPlayers());
         } else {
             List<PlayerBDD> players = ManagementBaseDeDonnées.getPlayer();
             for (PlayerBDD p : players) {
