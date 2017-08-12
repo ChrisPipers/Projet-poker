@@ -32,20 +32,4 @@ public class BaseDeDonnées {
 
     }
 
-//    public static void addTable() throws SQLException, BaseDeDonnéesExcetion {
-//        
-//        String query = "add table"
-//                + ("IDTable INTEGER not NULL"
-//                + "IDPlayer INTEGER not NULL"
-//                + "PRIMARY KEY (IDTable, IDPlayer)");
-//        Connection connection = null;
-//        try {
-//            connection = DriverManagerP.getConnection();
-//            Statement stmt = connection.createStatement();
-//            stmt.executeUpdate(query);
-//        } catch (SQLException e) {
-//            throw new SQLException (" add table impossible " + e.getMessage());
-//        }
-//    }
-
 }

@@ -1,7 +1,7 @@
 package BaseDeDonnées;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Connection;
 import java.sql.SQLException;
 /**
  *
@@ -11,17 +11,18 @@ public class DriverManagerP {
 
     private static Connection conn;
 
-    public static Connection getConnection() throws BaseDeDonnéesExcetion {
-
-            try {
-                conn = DriverManager.getConnection("jdbc:derby://localhost:1527/PokerPlayer2", "Mitch", "Mitch");
+    public static Connection getConnection() throws BaseDeDonnéesExcetion, SQLException {
+//            try {
+                conn = DriverManager.getConnection("jdbc:derby://localhost:1527/PokerPlayer", "netbeans", "123456");
                 System.out.println("Connected to database");
-            } catch (SQLException e) {
-                throw new BaseDeDonnéesExcetion(" impossible to connected database " + e.getMessage());
-            }
+//            } catch (SQLException e) {
+//                throw new BaseDeDonnéesExcetion(" impossible to connected database " + e.getMessage());
+//            }
         
         return conn;
     }
     
+    
+   
 }
 

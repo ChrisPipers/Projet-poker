@@ -16,20 +16,22 @@ import model.Player;
 public class mainBaseDeDonnees {
 
     public static void connect() throws SQLException, BaseDeDonnéesExcetion {
-//        Connection conn = null;
-
-        Connection conn = DriverManagerP.getConnection();
-        Statement stmt = conn.createStatement();
+        
+        Connection conn;
+        conn = DriverManager.getConnection("jdbc:derby://localhost:1527/PokerPlayer", "netbeans", "123456");
+        Statement stmt;
+        stmt = conn.createStatement();
 
         DatabaseMetaData dbm = conn.getMetaData();
 
-        ResultSet result = dbm.getTables(null, null, "PLAYER", null);
-        if (result.next()) {
-            System.out.println("player exists");
-        } else {
-            System.out.println("player doesn't exist");
-            BaseDeDonnées.addPlayer();
-        }
+        ResultSet result;
+//        result = dbm.getTables(null, null, null , null);
+//        if (result.next()) {
+//            System.out.println("player exists");
+//        } else {
+//            System.out.println("player doesn't exist");
+//            BaseDeDonnées.addPlayer();
+//        }
 
     }
 

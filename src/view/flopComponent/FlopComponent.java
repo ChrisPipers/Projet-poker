@@ -14,8 +14,10 @@ import static model.Status.TURN;
 import model.cards.Card;
 
 /**
+ * this calss allows to build the flop component who is composed to the card of
+ * the flop, the valor of the pot and the valor of the bounty
  *
- * @author Mitch
+ * @author g39864
  */
 public final class FlopComponent extends HBox implements FlopView {
 
@@ -26,6 +28,12 @@ public final class FlopComponent extends HBox implements FlopView {
     private final Game game;
     private Status status;
 
+    /**
+     * this is the constructor of the flopcomponent
+     *
+     * @param game is the game used for initialised the flop and to evolve it
+     * while the evolve of the match
+     */
     public FlopComponent(Game game) {
         this.game = game;
         this.game.addObserver(this);
@@ -43,6 +51,10 @@ public final class FlopComponent extends HBox implements FlopView {
         this.getChildren().addAll(board, deck, text, bounty);
     }
 
+    /**
+     * this method allows to dimentionned the hbox who contains the cards of the
+     * flop
+     */
     private void makeBoard() {
         this.board = new HBox();
         this.board.setMinHeight(70);
@@ -50,11 +62,18 @@ public final class FlopComponent extends HBox implements FlopView {
         this.board.setTranslateY(20);
     }
 
+    /**
+     * this method allows to make a deck component
+     */
     private void makeDeck() {
         this.deck = new DeckComponent();
         this.deck.setTranslateY(20);
     }
 
+    /**
+     * this method allows to initialize the label who contains the valor of the
+     * potvof the match
+     */
     private void makePot() {
         String style = "-fx-background-color: red;"
                 + "-fx-font-family: monospace;"
@@ -72,8 +91,12 @@ public final class FlopComponent extends HBox implements FlopView {
         this.text.setTranslateX(-520);
     }
 
-    private void makeBounty(){
-         String style = "-fx-background-color: red;"
+    /**
+     * this method allows to initialize the label who contains the valor of the
+     * bounty of the match
+     */
+    private void makeBounty() {
+        String style = "-fx-background-color: red;"
                 + "-fx-font-family: monospace;"
                 + "-fx-font-size: 16;"
                 + "-fx-alignment: center;"
@@ -88,16 +111,26 @@ public final class FlopComponent extends HBox implements FlopView {
         this.bounty.setTranslateY(20);
         this.bounty.setTranslateX(-520);
     }
-    
-    
+
+    /**
+     * this method allows to reset the valor of pot when a new match is launch
+     */
     private void resetPot() {
         this.text.setText(Integer.toString(0));
     }
-    
+
+    /**
+     * this method allows to reset the valor of bounty when a new match is
+     * launch
+     */
     private void resetBounty() {
         this.bounty.setText(Integer.toString(0));
     }
 
+    /**
+     * this method allows to set the hbox board who contain the cards of the
+     * flop while the game and modify it allows the statut of the match
+     */
     private void setBoard() {
         List<Card> cardsBoard = game.getBoard();
         if (null != game.getStatus() && (this.status != game.getStatus())) {
@@ -132,6 +165,9 @@ public final class FlopComponent extends HBox implements FlopView {
 
     }
 
+    /**
+     * this method allows to set the label who contains the valor of the pot
+     */
     private void setPot() {
         if (game.getStatus() == END_GAME) {
             resetPot();
@@ -140,14 +176,21 @@ public final class FlopComponent extends HBox implements FlopView {
         }
     }
 
-    private void setBounty(){
-         if (game.getStatus() == END_GAME) {
+    /**
+     * this method allows to set the label who contains the valor of the bounty
+     */
+    private void setBounty() {
+        if (game.getStatus() == END_GAME) {
             resetBounty();
         } else {
             this.bounty.setText(Integer.toString(game.getBounty()));
         }
     }
-    
+
+    /**
+     * this method allows to update this flop component where the are some
+     * changement
+     */
     @Override
     public void update() {
         setBoard();

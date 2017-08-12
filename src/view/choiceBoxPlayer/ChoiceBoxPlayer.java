@@ -12,8 +12,10 @@ import model.Game;
 import model.Status;
 
 /**
+ * this class allows to build the choiceboxplayer for the player can enter her
+ * choice during a part
  *
- * @author Mitch
+ * @author g39864
  */
 public final class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
 
@@ -23,11 +25,15 @@ public final class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
     private final Button raise;
     private final Button allin;
     private final TextField sumRaiseTF;
-
     private final Game game;
-
     private final List<Bet> avaibleBet;
 
+    /**
+     * this is the constructor to make the choiceboxplayer
+     *
+     * @param game is the parameter used for adapt the box allows the statut and
+     * the choice possible by the player at a moment of the game
+     */
     public ChoiceBoxPlayer(Game game) {
         this.game = game;
         fold = new Button("Fold");
@@ -48,6 +54,10 @@ public final class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
         this.game.addObserver(this);
     }
 
+    /**
+     * this method allows to initialize the size of the layout component the
+     * choiceboxplayer
+     */
     private void defineSize() {
         this.fold.setMinSize(100, 40);
         this.allin.setMinSize(100, 40);
@@ -58,6 +68,10 @@ public final class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
         this.setMinSize(234 + 110, 120);
     }
 
+    /**
+     * this method allows to define the translation in the choiceboxplayer of
+     * all layout
+     */
     private void definePos() {
         this.setHgap(20);
         this.setVgap(20);
@@ -70,6 +84,10 @@ public final class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
         this.allin.setTranslateX(-10);
     }
 
+    /**
+     * this method allows to define the position in the choiceboxplayer of all
+     * layout
+     */
     private void definePosElements() {
         this.add(fold, 0, 0);
         this.add(check, 2, 0);
@@ -79,12 +97,19 @@ public final class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
         this.add(allin, 2, 1);
     }
 
+    /**
+     * this method allows to change the style of the choiceboxplayer
+     */
     private void changeStyle() {
         String Style = "-fx-background-color: crimson;"
                 + "-fx-border-color: black black black black;";
         this.setStyle(Style);
     }
 
+    /**
+     * this method allows to limit the textfield when the player enter the sum
+     * to raise to accept only the integer
+     */
     private void textFieldFilter() {
         sumRaiseTF.addEventFilter(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
             @Override
@@ -98,6 +123,9 @@ public final class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
         );
     }
 
+    /**
+     * this method allows to link the button with her handler corresponding
+     */
     private void handlerAllButton() {
         CheckButtonHandler checkButtonHandler = new CheckButtonHandler(this.game);
         check.addEventHandler(ActionEvent.ACTION, checkButtonHandler);
@@ -115,10 +143,18 @@ public final class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
         allin.addEventHandler(ActionEvent.ACTION, allinButtonHandler);
     }
 
+    /**
+     * this method allows to take the valor enter in the textfield sumraiseTF
+     *
+     * @return a integer where is contained in the textfield sumraiseTF
+     */
     public int getContainTextfield() {
         return Integer.parseInt(this.sumRaiseTF.getText());
     }
 
+    /**
+     * this method allows to hide all of the button of the choiceboxplayer
+     */
     private void hideAllButton() {
         this.call.setVisible(false);
         this.check.setVisible(false);
@@ -127,10 +163,17 @@ public final class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
         this.fold.setVisible(false);
     }
 
+    /**
+     * this method allows to reset the valor of the textfield sumraiseTF
+     */
     public void resetTextFieldRaise() {
         this.sumRaiseTF.clear();
     }
 
+    /**
+     * this method allows to adapt the view of the choiceboxplayer depending on
+     * the situation of the match
+     */
     public void adaptVissibilityOfButton() {
         hideAllButton();
         for (Bet bet : avaibleBet) {
@@ -156,11 +199,14 @@ public final class ChoiceBoxPlayer extends GridPane implements ChoiceBoxView {
         }
     }
 
+    /**
+     * this method allows to update the this when the game change
+     */
     @Override
     public void update() {
-            adaptVissibilityOfButton();
-            resetTextFieldRaise();
-        if (game.getStatus() ==Status.END_GAME){
+        adaptVissibilityOfButton();
+        resetTextFieldRaise();
+        if (game.getStatus() == Status.END_GAME) {
             this.setVisible(false);
         }
     }

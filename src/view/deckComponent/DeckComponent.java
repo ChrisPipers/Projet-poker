@@ -5,14 +5,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 /**
+ * this class allows to make a graphical deck component
  *
- * @author Mitch
+ * @author g39864
  */
 public final class DeckComponent extends HBox {
 
     private String stringCard;
     private ImageView iv2;
 
+    /**
+     * this is the constructor of this class, it s used for build a graphical
+     * deck of cards
+     */
     public DeckComponent() {
         this.iv2 = getCardImageView();
         this.getChildren().add(iv2);
@@ -25,6 +30,11 @@ public final class DeckComponent extends HBox {
         }
     }
 
+    /**
+     * this method allows fot initialise the card component to compose the deck
+     *
+     * @return a image view for add it s at the deck component
+     */
     private ImageView getCardImageView() {
         stringCard = "view/Image/cards/" + "dos" + ".png";
         Image image = new Image(stringCard, 150, 150, false, false);

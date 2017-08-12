@@ -1,6 +1,5 @@
 package view.tableComponent;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.Label;

@@ -53,7 +53,7 @@ public class ManagementBaseDeDonnées {
     // le nom est unique 
     public static boolean existPlayer(String name) throws SQLException, BaseDeDonnéesExcetion {
         Connection conn = null;
-        String query = "SELECT * FROM PokerPlayer WHERE name = ?";
+        String query = "SELECT * FROM PokerPlayer2 WHERE name = ?";
         try {
             conn = DriverManagerP.getConnection();
             PreparedStatement preparedStmt = conn.prepareStatement(query);
@@ -105,7 +105,7 @@ public class ManagementBaseDeDonnées {
         List<PlayerBDD> listPlayer = new ArrayList();
         Connection conn = DriverManagerP.getConnection();
         PreparedStatement preparedStmt;
-        String query = "SELECT * FROM PokerPlayer ";
+        String query = "select * from PokerPlayer ";
         try {
             preparedStmt = conn.prepareStatement(query);
             ResultSet result = preparedStmt.executeQuery();

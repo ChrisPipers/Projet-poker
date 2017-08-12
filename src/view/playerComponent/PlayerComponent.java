@@ -16,8 +16,10 @@ import model.Player;
 import model.cards.Card;
 
 /**
+ * this class, allows to build a player component with a game and a player of
+ * parameter
  *
- * @author Mitch
+ * @author g39864
  */
 public final class PlayerComponent extends HBox implements Observer {
 
@@ -30,6 +32,12 @@ public final class PlayerComponent extends HBox implements Observer {
 
     private final HBox hBoxCards;
 
+    /**
+     * this is the constructor of player component
+     *
+     * @param player is the player used for initialized the player component
+     * @param game is the game for know the state of the game
+     */
     public PlayerComponent(Player player, Game game) {
 
         this.game = game;
@@ -41,12 +49,15 @@ public final class PlayerComponent extends HBox implements Observer {
         this.hBoxCards = new HBox();
         setBorderLayout();
         this.getChildren().add(hBoxCards);
-//        initHBoxCards();
-        initPicturePlayer(player);
-        initVBoxPlayer(player);
+        initPicturePlayer();
+        initVBoxPlayer();
 
     }
 
+    /**
+     * this methid allows to adapt the HBox who contains the cards of the player
+     * if this player is the current player of the game
+     */
     public void setBorderLayout() {
         final String boderStyle;
         if (this.player == game.getCurrentPlayer()) {
@@ -69,14 +80,11 @@ public final class PlayerComponent extends HBox implements Observer {
 
     }
 
-    public void initHBoxCards() {
-        List<Card> cards = player.getCards();
-        String sCard;
-        handPokerPlayer handP = new handPokerPlayer(cards);
-        this.hBoxCards.getChildren().add(handP);
-    }
-
-    public void initPicturePlayer(Player player) {
+    /**
+     * this method allows to creat and add the picture player at the player
+     * component
+     */
+    public void initPicturePlayer() {
         String selectImage = ("view/Image/M.png");
         Image image = new Image(selectImage, 80, 80, false, false);
         picturePlayer = new ImageView();
@@ -85,7 +93,11 @@ public final class PlayerComponent extends HBox implements Observer {
         getChildren().add(picturePlayer);
     }
 
-    public void initVBoxPlayer(Player player) {
+    /**
+     * this methode allows to initilize the attributes of the player her pot,
+     * bounty, and her name.
+     */
+    public void initVBoxPlayer() {
         final String style = "-fx-background-position: center, center;"
                 + "-fx-background-color: #b22228;"
                 + "-fx-background-size: cover, auto;";
@@ -100,14 +112,18 @@ public final class PlayerComponent extends HBox implements Observer {
         pot.setStyle("-fx-font-weight: bold;");
         pot.setTextAlignment(TextAlignment.CENTER);
         VBox vboxPlayer = new VBox(6);
-        
+
         bounty = new Label(Double.toString(player.getBounty()));
-        
+
         vboxPlayer.getChildren().addAll(name, line, pot, bounty);
         vboxPlayer.setStyle(style);
         getChildren().add(vboxPlayer);
     }
 
+    /**
+     * this method allows to change the card of the hbox HBoxCards who contains
+     * the card og the hand of the player
+     */
     public void setHboxCards() {
         this.hBoxCards.getChildren().clear();
         List<Card> cards = player.getCards();
@@ -116,31 +132,52 @@ public final class PlayerComponent extends HBox implements Observer {
         this.hBoxCards.getChildren().add(handP);
     }
 
+    /**
+     * this method allows to clear the HBox who contains the cards of hand's
+     * player
+     */
     public void clearHBoxCards() {
         this.player.isFold();
         this.hBoxCards.getChildren().clear();
     }
 
-    public void setLabelPot(Player player) {
-        this.pot.setText(Integer.toString(player.getMoney()));
-
-    }
-
+    /**
+     * thid method allows to hide the hbox who contains the cards if the player
+     * is fold
+     */
     public void isFold() {
         this.hBoxCards.setVisible(false);
     }
 
+    /**
+     * this method allows to update the statut of the Label who contains the sum
+     * of the player
+     */
     public void setPot() {
         this.pot.setText(Integer.toString(player.getMoney()));
     }
 
-    public void setBounty(){
+    /**
+     * this method allows to update the statut of the Label who contains the
+     * bounty of the player
+     */
+    public void setBounty() {
         this.bounty.setText(Double.toString(player.getBounty()));
     }
+
+    /**
+     * this method allows to return the playerComponent correspondent
+     *
+     * @return the playerComponent
+     */
     public Player getPlayer() {
         return this.player;
     }
 
+    /**
+     * this method allows to update the statut of the player component whe there
+     * is a changement, is the methode used by the mvc
+     */
     @Override
     public void update() {
         if (!this.player.isFold()) {

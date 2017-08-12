@@ -18,9 +18,10 @@ public final class CardComponent extends Parent {
     private final Card card;
 
     /**
-     * this is the constructor allows a deck entry in parameter
+     * this is the constructor of a card component allows a card entry in
+     * parameter
      *
-     * @param card
+     * @param card is the card who contain the valor and color
      */
     public CardComponent(Card card) {
         this.card = card;
@@ -42,6 +43,9 @@ public final class CardComponent extends Parent {
         getChildren().add(iv2);
     }
 
+    /**
+     * this method allows to define the style of a card component
+     */
     private void defineStyle() {
         final String style = "-fx-repeat: no-repeat;"
                 + "-fx-image-size: cover, auto;"
@@ -52,9 +56,10 @@ public final class CardComponent extends Parent {
     }
 
     /**
-     * this class allows to add a event to recovery the valors of the card
+     * this method allows to add a event to recovery the valors of the card when
+     * make a clic on it
      *
-     * @return 
+     * @return
      */
     private String eventCard() {
         this.setOnMouseClicked((MouseEvent event) -> {
@@ -63,6 +68,9 @@ public final class CardComponent extends Parent {
         return this.stringCard;
     }
 
+    /**
+     * this method change the vissibility of this component
+     */
     public void setVissibleHand() {
         this.stringCard = "view/Image/cards/" + this.card.toString() + ".png";
     }

@@ -15,8 +15,9 @@ import model.Player;
 import view.tableComponent.TableComponent;
 
 /**
+ * this class allows to launch the game , this contain the main of the game
  *
- * @author Mitch
+ * @author g39864
  */
 public class Main extends Application {
 
@@ -81,6 +82,7 @@ public class Main extends Application {
     }
 
     /**
+     * this method launch the game 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
