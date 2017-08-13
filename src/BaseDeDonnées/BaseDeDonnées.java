@@ -14,16 +14,19 @@ public class BaseDeDonnées {
 
     public static void addPlayer() throws SQLException, BaseDeDonnéesExcetion, ClassNotFoundException {
 
-        String query = " CREATE TABLE POKERPLAYER2 "
+        String query = " CREATE TABLE POKERPLAYER "
                 + "(IDPlayer INTEGER not NULL, "
                 + " name VARCHAR (50), "
                 + " money INTEGER, "
                 + " bounty INTEGER, "
                 + " PRIMARY KEY ( IDPlayer ))";
 
+        
         Connection connection = null;
+        
         try {
             connection = DriverManagerP.getConnection();
+            
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(query);
         } catch (SQLException e) {

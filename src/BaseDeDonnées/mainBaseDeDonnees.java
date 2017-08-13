@@ -23,10 +23,8 @@ public class mainBaseDeDonnees {
         DatabaseMetaData dbm = conn.getMetaData();
 
         ResultSet result = dbm.getTables(null, null, "PokerPlayer", null);
-        
-        System.out.println(result = dbm.getTables(null, null, "PokerPlayer", null));
-        
-        if (result.next()) {
+                
+        if (!result.next()) {
             System.out.println("player exists");
         } else {
             System.out.println("player doesn't exist");
