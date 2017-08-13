@@ -24,12 +24,7 @@ public class mainBaseDeDonnees {
 
         ResultSet result = dbm.getTables(null, null, "PokerPlayer", null);
                 
-        if (!result.next()) {
-            System.out.println("player exists");
-        } else {
-            System.out.println("player doesn't exist");
-            BaseDeDonnées.addPlayer();
-        }
+      
 
     }
 
