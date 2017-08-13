@@ -33,11 +33,12 @@ public class Main extends Application {
         int nbPlayer = ManagementBaseDeDonnées.getNbPlayer();
 
         if (nbPlayer == 0) {
+            System.out.println(" nb = 0");
             game.addPlayer("1", 1000, 1);
             game.addPlayer("2", 1000, 1);
             game.addPlayer("3", 1000, 1);
             game.addPlayer("4", 1000, 1);
-            mainBaseDeDonnees.addPlayersToBDD(game.getPlayers());
+            mainBaseDeDonnees.addPlayersBDD(game.getPlayers());
         } else {
             List<PlayerBDD> players = ManagementBaseDeDonnées.getPlayer();
             for (PlayerBDD p : players) {

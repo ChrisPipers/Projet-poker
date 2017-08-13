@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ManagementBaseDeDonnées {
 
-    public static void majPlayer(String name, int money, int bounty) throws SQLException, BaseDeDonnéesExcetion {
+    public static void majPlayer(String name, int money, int bounty) throws SQLException, BaseDeDonnéesExcetion, ClassNotFoundException {
         Connection conn = DriverManagerP.getConnection();
         PreparedStatement preparedStmt;
         try {
@@ -29,12 +29,12 @@ public class ManagementBaseDeDonnées {
         }
     }
 
-    public static void addPlayer(String name, int money, double bounty) throws SQLException, BaseDeDonnéesExcetion {
+    public static void addPlayer(String name, int money, double bounty) throws SQLException, BaseDeDonnéesExcetion, ClassNotFoundException {
         int nbPlayer = getNbPlayer();
-        String query = "add player (IDPlayer, name, money, bounty ) values("
-                + (nbPlayer + 1) + ", '"
-                + name + "' "
-                + money + "' "
+        String query = "Inser into PokerPlayer (IDPlayer, name, money, bounty ) values ("
+                + (getNbPlayer() + 1) + ", '"
+                + name + "', "
+                + money + "', "
                 + bounty + ")";
 
         Connection conn = null;
@@ -51,7 +51,7 @@ public class ManagementBaseDeDonnées {
     }
 
     // le nom est unique 
-    public static boolean existPlayer(String name) throws SQLException, BaseDeDonnéesExcetion {
+    public static boolean existPlayer(String name) throws SQLException, BaseDeDonnéesExcetion, ClassNotFoundException {
         Connection conn = null;
         String query = "SELECT * FROM PokerPlayer2 WHERE name = ?";
         try {
@@ -70,7 +70,7 @@ public class ManagementBaseDeDonnées {
 
     }
 
-    public static int getNbPlayer() throws SQLException, BaseDeDonnéesExcetion {
+    public static int getNbPlayer() throws SQLException, BaseDeDonnéesExcetion, ClassNotFoundException {
         Connection conn = DriverManagerP.getConnection();
         PreparedStatement preparedStmt;
         String query = "SELECT count(*) FROM PokerPlayer";
@@ -85,7 +85,7 @@ public class ManagementBaseDeDonnées {
         }
     }
 
-    public static int getIDPlayer(String name) throws SQLException, BaseDeDonnéesExcetion {
+    public static int getIDPlayer(String name) throws SQLException, BaseDeDonnéesExcetion, ClassNotFoundException, ClassNotFoundException {
         Connection conn = DriverManagerP.getConnection();
         PreparedStatement preparedStmt;
         String query = "SELECT IdPlayer FROM PokerPlayer where name = '" + name + "'";
@@ -101,7 +101,7 @@ public class ManagementBaseDeDonnées {
     }
     
 
-    public static List<PlayerBDD> getPlayer() throws SQLException, BaseDeDonnéesExcetion {
+    public static List<PlayerBDD> getPlayer() throws SQLException, BaseDeDonnéesExcetion, ClassNotFoundException {
         List<PlayerBDD> listPlayer = new ArrayList();
         Connection conn = DriverManagerP.getConnection();
         PreparedStatement preparedStmt;
@@ -118,7 +118,7 @@ public class ManagementBaseDeDonnées {
         }
     }
 
-    public static List<Integer> getIDAllPlayer(String name) throws SQLException, BaseDeDonnéesExcetion {
+    public static List<Integer> getIDAllPlayer(String name) throws SQLException, BaseDeDonnéesExcetion, ClassNotFoundException {
         List<Integer> listIdAllPlayer = new ArrayList();
         Connection conn = DriverManagerP.getConnection();
         PreparedStatement preparedStmt;

@@ -12,9 +12,9 @@ public class BaseDeDonnées {
 
     private Connection connexion;
 
-    public static void addPlayer() throws SQLException, BaseDeDonnéesExcetion {
+    public static void addPlayer() throws SQLException, BaseDeDonnéesExcetion, ClassNotFoundException {
 
-        String query = "ADD PLAYER "
+        String query = " CREATE TABLE POKERPLAYER2 "
                 + "(IDPlayer INTEGER not NULL, "
                 + " name VARCHAR (50), "
                 + " money INTEGER, "
