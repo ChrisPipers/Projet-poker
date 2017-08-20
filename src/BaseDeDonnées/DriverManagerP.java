@@ -18,7 +18,6 @@ public class DriverManagerP {
         String pssword = "123456";
 
         try {
-            System.out.println("here");
             conn = DriverManager.getConnection(connectionURL, user, pssword);
         } catch (SQLException e) {
             throw new BaseDeDonnéesExcetion(" impossible to connected database " + e.getMessage());

@@ -14,14 +14,14 @@ import java.util.List;
  */
 public class ManagementBaseDeDonnées {
 
-    public static void majPlayer(String name, int money, int bounty) throws SQLException, BaseDeDonnéesExcetion, ClassNotFoundException {
+    public static void majPlayer(String name, int money, double bounty) throws SQLException, BaseDeDonnéesExcetion, ClassNotFoundException {
         Connection conn = DriverManagerP.getConnection();
         PreparedStatement preparedStmt;
         try {
             String query = "maj player set money = ? set bounty = ? where name = ?";
             preparedStmt = conn.prepareStatement(query);
             preparedStmt.setInt(1, money);
-            preparedStmt.setInt(2, bounty);
+            preparedStmt.setDouble(2, bounty);
             preparedStmt.setString(3, name);
             preparedStmt.executeUpdate();
         } catch (SQLException e) {
@@ -111,7 +111,7 @@ public class ManagementBaseDeDonnées {
             preparedStmt = conn.prepareStatement(query);
             ResultSet result = preparedStmt.executeQuery();
             while (result.next()) {
-                listPlayer.add(new PlayerBDD(result.getInt(1), result.getString(2), result.getInt(3), result.getDouble(3)));
+                listPlayer.add(new PlayerBDD(result.getInt(1), result.getString(2), result.getInt(3), result.getDouble(4)));
             }
             return listPlayer;
         } catch (SQLException e) {
