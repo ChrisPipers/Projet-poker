@@ -1,8 +1,8 @@
 package view;
 
-import BaseDeDonnées.ManagementBaseDeDonnées;
-import BaseDeDonnées.PlayerBDD;
-import BaseDeDonnées.mainBaseDeDonnees;
+import baseDeDonnées.ManagementBaseDeDonnées;
+import baseDeDonnées.PlayerBDD;
+import baseDeDonnées.mainBaseDeDonnees;
 import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
