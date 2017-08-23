@@ -37,9 +37,7 @@ match.setState(match.getTurn());
             match.dealBoard(1);
             match.showDown();
             match.splitPot();
-            for (Player player : match.getListPlayer()) {
-                System.out.println(player.getMoney() + " money gameeeer");
-            }
+            
             match.end();
         } else if (match.hasNext()) {
             match.nextPlayer();

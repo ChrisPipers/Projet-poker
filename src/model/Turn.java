@@ -38,8 +38,7 @@ class Turn extends AbstrState {
         } else if (match.hasNext()) {
             match.nextPlayer();
         } else {
-//            this.addPot();
-//            System.out.println(match.getPot());
+//            
             match.setBetIterator();
             match.showBoard();
             match.setState(match.getRiver());

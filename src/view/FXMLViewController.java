@@ -1,6 +1,5 @@
 package view;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -129,7 +128,6 @@ public class FXMLViewController implements Initializable, Observer {
      * this method allows to display the winner(s) with a alert
      */
     public void displayWinner() {
-        System.out.println(listWinner.size() + " nb de victorieux ");
         String winners = "";
         for (Player player : listWinner) {
             winners = winners + " " + player.getName();

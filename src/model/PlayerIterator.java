@@ -134,7 +134,6 @@ public class PlayerIterator implements Iterator<Player> {
                 count2++;
             }
         }
-        System.out.println("all in ?"+(count2 == count && (count-count2)<=1));
         return (count2 == count && (count-count2)<=1);
 
     }

@@ -240,15 +240,18 @@ public class Game implements Observable, Facade {
         return Match.SMALLBLIND;
     }
     
+    @Override
     public void addObserver(Observer observer) {
         listObserver.add(observer);
     }
     
+    @Override
     public void removeObserver(Observer observer) {
         listObserver.remove(observer);
     }
 
 //    @Override
+    @Override
     public void notifyObserver() {
         for (int i = 0; i < listObserver.size(); i++) {
             

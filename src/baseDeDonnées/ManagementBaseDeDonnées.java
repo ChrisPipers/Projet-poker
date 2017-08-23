@@ -79,7 +79,6 @@ public class ManagementBaseDeDonnées {
             preparedStmt = conn.prepareStatement(query);
             ResultSet result = preparedStmt.executeQuery();
             result.next();
-            System.out.println("nb player =" + result.getInt(1));
             return result.getInt(1);
         } catch (SQLException e) {
             throw new SQLException(" impossible to know number of player into the DB  " + e.getMessage());
