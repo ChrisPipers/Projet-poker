@@ -1,6 +1,5 @@
 package baseDeDonnées;
 
-import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
