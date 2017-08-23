@@ -53,3 +53,53 @@ Cette implémentation suit les règles suivantes :
 
 # Mise à jour effectuées  08/05/2017
 >A compléter
+
+
+# Mise à jour effectuées 10/08/2017
+	Classe:
+		*Player 
+		mis la méthode getPlayerCards() en public
+		add the attribute int bounty for my modification 
+			getter and setter for it
+		constructeur de player mis en public
+		
+		*Card
+		ajout la methode to string
+		
+		*Flop
+		constructeur mis en public
+		
+		For make the flop i change in the classe:
+			Blind.java i put the "match.dealBoard(3)" in comment
+			Preflop.java i change at the line 36 "match.dealBoard(1)" to "match.dealBoard(3)"
+			Turn.java i had at the line 38 "match.dealBoard(1);"
+
+		*Match 
+		put the methode is isOver() in public 
+		put the class in public 
+		add the attribute int bounty for my modification 
+			getter and setter for it
+		
+		*Game 
+		add the method getMatch 
+		
+		*Pot
+		put the methode findWinners in public
+		put the class in public 
+				 
+		*Pots put the class in public 
+		
+		*PlayerCards
+		put the class in public 
+		add the method unshow the cards for hide the card at the start of 
+		the game 
+
+		** view
+
+image 
+
+table de poker 
+	https://pokermod.files.wordpress.com/2010/08/nice-green-table.png
+	
+carte de jeu 
+	https://github.com/hayeah/playing-cards-assets/tree/master/svg-cards
