@@ -35,9 +35,7 @@ class Preflop extends AbstrState {
                 match.dealBoard(5);
                  match.showDown();
             match.splitPot();
-            for (Player player : match.getListPlayer()) {
-                System.out.println(player.getMoney()+" money gameeeer");
-            }
+            
             match.end();
             }else{
             this.addPot();

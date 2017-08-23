@@ -4,7 +4,6 @@ import model.observer.Observer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-//import java.util.Observable;
 import static model.Status.BLIND;
 import static model.Status.END_GAME;
 import static model.Status.END_MATCH;
@@ -180,7 +179,6 @@ public class Game implements Observable, Facade {
     }
     
     private void notifyChange() {
-//        setChanged();
         notifyObserver();
     }
     

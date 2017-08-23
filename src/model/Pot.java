@@ -95,18 +95,13 @@ public class Pot {
     void split(List<Player> winners, int bounty) {
         for (int i = 0; i < winners.size(); i++) {
            
-System.out.println("total"+total);
             int amount = total / winners.size();
-            System.out.println("bountyyyy" + bounty);
             double partOfBounty = bounty / winners.size();
-//            System.out.println("amount" +amount);
-//            System.out.println(amount +" amount vaut ");
             winners.get(i).addprofit(amount);
             winners.get(i).setBounty(partOfBounty);
             winners.remove(i);
         }
         if (!winners.isEmpty()) {
-//            System.out.println(total +" tooottta");
             winners.get(0).addprofit(total % winners.size());
         }
     }
@@ -119,7 +114,6 @@ System.out.println("total"+total);
      */
     boolean sameMembers(Pot other) {
         List<Player> otherMembers = other.members;
-        //null checking
         if (members == null && otherMembers == null) {
             return true;
         }

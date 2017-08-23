@@ -32,9 +32,7 @@ public class Main extends Application {
 
         mainBaseDeDonnees.connect();
         int nbPlayer = ManagementBaseDeDonnées.getNbPlayer();
-        System.out.println(nbPlayer);
         if (nbPlayer == 0) {
-            System.out.println(" nb = 0");
             game.addPlayer("1", 1000, 1);
             game.addPlayer("2", 1000, 1);
             game.addPlayer("3", 1000, 1);

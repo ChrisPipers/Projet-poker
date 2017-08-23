@@ -263,7 +263,6 @@ public class Player {
      *
      */
     void allIn() {
-        System.out.println("on fait all in ");
         if (currentBet<money){
             currentBet =  money;
         }
@@ -277,8 +276,6 @@ public class Player {
      * @param amount the amount to add
      */
     void addprofit(int amount) {
-        System.out.println(currentProfit+"currr");
-        System.out.println("amount"+amount);
         currentProfit += amount;
         money = money+currentProfit;
     }

@@ -67,7 +67,6 @@ private List<Player>players;
             }
         }
 
-//        System.out.println(minimum + " minimum");
         iterator = new PlayerIterator(players);
         currentPlayer = iterator.next();
         blind = new Blind(this);
@@ -94,7 +93,6 @@ private List<Player>players;
             Player player = iterator.next();
             for (int i = 0; i < nbCards; i++) {
                 Card card = deck.pick();
-//                card.hide();
                 player.add(card);
             }
         }
