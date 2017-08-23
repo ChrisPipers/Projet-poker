@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 /**
  *
@@ -24,19 +26,17 @@ abstract class AbstrState implements State {
      *
      */
     protected Match match;
-    
-    
+
     @Override
     public void check(Player currentPlayer) throws GameException {
         if (match.getMinimum() != 0) {
             throw new GameException("Chech impossible " + match.getMinimum());
         }
-        
+
         currentPlayer.makeBet(0);
 
         nextState();
     }
-    
 
     @Override
     public void call(Player currentPlayer, int minimum, Pots pot) throws GameException {
@@ -59,7 +59,16 @@ abstract class AbstrState implements State {
             throw new GameException("Raise doit être strictement suérieure à 0 " + amount + " " + minimum);
         }
         if (currentPlayer.getMoney() < amount) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("You cannot ");
+            alert.setHeaderText("You Stack is too small , you haven't enough money");
+            ButtonType buttonComfirm = new ButtonType("adapt you raise");
+            String msg= "te maximum of you raise is :" + currentPlayer.getMoney();
+            alert.setContentText(msg);
+            alert.show();
+            
             throw new GameException("Raise impossible " + currentPlayer.getMoney() + " " + amount + " " + minimum);
+
         }
         currentPlayer.makeBet(amount);
         match.setRaiseIterator();
