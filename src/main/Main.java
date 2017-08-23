@@ -1,4 +1,4 @@
-package view;
+package main;
 
 import baseDeDonnées.ManagementBaseDeDonnées;
 import baseDeDonnées.PlayerBDD;
@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import model.Game;
 import model.Player;
+import view.FXMLViewController;
 import view.tableComponent.TableComponent;
 
 /**
